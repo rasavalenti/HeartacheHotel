@@ -9,13 +9,57 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            
+            .hoverImage {
+                position: relative;
+                display: flex;
+                width: 200pt;
+                height: 200pt;
+                border: solid;
+                text-align: center;
+            }
+            
+            .text {
+                position: absolute;
+                margin: 0 auto;
+                width: 25%;
+                top: 20%;
+                border: solid;
+                opacity: 0;       
+            }
+            
+            #dog {
+                position: absolute;
+                margin: auto;
+                opacity: 1;
+                max-height: 100%;
+                max-width: 100%;
+            }
+
+            .hoverImage:hover #dog {
+                opacity: 0.4;
+                transition: 0.3s;
+            }
+            
+            .hoverImage:hover .text {
+                opacity: 1;
+                border: solid;
+                transition: 0.3s;
+            }
+            
+            
+            
+        </style>
     </head>
     
     
     <body>
         <div class="hoverImage">
-            <img src="https://i.pinimg.com/originals/c6/4c/e0/c64ce05bf01ccb3ea8af44de5980cbe4.jpg" id="dog">
-            
+            <img src="https://i.pinimg.com/originals/c6/4c/e0/c64ce05bf01ccb3ea8af44de5980cbe4.jpg" id="dog" alt="dog">
+            <div class="text">
+                Dog
+            </div>
         </div>
     </body>
 </html>
