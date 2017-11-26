@@ -2,6 +2,7 @@
 <html>
 	<head>
             <title>Book a Room</title>
+            <link rel="stylesheet" type="text/css" href="HHcss.css">
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -34,13 +35,12 @@
 		</div>
 		
 		<div class="Main">
-                    
-        <button id="makeBooking" onclick="switchToBook()"> Make a booking </button>
-        <button id="manageBooking" onclick="switchToManage()"> Manage a booking </button>
-                    
-                <h2 id="bookingTitle">Make a Booking</h2>
+                <div class="tab">           
+                <button class="tablinks" id="makeBooking" onclick="switchToBook()"> Make a booking </button>
+                <button class="tablinks" id="manageBooking" onclick="switchToManage()"> Manage a booking </button>
+                </div>           
                 
-                <form id="book">
+                <form id="book" class="tabcontent">
                     <fieldset>
                         <legend>Make a Booking</legend>
                         <label> Check-in: </label><input class="checkin" type="date" name ="booking date" min="2017-11-10"  max="2018-11-10">
@@ -51,7 +51,7 @@
                     </fieldset>    
                 </form> 
                 
-                <form id="manage">
+                <form id="manage" class="tabcontent">
                     <fieldset>
                         <legend>Manage a Booking</legend>
                         <label> Booking Reference: </label><input type="text" name ="booking reference">
