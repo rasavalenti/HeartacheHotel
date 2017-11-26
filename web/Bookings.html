@@ -4,6 +4,9 @@
             <title>Book a Room</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+            <script type ="text/javascript"> </script>
+            <script src ="HHjavascript.js"> </script>
 	</head>
 	
 	<body>
@@ -31,9 +34,33 @@
 		</div>
 		
 		<div class="Main">
-			<h2>Make a Booking</h2>
-			<h2>Manage a Booking</h2>
-				<p>Placeholder for javascript options</p>
+                    
+        <button id="makeBooking" onclick="switchToBook()"> Make a booking </button>
+        <button id="manageBooking" onclick="switchToManage()"> Manage a booking </button>
+                    
+                <h2 id="bookingTitle">Make a Booking</h2>
+                
+                <form id="book">
+                    <fieldset>
+                        <legend>Make a Booking</legend>
+                        <label> Check-in: </label><input class="checkin" type="date" name ="booking date" min="2017-11-10"  max="2018-11-10">
+                        <label> Check-out: </label><input class="checkout" type="date" name ="booking date" min="2017-11-10"  max="2018-11-10">
+                        <label> Number of guests: </label><input type="number" name="number of guests" min="1" max="10">
+                        <br/>
+                        <input type="submit" value="Check Availability">                      
+                    </fieldset>    
+                </form> 
+                
+                <form id="manage">
+                    <fieldset>
+                        <legend>Manage a Booking</legend>
+                        <label> Booking Reference: </label><input type="text" name ="booking reference">
+                        <label> Email: </label><input type="email" name ="emai">
+                        <br/>
+                        <input type="submit" value="Manage Booking">                       
+                    </fieldset>    
+                </form> 
+                
 		</div>
 		
 		<div class="Footer">
