@@ -48,9 +48,7 @@
             
             .slideImage {
                 height: 200pt;
-                display: none;
             }
-            
             
             
         </style>
@@ -76,11 +74,13 @@
                     if (curSlide > image.length) {
                         current = 0;
                         console.log(current);
-                    }
+                    } 
                     
                     image[current].style.display = "block";
+                    image[current+1].style.display = "none";
                     current++;
                     console.log(current);
+                    
                     
                 }
                 
