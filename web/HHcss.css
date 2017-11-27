@@ -3,6 +3,42 @@ div.tab {
     background-color: #f1f1f1; 
 }
 
+ul {
+    list-style: none;
+    
+}
+
+div.Header {
+    background-color: #ccccff;
+    top: 0;
+    margin: auto;
+    text-align: center;
+}
+
+div.Navigation {
+    background-color: blue;
+    list-style-type: none;
+    overflow: hidden;
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+div.Main {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+div.Footer {
+    background-color: #666666;
+    padding: 1%;
+    bottom: 0;
+}
+
 div.tab button {
     background-color: #f1f1f1;
     float: left;
