@@ -2,8 +2,12 @@
 <html>
 	<head>
             <title>Book a Room</title>
+            <link rel="stylesheet" type="text/css" href="HHcss.css">
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+            <script type ="text/javascript"> </script>
+            <script src ="HHjavascript.js"> </script>
 	</head>
 	
 	<body>
@@ -31,9 +35,32 @@
 		</div>
 		
 		<div class="Main">
-			<h2>Make a Booking</h2>
-			<h2>Manage a Booking</h2>
-				<p>Placeholder for javascript options</p>
+                <div class="tab">           
+                <button class="tablinks" id="makeBooking" onclick="switchToBook()"> Make a booking </button>
+                <button class="tablinks" id="manageBooking" onclick="switchToManage()"> Manage a booking </button>
+                </div>           
+                
+                <form id="book" class="tabcontent">
+                    <fieldset>
+                        <legend>Make a Booking</legend>
+                        <label> Check-in: </label><input class="checkin" type="date" name ="booking date" min="2017-11-10"  max="2018-11-10">
+                        <label> Check-out: </label><input class="checkout" type="date" name ="booking date" min="2017-11-10"  max="2018-11-10">
+                        <label> Number of guests: </label><input type="number" name="number of guests" min="1" max="10">
+                        <br/>
+                        <input type="submit" value="Check Availability">                      
+                    </fieldset>    
+                </form> 
+                
+                <form id="manage" class="tabcontent">
+                    <fieldset>
+                        <legend>Manage a Booking</legend>
+                        <label> Booking Reference: </label><input type="text" name ="booking reference">
+                        <label> Email: </label><input type="email" name ="emai">
+                        <br/>
+                        <input type="submit" value="Manage Booking">                       
+                    </fieldset>    
+                </form> 
+                
 		</div>
 		
 		<div class="Footer">

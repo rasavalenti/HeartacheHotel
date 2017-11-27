@@ -1,0 +1,30 @@
+div.tab {
+    overflow: hidden;
+    background-color: #f1f1f1; 
+}
+
+div.tab button {
+    background-color: #f1f1f1;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+
+.tabcontent {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
