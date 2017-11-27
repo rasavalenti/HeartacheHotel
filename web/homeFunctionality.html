@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            
+
             .hoverImage {
                 position: relative;
                 display: flex;
@@ -14,7 +14,7 @@
                 height: 200pt;
                 text-align: center;
             }
-            
+
             .text {
                 position: absolute;
                 margin: 0 auto;
@@ -24,7 +24,7 @@
                 border: solid;
                 opacity: 0;       
             }
-            
+
             .image {
                 position: absolute;
                 margin: auto;
@@ -37,24 +37,25 @@
                 opacity: 0.4;
                 transition: 0.3s;
             }
-            
+
             .hoverImage:hover .text {
                 opacity: 1;
                 border: solid;
                 transition: 0.3s;
             }
-            
-            
-            
+
+
+
             .slideImage {
                 height: 200pt;
+                display: none;
             }
-            
-            
+
+
         </style>
     </head>
-    
-    
+
+
     <body>
         <div class="hoverImage">
             <img src="https://i.pinimg.com/originals/c6/4c/e0/c64ce05bf01ccb3ea8af44de5980cbe4.jpg" class="image" alt="dog">
@@ -62,30 +63,33 @@
                 Dog
             </div>
         </div>
-        
+
         <div>
             <img src="https://i.pinimg.com/originals/c6/4c/e0/c64ce05bf01ccb3ea8af44de5980cbe4.jpg" class="slideImage" alt="dog">
             <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/7f/67/f1/gran-hotel-manzana-kempinski.jpg" class="slideImage" alt="hotel">
             <script>
                 var curSlide = 0; //current slide counter
-                
-                function slideshow() {
-                    var image = document.querySelector('.imageSlide');
-                    if (curSlide > image.length) {
-                        current = 0;
-                        console.log(current);
-                    } 
-                    
-                    image[current].style.display = "block";
-                    image[current+1].style.display = "none";
-                    current++;
-                    console.log(current);
-                    
-                    
-                }
-                
                 slideshow();
-                setInterval(slideshow,4000);    
+                setInterval(slideshow, 4000);
+
+                function slideshow() {
+                    var images = document.querySelectorAll('.slideImage');
+
+                    if (curSlide === images.length) {
+                        curSlide = 0;
+                    }
+
+                    for (x = 0; x < images.length ; x++) {
+                        if (x===curSlide) {
+                            images[x].style.display = "block";
+                        } else {
+                            images[x].style.display = "none";
+                        }
+                    }
+                    
+                    curSlide++;
+                }
+
             </script>
         </div>
     </body>
