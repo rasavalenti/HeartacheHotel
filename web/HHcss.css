@@ -8,36 +8,176 @@ ul {
     
 }
 
+a {
+    text-decoration: none;
+}
+
+a:visited {
+text-decoration: none;
+}
+
 div.Header {
-    background-color: #ccccff;
-    top: 0;
-    margin: auto;
-    text-align: center;
+background-color: #ccccff;
+top: 0;
+text-align: center;
+padding-bottom: 5%;
+padding-top: 10%;
+width: 100%;
+}
+
+div.Header img {
+display: block;
+margin-bottom: 1%;
+margin-top: 1%;
 }
 
 div.Navigation {
-    background-color: blue;
-    list-style-type: none;
-    overflow: hidden;
-    width: 100%;
-    text-align: left;
-    display: inline-block;
-    padding: 0;
-    margin: 0;
+text-align: center;
+}
+
+div.Navigation ul {
+background-color: blue;   
+list-style-type: none;    
+overflow: hidden;   
+margin-left: auto;   
+margin-right: auto;   
+padding: 0;   
+margin: 0;   
+top: 0;
+}
+
+div.Navigation li { 
+background-color: red;   
+top: 0;  
+display: inline-block;   
+text-align: center;  
+padding-left: 2%;   
+padding-top: 1%;    
+padding-bottom: 1%;  
+padding-right: 2%;  
+text-decoration: none;
+}
+
+div.ReviewMain {
+text-align: left;    
+padding-top: 3%;  
+padding-bottom: 3%;   
+padding-left: 15%;   
+padding-right: 15%;
+}
+
+div.ReviewMain h2 {
+text-align: center;  
+padding-bottom: 3em;
+}
+
+div.AlternativeMain {
+text-align: center;   
+padding-top: 3%;  
+padding-bottom: 3%;
+}
+
+div.AlternativeMain h2 {  
+text-align: center; 
+padding-bottom: 3em;
 }
 
 div.Main {
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-top: 3%;
-    padding-bottom: 3%;
+width: 100%;   
+padding-left: 15%;   
+padding-right: 15%;   
+padding-top: 3%;   
+padding-bottom: 3%;
 }
 
-div.Footer {
-    background-color: #666666;
-    padding: 1%;
-    bottom: 0;
+div.Main h2 {
+text-align: center;   
+padding-bottom: 3em;
 }
+
+div.Main p {  
+text-align: center;
+}
+
+div.Booking { 
+float: right; 
+right: 0;
+padding-top: 10%;   
+padding-left: 5%;  
+padding-right: 5%;  
+padding-bottom: 10%;  
+background-color: yellow;  
+margin-left: 1%; 
+margin-top: 1%;  
+margin-right: 1%;
+}
+
+div.Previews {
+width: 75%;    
+margin: 0 auto;    
+padding-top: 5%;   
+padding-bottom: 5%;
+}
+
+div.Previews img { 
+display: inline-block;
+position: absolute; 
+margin: auto; 
+top: 0;  
+left: 0;  
+right: 0;  
+bottom: 0;
+}
+
+div.Footer {  
+background-color: #666666; 
+padding: 1%; 
+margin: 0;  
+bottom: 0;
+}
+
+div.Footer img { 
+float: left;  
+display: inline-block;
+}
+
+div.Footer ul {  
+display: inline-block;
+margin-bottom: 0;  
+text-decoration: none;  
+border-left: 1px; 
+border-left-color: white;
+border-left-style: solid; 
+padding-left: 2em;
+margin-left: 1%;
+}
+
+div.Footer a:visited { 
+color: white;  
+text-decoration: none;
+}
+
+#FooterEmail {  
+float: right;
+display: inline-block;
+padding-top: 2%;
+padding-right: 2%;  
+padding-bottom: 2%; 
+margin: 0; 
+border-left: 1px;
+border-left-color: white;
+border-left-style: solid; 
+padding-left: 2em;
+}
+
+#Trademark {
+float: bottom; 
+text-align: center;  
+margin: 0; 
+margin-left: auto;  
+margin-right: auto;  
+display: block;
+} 
 
 div.tab button {
     background-color: #f1f1f1;
