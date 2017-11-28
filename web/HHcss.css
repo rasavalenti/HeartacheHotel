@@ -1,4 +1,10 @@
+/*Banner picture*/
 .banner{
+    width: 100%;
+}
+
+.banner img{
+    position: relative;
     width: 100%;
 }
 
