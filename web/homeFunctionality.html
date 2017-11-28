@@ -41,14 +41,16 @@
             .hoverImage:hover .text {
                 opacity: 1;
                 border: solid;
-                transition: 0.3s;
+                transition: opacity 0.3s ease-in;
             }
 
 
 
             .slideImage {
+                position: absolute;
                 height: 200pt;
-                display: none;
+                opacity: 0;
+                transition: 1s;
             }
 
 
@@ -65,8 +67,9 @@
         </div>
 
         <div>
-            <img src="https://i.pinimg.com/originals/c6/4c/e0/c64ce05bf01ccb3ea8af44de5980cbe4.jpg" class="slideImage" alt="dog">
-            <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/7f/67/f1/gran-hotel-manzana-kempinski.jpg" class="slideImage" alt="hotel">
+            <img src="images\room1.jpg" class="slideImage" alt="hotel room">
+            <img src="images\garden.jpg" class="slideImage" alt="garden">
+            <img src="images\seal.jpg" class="slideImage" alt="norfolk seals">
             <script>
                 var curSlide = 0; //current slide counter
                 slideshow();
@@ -81,9 +84,9 @@
 
                     for (x = 0; x < images.length ; x++) {
                         if (x===curSlide) {
-                            images[x].style.display = "block";
+                            images[x].style.opacity = 1;
                         } else {
-                            images[x].style.display = "none";
+                            images[x].style.opacity = 0;
                         }
                     }
                     
