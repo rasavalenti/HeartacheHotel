@@ -4,13 +4,17 @@
 }
 
 .banner img{
-    position: relative;
     width: 100%;
+    float: top;
 }
 
 div.tab {
     overflow: hidden;
     background-color: #f1f1f1; 
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
 ul {
@@ -24,29 +28,53 @@ a {
 
 a:visited {
     text-decoration: none;
+    color: #ebd8bc;
 }
 
 div.Header {
-    background-color: #ccccff;
     top: 0;
     text-align: center;
-    padding-bottom: 5%;
-    padding-top: 10%;
     width: 100%;
 }
 
-div.Header img {
+div.Header h1 {
+    font-size: 400%;
+    position: absolute;
+    margin: 0pt auto;
     display: block;
+    text-align: center;
+    width: 100%;
+    top: 35%;
+    color: white;   
+}
+
+#LogoLink {
+    position: absolute;
+}
+
+#TextOptions {
+    position: absolute;
+    float: right;
+    top: 0;
+    padding-top: 1%;
+    padding-right: 1%;
+    color: white;
+    font-size: medium;
+}
+
+/*div.Header img {
+    top:0;
+    position: static;
     margin-bottom: 1%;
     margin-top: 1%;
-}
+}*/
 
 div.Navigation {
     text-align: center;
 }
 
 div.Navigation ul {
-    background-color: blue;   
+    background-color: #a86763;   
     list-style-type: none;    
     overflow: hidden;   
     margin-left: auto;   
@@ -57,7 +85,8 @@ div.Navigation ul {
 }
 
 div.Navigation li { 
-    background-color: red;   
+    color: #ebd8bc;   
+    font-size: x-large;
     top: 0;  
     display: inline-block;   
     text-align: center;  
@@ -215,6 +244,9 @@ div.tab button:hover {
     to {opacity: 1;}
 }
 
+div.slideshow {
+    padding: 1em;
+}
 
 /* Slideshow */
 .slideImage {
@@ -222,4 +254,5 @@ div.tab button:hover {
     height: 200pt;
     opacity: 0;
     transition: 1s;
+    padding: 1em;
 }
