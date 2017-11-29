@@ -47,40 +47,21 @@
                 <img src="images\garden.jpg" class="slideImage" alt="garden">
                 <img src="images\seal.jpg" class="slideImage" alt="norfolk seals">
                 <script>
-                    var curSlide = 0; //current slide counter
+                    var curSlide = 0; //current slide counter                
                     slideshow();
                     setInterval(slideshow, 4000);
-
-                    function slideshow() {
-                        var images = document.querySelectorAll('.slideImage');
-
-                        if (curSlide === images.length) {
-                            curSlide = 0;
-                        }
-
-                        for (x = 0; x < images.length; x++) {
-                            if (x === curSlide) {
-                                images[x].style.opacity = 1;
-                            } else {
-                                images[x].style.opacity = 0;
-                            }
-                        }
-
-                        curSlide++;
-                    }
-
                 </script>
             </div>
 
 
-            <div class="Previews">
+<!--            <div class="Previews">
                 <a href="Rooms.html"><img src="Rooms.link">Link to the rooms page</a>
                 <a href="Facilities.html"><img src="Facilities.link">Link to the facilities page</a>
                 <a href="localattractions.html"><img src="LocalAttractions.link">Link to the local attractions page</a>
                 <a href="Reviews.html"><img src="Reviews.link">Link to the leave a review page</a>
                 <a href="Findus.html"><img src="FindUs.link">Link to the find us page</a>
                 <a href="Contactus.html"><img src="ContactUs.link">Link to the contact us page</a>
-            </div>
+            </div>-->
 
             <div class="Reviews">
                 <p>Placeholder for a Javascript slideshow of customer reviews</p>
