@@ -5,6 +5,8 @@
         <link rel = "stylesheet"
               type = "text/css"
               href = "HHcss.css" />
+        <script src ="HHjavascript.js"> </script>
+
     </head>
 
     <body>
@@ -47,28 +49,9 @@
                 <img src="images\garden.jpg" class="slideImage" alt="garden">
                 <img src="images\seal.jpg" class="slideImage" alt="norfolk seals">
                 <script>
-                    var curSlide = 0; //current slide counter
+                    var curSlide = 0; //current slide counter                
                     slideshow();
                     setInterval(slideshow, 4000);
-
-                    function slideshow() {
-                        var images = document.querySelectorAll('.slideImage');
-
-                        if (curSlide === images.length) {
-                            curSlide = 0;
-                        }
-
-                        for (x = 0; x < images.length; x++) {
-                            if (x === curSlide) {
-                                images[x].style.opacity = 1;
-                            } else {
-                                images[x].style.opacity = 0;
-                            }
-                        }
-
-                        curSlide++;
-                    }
-
                 </script>
             </div>
 
