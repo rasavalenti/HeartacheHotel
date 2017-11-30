@@ -23,20 +23,19 @@ $(document).ready(function () {
 
 
 //Slideshow
-function slideshow() {
-    var images = document.querySelectorAll('.slideImage');
+function slideshow(divID) {
+    var elements = document.getElementsByID(divID).querySelectorAll('.slide');
 
-    if (curSlide === images.length) {
+    if (curSlide === elements.length) {
         curSlide = 0;
     }
 
-    for (x = 0; x < images.length; x++) {
+    for (x = 0; x < elements.length; x++) {
         if (x === curSlide) {
-            images[x].style.opacity = 1;
+            elements[x].style.opacity = 1;
         } else {
-            images[x].style.opacity = 0;
+            elements[x].style.opacity = 0;
         }
     }
-
     curSlide++;
 }

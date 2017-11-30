@@ -40,8 +40,8 @@
                 <h2>Welcome to the Heartache Hotel</h2>
                 <p id="Welcome">
                     <i>"The Heartache Hotel is situated in the heart of Norfolk.<br>
-                        We're perfectly placed for a cosy weekend away, or getting to those business meetings.<br>
-                        Check out our availability, then come and see us soon!"</i>
+                        We're perfectly placed for a cosy weekend away, or getting to local business meetings.<br>
+                        Check our availability, then come and see us soon!"</i>
                 </p>
             </div>
 
@@ -49,35 +49,44 @@
                 <p>Placeholder  for the booking tab</p>
             </div>
 
-            <div class="slideshow">
-                <img src="images\room1.jpg" class="slideImage" alt="hotel room">
-                <img src="images\garden.jpg" class="slideImage" alt="garden">
-                <img src="images\seal.jpg" class="slideImage" alt="norfolk seals">
+            <div class="slideshow" id="imageSlides">
+                <img src="images\room1.jpg" class="slide" alt="hotel room">
+                <img src="images\garden.jpg" class="slide" alt="garden">
+                <img src="images\seal.jpg" class="slide" alt="norfolk seals">
                 <script>
                     var curSlide = 0; //current slide counter                
-                    slideshow();
+                    slideshow('imageSlides');
                     setInterval(slideshow, 4000);
                 </script>
             </div>
 
             <div class="previews">
-                <div id="roomPreview" onclick="location.href='Rooms.html'">
+                <div id="roomPreview" onclick="location.href = 'Rooms.html'">
                     <img src="images\room1.jpg" class="image" alt="dog">
                     <div class="text">
                         Rooms
                     </div>
                 </div>
-                <div id="facilitiesPreview" onclick="location.href='Facilities.html'">
-                    <img src="garden.jpg" class="image" alt="garden">
-                    <div class="text">
-                        Facilities
-                    </div>
-                </div>
+
+                <!--                <div id="facilitiesPreview" onclick="location.href = 'Facilities.html'">
+                                    <img src="garden.jpg" class="image" alt="garden">
+                                    <div class="text">
+                                        Facilities
+                                    </div>
+                                </div>-->
             </div>
 
-
-            <div class="Reviews">
-                <p>Placeholder for a Javascript slideshow of customer reviews</p>
+            <div class="slideshow" id ="reviewSlides">
+                <p class="slide">"We loved our stay at the Heartache Hotel, the staff are great and the location was perfect for our weekend away."<br>
+                    - Jan and Pete Bloggs</p>
+                <p class="slide">"The Heartache Hotel was the ideal place for my business trip to Norwich.<br>
+                    Being so close to Norwich Research Park, made it quick and easy to get to my meeting."<br>
+                    - Bob Evans</p>
+                <script>
+                    var curSlide = 0; //current slide counter                
+                    slideshow('reviewSlides');
+                    setInterval(slideshow, 4000);
+                </script>
             </div>
 
         </div>
