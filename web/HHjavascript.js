@@ -24,7 +24,7 @@ $(document).ready(function () {
 
 //Slideshow
 function slideshow(divID) {
-    var elements = document.getElementsByID(divID).querySelectorAll('.slide');
+    var elements = document.querySelector('.slide').getElementsByID(divID);
 
     if (curSlide === elements.length) {
         curSlide = 0;
