@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Booking Form</title>
+        <link rel="stylesheet" type="text/css" href="HHcss.css">
+        <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type ="text/javascript"></script>
+        <script src ="HHjavascript.js"></script>
+
+    </head>
+    <body>
+        <div class="Main">
+            <form method="POST" name="Form1">
+
+                <fieldset>
+                    <table id="formDetails">
+                        <tr><td colspan="2"><strong>Personal details</strong></td></tr>
+                        <tr><td><label for="forename"> Forename: </label></td> <td><input type="text" name="forename" id="forename"></td></tr>
+
+                        <tr><td><label for="surname"> Surname: </label></td> <td> <input type="text" name="surname" id="surname"></td></tr>
+
+                        <tr><td><label for="email"> Email: </label> </td> <td><input type="email" name="email" id="email"></td></tr>
+                   
+                        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                        <tr><td colspan="2"><strong>Payment information</strong></td></tr>
+
+                        <tr><td>
+                                <label for="card">Card type: </label> </td> <td>
+                                <select id="card" name="usercard">
+                                    <option value="V">Visa</option>
+                                    <option value="MC">Mastercard</option>
+                                    <option value="A">American Express</option>
+                                </select> </td></tr>
+
+                        <tr><td>
+                                <label for="cardnumber">Card number:</label> </td> <td>
+                                <input type="text" id="cardnumber" name="cardnumber" maxlength="16"> </td></tr>
+
+
+                        <tr>
+                            <td>
+                                Expiration date:
+                            </td>    
+                            <td>
+                                <select name="Month" id="month">
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+
+
+                                <select name="Year" id="year">
+                                    <option value="17">2017</option>
+                                    <option value="18">2018</option>
+                                    <option value="19">2019</option>
+                                    <option value="20">2020</option>
+                                    <option value="21">2021</option>
+                                    <option value="22">2022</option>
+                                    <option value="23">2023</option>
+                                    <option value="24">2024</option>
+                                </select>
+
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                        <tr><td colspan="2"><strong>Billing Address </strong></td></tr>
+                        <tr><td>Address:</td><td><input type="text" name="addressline" id="addressline"></td></tr>
+                        <tr><td>City:</td><td><input type="text" name="city" id="city"></td></tr>
+                        <tr><td>Post Code:</td><td><input type="text" name="postcode" id="postcode"></td></tr>
+
+
+                    </table>
+                    <br/>
+                <input type="button" value="Submit" id="submit_button" onClick=saveBookingPage()>
+		<input type="reset" value="Reset" id="reset_button">
+
+                </fieldset>    
+            </form>  
+           
+        </div>        
+    </body>
+</html>
