@@ -18,6 +18,7 @@ function switchToBook() {
 
 $(document).ready(function () {
     $("#manage").hide();
+    $("#book").show();
 
 });
 
