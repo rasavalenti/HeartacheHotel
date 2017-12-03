@@ -4,28 +4,27 @@
  * and open the template in the editor.
  */
 
-function switchToManage() {
-
-    document.getElementById('book').style.display = 'none';
-    document.getElementById('manage').style.display = 'block';
-}
-
-function switchToBook() {
-
-    document.getElementById('manage').style.display = 'none';
-    document.getElementById('book').style.display = 'block';
-}
-
-$(document).ready(function () {
-    $("#manage").hide();
-
-});
+//function switchToManage() {
+//
+//    document.getElementById('book').style.display = 'none';
+//    document.getElementById('manage').style.display = 'block';
+//}
+//
+//function switchToBook() {
+//
+//    document.getElementById('manage').style.display = 'none';
+//    document.getElementById('book').style.display = 'block';
+//}
+//
+//$(document).ready(function () {
+//    $("#manage").hide();
+//
+//});
 
 
 //Slideshow
-function slideshow(divID) {
-    var elements = document.querySelector('.slide').getElementsByID(divID);
-
+function slideshow() {
+    var elements = document.querySelectorAll('.slide');
     if (curSlide === elements.length) {
         curSlide = 0;
     }
