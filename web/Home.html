@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to the Heartache Hotel</title>
-        <link rel = "stylesheet"
-              type = "text/css"
-              href = "HHcss.css" />
-        <script src ="HHjavascript.js"></script>
+        <title>Heartache Hotel</title>
+        <link rel="stylesheet" type="text/css" href="HHcss.css" />
+        <script src="HHjavascript.js"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
     </head>
@@ -49,15 +47,16 @@
                 <p>Placeholder  for the booking tab</p>
             </div>
 
-            <div class="slideshow" id="imageSlides">
+            <div class="imageSlides">
                 <img src="images\room1.jpg" class="slide" alt="hotel room">
                 <img src="images\garden.jpg" class="slide" alt="garden">
                 <img src="images\seal.jpg" class="slide" alt="norfolk seals">
                 <script>
                     var curSlide = 0; //current slide counter                
-                    slideshow('imageSlides');
+                    slideshow();
                     setInterval(slideshow, 4000);
                 </script>
+
             </div>
 
             <div class="previews">
@@ -84,7 +83,7 @@
                     - Bob Evans</p>
                 <script>
                     var curSlide = 0; //current slide counter                
-                    slideshow('reviewSlides');
+                    slideshow();
                     setInterval(slideshow, 4000);
                 </script>
             </div>
@@ -92,7 +91,7 @@
         </div>
 
         <div class="Footer">
-            <img src="logo.link">Heartache Logo
+            <!-- <img src="logo.link">Heartache Logo -->
 
             <ul id="FooterLinks">
                 <li><a href="Home.html">Home</a></li>
