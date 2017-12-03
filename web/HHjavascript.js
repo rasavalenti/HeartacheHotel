@@ -23,7 +23,7 @@ $(document).ready(function () {
 });
 
 
-//Slideshow
+//Image Slideshow
 function slideshow() {
     var elements = document.querySelectorAll('.slide');
     if (curSlide === elements.length) {
@@ -38,6 +38,23 @@ function slideshow() {
         }
     }
     curSlide++;
+}
+
+//Review Slideshow
+function reviewSlideshow() {
+    var elements = document.querySelectorAll('.review');
+    if (revSlide === elements.length) {
+        revSlide = 0;
+    }
+
+    for (x = 0; x < elements.length; x++) {
+        if (x === revSlide) {
+            elements[x].style.opacity = 1;
+        } else {
+            elements[x].style.opacity = 0;
+        }
+    }
+    revSlide++;
 }
 
 //The saveBookingPage function gets the information from the bookin form and makes it into
