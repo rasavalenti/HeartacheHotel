@@ -76,20 +76,20 @@
                 setInterval(slideshow, 4000);
 
                 function slideshow() {
-                    var images = document.querySelectorAll('.slideImage');
+                    var elements = document.getElementsByClassName(slideImage);
 
-                    if (curSlide === images.length) {
+                    if (curSlide === elements.length) {
                         curSlide = 0;
                     }
 
-                    for (x = 0; x < images.length ; x++) {
-                        if (x===curSlide) {
-                            images[x].style.opacity = 1;
+                    for (x = 0; x < elements.length; x++) {
+                        if (x === curSlide) {
+                            elements[x].style.opacity = 1;
                         } else {
-                            images[x].style.opacity = 0;
+                            elements[x].style.opacity = 0;
                         }
                     }
-                    
+
                     curSlide++;
                 }
 
