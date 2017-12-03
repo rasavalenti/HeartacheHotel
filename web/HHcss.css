@@ -255,13 +255,11 @@ div.tab button:hover {
     to {opacity: 1;}
 }
 
-div.slideshow {
-    padding: 1em;
-}
+
 
 /* Picture Slideshow */
-#imageSlides {
-    padding: 1%;
+.imageSlides {
+    padding: 1em;
     height: 500px;
     position: relative;
 }
