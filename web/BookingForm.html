@@ -15,7 +15,7 @@ and open the template in the editor.
     </head>
     <body>
         <div class="Main">
-            <form method="POST" name="Form1">
+            <form method="POST" name="Form1" action="AccessServlet">
 
                 <fieldset>
                     <table id="formDetails">
@@ -30,8 +30,8 @@ and open the template in the editor.
                         <tr><td colspan="2"><strong>Payment information</strong></td></tr>
 
                         <tr><td>
-                                <label for="card">Card type: </label> </td> <td>
-                                <select id="card" name="usercard">
+                                <label for="usercard">Card type: </label> </td> <td>
+                                <select id="usercard" name="usercard">
                                     <option value="V">Visa</option>
                                     <option value="MC">Mastercard</option>
                                     <option value="A">American Express</option>
@@ -47,7 +47,7 @@ and open the template in the editor.
                                 Expiration date:
                             </td>    
                             <td>
-                                <select name="Month" id="month">
+                                <select name="month" id="month">
                                     <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>
@@ -63,7 +63,7 @@ and open the template in the editor.
                                 </select>
 
 
-                                <select name="Year" id="year">
+                                <select name="year" id="year">
                                     <option value="17">2017</option>
                                     <option value="18">2018</option>
                                     <option value="19">2019</option>
@@ -85,9 +85,10 @@ and open the template in the editor.
 
                     </table>
                     <br/>
-                <input type="button" value="Submit" id="submit_button" onClick=saveBookingPage()>
+                <input type="submit" value="SubmitMe">    
+                <input type="button" value="Submit" id="submit_button" onClick=saveBookingPage() >
 		<input type="reset" value="Reset" id="reset_button">
-
+                
                 </fieldset>    
             </form>  
            
