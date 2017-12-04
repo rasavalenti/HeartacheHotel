@@ -10,6 +10,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +34,10 @@ public class AccessServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         try {
             String insertSQL;
@@ -69,7 +75,6 @@ public class AccessServlet extends HttpServlet {
             " '"+card+"', '"+month+"/"+year+"', '"+cardnumber+"');";
             System.out.println(sqlstatement);
             
-            
             statement.execute("set schema 'HeartacheHotelDB';");
 
             statement.execute(sqlstatement);
@@ -91,7 +96,11 @@ public class AccessServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(AccessServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -105,7 +114,11 @@ public class AccessServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(AccessServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
