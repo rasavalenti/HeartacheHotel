@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book a Room</title>
+        <link rel="stylesheet" type="text/css" href="HHcss.css">
+        <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type ="text/javascript"></script>
+        <script src ="HHjavascript.js"></script>
+    </head>
+
+    <body>
+
+        <div class="Header">
+            <h1>The Heartache Hotel</h1>
+            <p id="TextOptions">Text Options i.e. language</p>
+            <a id="LogoLink" href="#"><img src="logo.link" alt="logo">Heartache Logo</a>
+            <div class="banner">
+                <img src="images\weybourneNorfolkGov.jpg" alt="norfolk">
+            </div>
+        </div>
+
+        <div class="Navigation">
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Booking.html">Bookings</a></li>
+                <li><a href="Rooms.html">Rooms</a></li>
+                <li><a href="Facilities.html">Facilities</a></li>
+                <li><a href="localattractions.html">Local Attractions</a></li>
+                <li><a href="Reviews.html">Leave a Review</a></li>
+                <li><a href="FindUs.html">Find us</a></li>
+                <li><a href="ContactUs.html">Contact us</a></li>
+            </ul>
+        </div>
+
+        <div class="Main">
+            <div class="tab">           
+                <button id="makeBooking" onclick="switchToBook()"> Make a booking </button>
+                <button id="manageBooking" onclick="switchToManage()"> Manage a booking </button>
+            </div>           
+
+            <form id="book" class="tabcontent" method="POST" action="CheckDates">
+                <fieldset>
+                    <legend>Make a Booking</legend>
+
+                    <label> Check-in: </label><input type="date" name ="checkin" min="2017-11-10"  max="2018-11-10">
+                    <label> Check-out: </label><input type="date" name ="checkout" min="2017-11-10"  max="2018-11-10">
+                    <label> Room type: </label><select name="roomtype" id="roomtype">
+                                    <option value="std_d">Standard Double</option>
+                                    <option value="std_t">Standard Twin</option>
+                                    <option value="sup_d">Premium Double</option>
+                                    <option value="sup_t">Premium Twin</option>
+                                    </select>
+                    <label> Number of guests: </label>
+                    <input type="number" name="number of guests" min="1" max="10" onclick="javascript:location.href='BookingForm.html'">
+                   
+                    <br/>
+                    <input type="submit" value="Check Availability">    
+                </fieldset>
+            </form> 
+
+            <form id="manage" class="tabcontent" method="POST">
+                <fieldset>
+                    <legend>Manage a Booking</legend>
+
+                    <label> Booking Reference: </label><input type="text" name ="booking reference">
+                    <label> Email: </label><input type="email" name ="emai">
+                    <br/>
+                    <input type="submit" value="Manage Booking">                       
+                </fieldset>
+            </form> 
+
+        </div>
+
+        <div class="Footer">
+            <img src="logo.link">Heartache Logo
+
+            <ul id="FooterLinks">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Booking.html">Bookings</a></li>
+                <li><a href="Rooms.html">Rooms</a></li>
+                <li><a href="Facilities.html">Facilities</a></li>
+                <li><a href="localattractions.html">Local Attractions</a></li>
+                <li><a href="Reviews.html">Leave a Review</a></li>
+                <li><a href="FindUs.html">Find us</a></li>
+                <li><a href="ContactUs.html">Contact us</a></li>
+            </ul>
+
+            <p id="FooterEmail"><a href="mailto:heartachehotel@heartachehotel.com? Subject=Queries" target="_top">Email link</a>, phone number, etc.</p>
+            <p id="Trademark">Trademark information, copyright information, last updated</p>
+
+        </div>
+
+    </body>
+
+</html>

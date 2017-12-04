@@ -77,7 +77,8 @@ public class CheckDates extends HttpServlet {
             
             
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("checkin"));
-            System.out.println(date);
+            java.sql.Date date2 = new java.sql.Date(date.getTime());
+            System.out.println(date2);
             
             statement.execute("set schema 'HeartacheHotelDB';");
 
