@@ -112,11 +112,17 @@ div.AlternativeMain {
     text-align: center;   
     padding-top: 3%;  
     padding-bottom: 3%;
+    position: relative;
+    width: 70%;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
 }
 
 div.AlternativeMain h2 {  
+    font-size: 300%;
     text-align: center; 
-    padding-bottom: 3em;
 }
 
 div.Main {
@@ -211,6 +217,7 @@ div.Footer a:visited {
     border-left-color: white;
     border-left-style: solid; 
     padding-left: 2em;
+    color: white;
 }
 
 #Trademark {
@@ -220,7 +227,113 @@ div.Footer a:visited {
     margin-left: auto;  
     margin-right: auto;  
     display: block;
-} 
+}
+
+#EnquiryForm {
+    display: inline-block;
+    font-size: x-large;
+    float: left;
+    width: 35%;
+    border-right: grey 1px solid;
+    padding-left: 15%;
+    text-align: left;
+    position: absolute;
+}
+
+#EnquiryForm input {
+    margin-bottom: 1em;
+}
+
+#EnquiryForm textarea {
+    margin-bottom: 1em;
+}
+
+#AlternativeContact {
+    display: inline-block;
+    font-size: large;
+    padding-left: 50%;
+    width: 30%;
+    text-align: left;
+    position: relative;
+}
+
+#AlternativeContact h3 {
+    font-size: 200%;
+}
+
+.LocalAttractions {
+   display: inline-block;
+   width: 40%;
+   padding-left: 2%;
+   padding-right: 2%;
+   background-color: #f2d9d9;
+   margin: 2em;
+   margin-left: 5%;
+   margin-right: 5%;
+   padding-bottom: 2%;
+}
+
+.LocalAttractions h3 {
+    font-size: 200%;
+}
+
+.LocalAttractions img {
+    width: 50%;
+    display: block;
+    left: 0;
+    float: left;
+}
+
+.LocalAttractions p {
+    display: block;
+    width: 45%;
+    text-align: right;
+    float: right;
+    right: 0;
+    padding-left: 1em;
+    font-size: large;
+}
+
+.Facilities {
+   display: inline-block;
+   width: 40%;
+   padding-left: 2%;
+   padding-right: 2%;
+   background-color: #f2d9d9;
+   margin: 2em;
+   margin-left: 5%;
+   margin-right: 5%;
+   padding-bottom: 2%;
+}
+
+.Facilities h3 {
+    font-size: 200%;
+}
+
+.Facilities img {
+    width: 50%;
+    display: block;
+    left: 0;
+    float: left;
+}
+
+.Facilities p {
+    display: block;
+    width: 45%;
+    text-align: right;
+    float: right;
+    right: 0;
+    padding-left: 1em;
+    font-size: large;
+}
+
+.LocalLinks {
+    background-color: grey;
+    color: white;
+    padding: 1em;
+    bottom: 0;
+    display: inline-block;
+}
 
 div.tab button {
     background-color: #f1f1f1;
