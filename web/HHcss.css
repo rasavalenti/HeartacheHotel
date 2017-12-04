@@ -13,6 +13,18 @@ div.tab {
     background-color: #f1f1f1; 
 }
 
+.Tab {
+    position: fixed;
+    bottom: 0;
+    right: 1%;
+    background-color: grey;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+    z-index: -1;
+    font-size: large;
+}
+
 body {
     font-family: 'Barlow Semi Condensed', sans-serif;
     margin: 0;
@@ -318,6 +330,39 @@ div.Footer a:visited {
 }
 
 .Facilities p {
+    display: block;
+    width: 45%;
+    text-align: right;
+    float: right;
+    right: 0;
+    padding-left: 1em;
+    font-size: large;
+}
+
+.Rooms {
+   display: inline-block;
+   width: 40%;
+   padding-left: 2%;
+   padding-right: 2%;
+   background-color: #f2d9d9;
+   margin: 2em;
+   margin-left: 5%;
+   margin-right: 5%;
+   padding-bottom: 2%;
+}
+
+.Rooms h3 {
+    font-size: 200%;
+}
+
+.Rooms img {
+    width: 50%;
+    display: block;
+    left: 0;
+    float: left;
+}
+
+.Rooms p {
     display: block;
     width: 45%;
     text-align: right;
