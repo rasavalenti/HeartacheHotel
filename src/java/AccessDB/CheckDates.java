@@ -6,8 +6,10 @@
 package AccessDB;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
@@ -39,8 +41,8 @@ public class CheckDates extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         try {
-            String insertSQL;
 
 //The following lines are here to check the connection between sql and netbeans
 //            insertSQL = "insert into customer values (123470, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
@@ -74,16 +76,26 @@ public class CheckDates extends HttpServlet {
 //            " '"+email+"', '"+addressline+", "+city+" "+postcode+"',"+
 //            " '"+card+"', '"+month+"/"+year+"', '"+cardnumber+"');";
 //            System.out.println(sqlstatement);
-            
-            
+
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("checkin"));
             java.sql.Date date2 = new java.sql.Date(date.getTime());
             System.out.println(date2);
             
+            String roomtype = request.getParameter("roomtype");
+
             statement.execute("set schema 'HeartacheHotelDB';");
 
+            String query = "select COUNT(rb.r_no) from booking b, roombooking rb,"
+                    + " room r where b.b_ref=rb.b_ref and rb.r_no=r.r_no and rb.checkout < '"+date2+"' and r.r_class='"+roomtype+"' group by r.r_class";
+
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                int numberOfRooms = resultSet.getInt("COUNT");
+                out.println("The total number of rooms available is:" + numberOfRooms);
+            }
+
 //            statement.execute(sqlstatement);
-            
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }
