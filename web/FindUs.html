@@ -7,9 +7,11 @@
                 href = "HHcss.css" />
                 <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
                 <style type="text/css">    
-                html, body, #hotelMap {
-                width: 100%;
-                height: 500px;
+                #hotelMap {
+                display: inline-block;
+                width: 50%;
+                height: 70%;
+                text-align: center;
                 margin: 0;
             }
             </style>
@@ -20,7 +22,7 @@
                     map = new OpenLayers.Map("hotelMap");
                     var mapnik          = new OpenLayers.Layer.OSM();
                     var zoom            = 15;
-                    var center          = new OpenLayers.LonLat(1.299456599999985, 52.64359990000001).transform('EPSG:4326', 'EPSG:3857');
+                    var center          = new OpenLayers.LonLat(1.17359, 52.59761).transform('EPSG:4326', 'EPSG:3857');
                     map.addLayer(mapnik);
                     map.setCenter(center, zoom);
                 }
@@ -52,20 +54,53 @@
                 </ul>
             </div>
 		
-		<div class="Main">
-			<h2>Find us!</h2>
+            <div class="FindUsMain">
+                
+		<h2>Find us!</h2>
+                
 		<div id="hotelMap"></div>
                     <script src="http://openlayers.org/api/OpenLayers.js"></script>
                     <script>
                         map.zoomToMaxExtent();
                     </script>
+                    
+                    <div id="Lost">
+                    <h2>Lost?</h2>
+                    
+                    <p> We are located on Queens Road in Hethersett</p>
+                    
+                    <h3>If Travelling from Wymondham...</h3>
+                        <ul>
+                            <li>Take Harts Farm Road along the B1172</li>
+                            <li>At the roundabout, turn left</li>
+                            <li>At the next roundabout by Waitrose, turn right onto the B1172</li>
+                            <li>Follow the B1172 for 2.1 miles</li>
+                            <li>After passing Hethersett Old Hall School on the right, take the next exit onto Norwich Road</li>
+                            <li>Follow Norwich Road round past the Kings' Head and then the Queens' Head pubs</li>
+                            <li>Turn left onto Queen's Road</li>
+                            <li>Follow Queen's Road</li>
+                            <li>Find us on the right, by Hethersett Library</li>
+                        </ul>
+                    
+                    <h3>If Travelling from Norwich</h3>
+                    <ul>
+                        <li>Follow the A11 (Newmarket Road) from Norwich into Eaton</li>
+                        <li>At the first roundabout, continue straight on</li>
+                        <li>At the second roundabout, take the third exit onto the B1172 next to the Thickthorn Bus Station</li>
+                        <li>Follow the B1172, turning left on the first roundabout</li>
+                        <li>Continue following the B1172 for 1.5 miles</li>
+                        <li>After passing the St. Remigius Church on your left, take the next right onto Norwich Road.</li>
+                        <li>Take the second right onto Queen's Road</li>
+                        <li>Follow Queen's Road</li>
+                        <li>Find us on the right, by Hethersett Library</li>
+                    </ul>
+                    </div>
 			
-                        </div>
-                
-                
-        <div class="Tab">
-            <p><a href="Booking.html">Book a Room</a></p>
-        </div>
+            </div>
+    
+            <div class="Tab">
+                <p><a href="Booking.html">Book a Room</a></p>
+            </div>
                         
 		<div class="Footer">
 		<img src="logo.link" alt="Heartache Logo">

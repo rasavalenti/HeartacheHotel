@@ -168,19 +168,44 @@ div.Main {
     padding-bottom: 3%;
 }
 
-.hotelMap{
-    position: absolute;
-}
-
 div.Main h2 {
     font-size: 300%;
     text-align: center;   
-    
     padding-bottom: 1%;
 }
 
 div.Main p {  
     text-align: center;
+}
+
+div.FindUsMain {
+    position: relative;
+    width: 70%;
+    height: 900px;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.FindUsMain h2 {
+    font-size: 300%;
+    text-align: center;   
+}
+
+div.FindUsMain p {  
+    text-align: center;
+}
+
+#Lost {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    width: 40%;
+}
+
+#Lost ul {
+    list-style-type: circle;
 }
 
 div.Booking { 
