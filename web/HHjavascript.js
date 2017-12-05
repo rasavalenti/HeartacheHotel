@@ -84,3 +84,5 @@ function saveBookingPage()
     alert("THE SQL STATEMENT IS: " + sqlstatement);
     
 }
+
+

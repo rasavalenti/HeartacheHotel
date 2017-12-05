@@ -168,6 +168,10 @@ div.Main {
     padding-bottom: 3%;
 }
 
+.hotelMap{
+    position: absolute;
+}
+
 div.Main h2 {
     font-size: 300%;
     text-align: center;   

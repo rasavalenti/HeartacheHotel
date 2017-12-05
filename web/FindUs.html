@@ -7,30 +7,28 @@
                 href = "HHcss.css" />
                 <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
                 <style type="text/css">    
-                html, body, #basicMap {
+                html, body, #hotelMap {
                 width: 100%;
-                height: 100%;
+                height: 500px;
                 margin: 0;
             }
             </style>
-            <script src="OpenLayers.js"></script>
+            <script src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>
+            <script src="http://openlayers.org/api/OpenLayers.js"></script>
             <script>
                 function init() {
-                    map = new OpenLayers.Map("HotelMap");
+                    map = new OpenLayers.Map("hotelMap");
                     var mapnik          = new OpenLayers.Layer.OSM();
-                    vap fromProjection  = new OpenLayers.Projection("");
-                    var toProjection    = new OpenLayers.Projection("");
-                    var position        = new OpenLayers.LonLat(52°36'24.4"N 1°03'44.5)
                     var zoom            = 15;
-                    
+                    var center          = new OpenLayers.LonLat(1.299456599999985, 52.64359990000001).transform('EPSG:4326', 'EPSG:3857');
                     map.addLayer(mapnik);
-                    map.setCenter(position, zoom);
+                    map.setCenter(center, zoom);
                 }
                 </script>
             
 	</head>
 	
-	<body>
+	<body onload="init();">
 	
 		<div class="Header">
                     <h1>The Heartache Hotel</h1>
@@ -56,11 +54,9 @@
 		
 		<div class="Main">
 			<h2>Find us!</h2>
-		<div id="demoMap" style="height:250px"></div>
-                    <script src="OpenLayers.js"></script>
+		<div id="hotelMap"></div>
+                    <script src="http://openlayers.org/api/OpenLayers.js"></script>
                     <script>
-                        map = new OpenLayers.Map("demoMap");
-                        map.addLayer(new OpenLayers.Layer.OSM());
                         map.zoomToMaxExtent();
                     </script>
 			
