@@ -526,3 +526,9 @@ div.tab button:hover {
     transition: 1s;
     padding: 1em;
 }
+
+/* jQuery Datepicker */
+.ui-widget-content{
+    background: #a86763;
+    color: #ebd8bc;
+}

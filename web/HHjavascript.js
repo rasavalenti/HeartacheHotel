@@ -64,7 +64,7 @@ function saveBookingPage()
     var c_no = Math.floor((Math.random() * 10000) + 13000);
     //The random c_no needs to be checked against the existing customers to make 
     //sure it doesn't duplicate
-    
+
     var forename = document.getElementById("forename").value;
     var surname = document.getElementById("surname").value;
     var email = document.getElementById("email").value;
@@ -75,14 +75,19 @@ function saveBookingPage()
     var month = document.getElementById("month").value;
     var year = document.getElementById("year").value;
     var cardnumber = document.getElementById("cardnumber").value;
-    
-    var sqlstatement = "insert into customer values ("+c_no+", '"+forename+" "+surname+"',"+
-            " '"+email+"', '"+addressline+", "+city+" "+postcode+"',"+
-            " '"+card+"', '"+month+"/"+year+"', '"+cardnumber+"');";
-    
+
+    var sqlstatement = "insert into customer values (" + c_no + ", '" + forename + " " + surname + "'," +
+            " '" + email + "', '" + addressline + ", " + city + " " + postcode + "'," +
+            " '" + card + "', '" + month + "/" + year + "', '" + cardnumber + "');";
+
     //alert is here to check how the sql statement looks
     alert("THE SQL STATEMENT IS: " + sqlstatement);
-    
+
 }
 
+//Calendar datepicker for booking
+$(function () {
+    $("#checkIn").datepicker();
+    $("#checkOut").datepicker();
+});
 
