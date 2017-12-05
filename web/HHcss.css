@@ -122,6 +122,7 @@ div.ReviewMain h2 {
 
 div.AlternativeMain {
     text-align: center;   
+    position: relative;
     padding-top: 3%;  
     padding-bottom: 3%;
     position: relative;
@@ -133,6 +134,25 @@ div.AlternativeMain {
 }
 
 div.AlternativeMain h2 {  
+    font-size: 300%;
+    text-align: center; 
+}
+
+div.ContactUsMain {
+    text-align: center;   
+    position: relative;
+    padding-top: 3%;  
+    padding-bottom: 3%;
+    position: relative;
+    width: 70%;
+    height: 50em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.ContactUs h2 {  
     font-size: 300%;
     text-align: center; 
 }
@@ -249,7 +269,6 @@ div.Footer a:visited {
     border-right: grey 1px solid;
     padding-left: 15%;
     text-align: left;
-    position: absolute;
 }
 
 #EnquiryForm input {
@@ -263,10 +282,9 @@ div.Footer a:visited {
 #AlternativeContact {
     display: inline-block;
     font-size: large;
-    padding-left: 50%;
-    width: 30%;
+    float: right;
+    width: 20%;
     text-align: left;
-    position: relative;
 }
 
 #AlternativeContact h3 {
