@@ -3,14 +3,22 @@
     <head>
         <title>Book a Room</title>
         <link rel="stylesheet" type="text/css" href="HHcss.css">
-        <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <!--<script src ="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $("#checkIn").datepicker();
+                $("#checkOut").datepicker();
+            });
+        </script>
         <script type ="text/javascript"></script>
         <script src ="HHjavascript.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
     </head>
 
     <body>
-        
+
         <div class="Header">
             <h1>The Heartache Hotel</h1>
             <p id="TextOptions">Text Options i.e. language</p>
@@ -43,18 +51,18 @@
                 <fieldset>
                     <legend>Make a Booking</legend>
 
-                    <label> Check-in: </label><input type="date" name ="checkin" min="2017-11-10"  max="2018-11-10">
-                    <label> Check-out: </label><input type="date" name ="checkout" min="2017-11-10"  max="2018-11-10">
+                    <label> Check-in: </label><input type="text" name ="checkin" id="checkIn">
+                    <label> Check-out: </label><input type="text" name ="checkout" id="checkOut">
                     <label> Room type: </label><select name="roomtype" id="roomtype">
-                                    <option value="std_d">Standard Double</option>
-                                    <option value="std_t">Standard Twin</option>
-                                    <option value="sup_d">Premium Double</option>
-                                    <option value="sup_t">Premium Twin</option>
-                                    </select>
+                        <option value="std_d">Standard Double</option>
+                        <option value="std_t">Standard Twin</option>
+                        <option value="sup_d">Premium Double</option>
+                        <option value="sup_t">Premium Twin</option>
+                    </select>
                     <label> Number of rooms: </label> <input type="number" name="numOfRooms" min="1" max="10">
-                   
+
                     <br/>
-                    <input type="submit" value="Check Availability" onclick="javascript:location.href='BookingForm.html'">    
+                    <input type="submit" value="Check Availability" onclick="javascript:location.href = 'BookingForm.html'">    
                 </fieldset>
             </form> 
 
