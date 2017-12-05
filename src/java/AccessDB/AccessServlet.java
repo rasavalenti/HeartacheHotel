@@ -6,13 +6,12 @@
 package AccessDB;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -39,6 +38,7 @@ public class AccessServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         try {
             String insertSQL;
 
@@ -74,6 +74,20 @@ public class AccessServlet extends HttpServlet {
             " '"+email+"', '"+addressline+", "+city+" "+postcode+"',"+
             " '"+card+"', '"+month+"/"+year+"', '"+cardnumber+"');";
             System.out.println(sqlstatement);
+            
+            java.sql.Date checkin = CheckDates.checkin;
+
+            java.sql.Date checkout = CheckDates.checkout;
+
+            String roomtype = CheckDates.roomtype;
+
+            int numOfRooms = CheckDates.numOfRooms;
+            
+            if (checkin == null & checkout == null & roomtype == null & numOfRooms == 0) {
+            out.println("We don't have enough rooms for the specified dates.");
+            }
+            
+            System.out.println("From AccessServlet: "+checkin+" "+checkout+" "+roomtype+" "+numOfRooms);
             
             statement.execute("set schema 'HeartacheHotelDB';");
 

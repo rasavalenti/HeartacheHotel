@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +39,12 @@ public class CheckDates extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.text.ParseException
      */
+    static java.sql.Date checkin;
+    static java.sql.Date checkout;
+    static String roomtype;
+    static int numOfRooms;
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
@@ -78,21 +85,49 @@ public class CheckDates extends HttpServlet {
 //            System.out.println(sqlstatement);
 
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("checkin"));
-            java.sql.Date date2 = new java.sql.Date(date.getTime());
-            System.out.println(date2);
-            
-            String roomtype = request.getParameter("roomtype");
+            checkin = new java.sql.Date(date.getTime());
+            System.out.println(checkin);
+
+            Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("checkout"));
+            checkout = new java.sql.Date(date2.getTime());
+            System.out.println(checkout);
+
+            roomtype = request.getParameter("roomtype");
+
+            numOfRooms = Integer.parseInt(request.getParameter("numOfRooms"));
 
             statement.execute("set schema 'HeartacheHotelDB';");
 
-            String query = "select COUNT(rb.r_no) from booking b, roombooking rb,"
-                    + " room r where b.b_ref=rb.b_ref and rb.r_no=r.r_no and rb.checkout < '"+date2+"' and r.r_class='"+roomtype+"' group by r.r_class";
-
+            //Even though this might seem confusing hte checkout and checkin have to stay in this way:
+            //...checkin <= '"+checkout+"' and checkout >= '"+checkin+"'...
+            String query = "select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
+                    + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
+                    + "and r_class='" + roomtype + "' group by r.r_class";
+            System.out.println(query);
             ResultSet resultSet = statement.executeQuery(query);
+            
+//            response.sendRedirect("BookingForm.html");
 
+            int availableNumOfRooms = 0;
             while (resultSet.next()) {
-                int numberOfRooms = resultSet.getInt("COUNT");
-                out.println("The total number of rooms available is:" + numberOfRooms);
+                availableNumOfRooms = resultSet.getInt("COUNT");
+                out.println("The total number of rooms available for the specified date and room type is: " + availableNumOfRooms + " .");
+            }
+            
+
+            System.out.println("you wanted " + numOfRooms + " rooms");
+            System.out.println("we have " + availableNumOfRooms + " rooms");
+            
+            RequestDispatcher rd;
+            
+
+            if (availableNumOfRooms - numOfRooms >= 0) {
+                rd = request.getRequestDispatcher("BookingForm.html");
+                rd.forward(request, response);
+                System.out.println("We have enough rooms");
+            } else {
+                out.println("Sorry, we do not have enough rooms for the specified date.");
+                System.out.println("We don't have anough rooms for the specified date");
             }
 
 //            statement.execute(sqlstatement);
