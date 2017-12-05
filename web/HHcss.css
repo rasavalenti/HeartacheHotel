@@ -135,6 +135,7 @@ div.AlternativeMain {
 
 div.AlternativeMain h2 {  
     font-size: 300%;
+    top: 15em;
     text-align: center; 
 }
 
@@ -170,6 +171,7 @@ div.Main {
 div.Main h2 {
     font-size: 300%;
     text-align: center;   
+    
     padding-bottom: 1%;
 }
 
