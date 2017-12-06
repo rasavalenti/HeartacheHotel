@@ -51,14 +51,14 @@ div.Header {
     width: 100%;
 }
 
-div.Header h1 {
-    font-size: 400%;
+.LogoTitle {
+    font-size: 200%;
     position: absolute;
     margin: 0pt auto;
     display: block;
     text-align: center;
     width: 100%;
-    top: 35%;
+    top: 20%;
     color: white;   
 }
 
@@ -278,6 +278,12 @@ div.Footer a:visited {
     text-decoration: none;
 }
 
+#FooterLogo {
+    height:150px; 
+    width: 150px;
+    padding: 1%;
+}
+
 #FooterEmail {
     color: white;
 }
@@ -473,6 +479,14 @@ div.Footer a:visited {
     padding: 1em;
     bottom: 0;
     display: inline-block;
+}
+
+.Pricing {
+    background-color: grey;
+    color: white;
+    padding: 2%;
+    display: inline-block;
+    float: right;
 }
 
 div.tab button {
