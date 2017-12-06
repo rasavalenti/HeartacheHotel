@@ -51,14 +51,14 @@ div.Header {
     width: 100%;
 }
 
-div.Header h1 {
-    font-size: 400%;
+.LogoTitle {
+    font-size: 200%;
     position: absolute;
     margin: 0pt auto;
     display: block;
     text-align: center;
     width: 100%;
-    top: 35%;
+    top: 20%;
     color: white;   
 }
 
@@ -276,6 +276,12 @@ div.Footer ul {
 div.Footer a:visited { 
     color: white;  
     text-decoration: none;
+}
+
+#FooterLogo {
+    height:150px; 
+    width: 150px;
+    padding: 1%;
 }
 
 #FooterEmail {
