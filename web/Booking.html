@@ -48,7 +48,7 @@
                 <fieldset>
                     <legend>Make a Booking</legend>
 
-                    <label> Check-in: </label><input type="text" name ="checkin" id="checkIn">
+                    <label> Check-in: </label><input type="text" name ="checkin" id="checkIn" onchange="checkOutDate();" oninput="this.onchange();">
                     <label> Check-out: </label><input type="text" name ="checkout" id="checkOut">
                     <label> Room type: </label><select name="roomtype" id="roomtype">
                         <option value="std_d">Standard Double</option>
