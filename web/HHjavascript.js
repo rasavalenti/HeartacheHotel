@@ -19,7 +19,6 @@ function switchToBook() {
 $(document).ready(function () {
     $("#manage").hide();
     $("#book").show();
-
 });
 
 
@@ -82,14 +81,18 @@ function saveBookingPage()
 
     //alert is here to check how the sql statement looks
     alert("THE SQL STATEMENT IS: " + sqlstatement);
-
 }
 
 
 //Calendar datepicker for booking
-
-
 $(function () {
-    $("#checkIn").datepicker({dateFormat:'dd-mm-yy'});
-    $("#checkOut").datepicker({dateFormat:'dd-mm-yy'});
+    $("#checkIn").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
+    //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
 });
+
+function checkOutDate() {
+    alert("Check out date" + document.getElementById("checkIn").value);
+    $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value, maxDate: "+1Y"});
+    var minDate = $( "#checkOut" ).datepicker( "option", "minDate" );
+    alert(minDate);
+}
