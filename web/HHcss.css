@@ -188,6 +188,30 @@ div.Main p {
     text-align: center;
 }
 
+#book legend {
+    margin: 1em;
+}
+
+#book label {
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#manage legend {
+    margin: 1em;
+}
+
+#manage label {
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.FormInput {
+    margin: 1em;
+}
+
 div.FindUsMain {
     position: relative;
     width: 70%;
@@ -587,6 +611,17 @@ div.tab button:hover {
 
 /* jQuery Datepicker */
 .ui-widget-content{
-    background: #a86763;
-    color: #ebd8bc;
+    padding: 1em;
+    background: white;
+    color: black;
+    border: black 2px solid;
+}
+
+.ui-widget-content a {
+    margin: 0.2em;
+    text-align: center;
+    border-left: black 1px solid;
+    padding-left: 0.5em;
+    margin-top: 0;
+    margin-bottom: 0;
 }
