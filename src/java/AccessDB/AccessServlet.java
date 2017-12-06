@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author fvq13ndu
@@ -95,6 +96,9 @@ public class AccessServlet extends HttpServlet {
 
             int numOfRooms = CheckDates.numOfRooms;
             
+//            int numberOfDays = Days.daysBetween(checkin, checkout).getDays();
+//            System.out.println(numberOfDays);
+            
             if (checkin == null & checkout == null & roomtype == null & numOfRooms == 0) {
             out.println("We don't have enough rooms for the specified dates.");
             }
@@ -113,6 +117,41 @@ public class AccessServlet extends HttpServlet {
             }
             
             System.out.println("The booking reference is: " + b_ref);
+            
+            String pricePerNight = "select price from rates where r_class='"+roomtype+"';";
+            resultSet = statement.executeQuery(pricePerNight);
+            double b_cost = 0;
+            while (resultSet.next()) {
+                b_cost = resultSet.getDouble("price");
+                out.println("The b_cost per night is: " + b_cost);
+            }
+            System.out.println("The b_cost per night is: " + b_cost);
+            
+            
+            String availableRoom = "select MIN(r.r_no) from room r where r.r_no "
+                    + "NOT IN (select rb.r_no from roombooking rb where checkin "
+                    + "<= '"+checkout+"' and checkout >= '"+checkin+"' group by rb.r_no) "
+                    + "and r_class='"+roomtype+"';";
+            resultSet = statement.executeQuery(availableRoom);
+            int r_no = 0;
+            while (resultSet.next()) {
+                r_no = resultSet.getInt("min");
+                out.println("The room you are booking is: " + r_no);
+            }
+            System.out.println("The r_no is: " + r_no);
+            
+            String Booking = "insert into booking values ("+b_ref+", "+c_no+", 0, 0, '');";
+            
+            statement.execute(Booking);
+            
+            System.out.println(Booking);
+            
+            String roomBooking = "insert into roombooking values ("+r_no+", "+b_ref+", '"+checkin+"', '"+checkout+"');";
+            
+            statement.execute(roomBooking);
+            
+
+            
             
             
         } catch (ClassNotFoundException | SQLException e) {
