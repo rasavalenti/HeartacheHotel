@@ -81,7 +81,7 @@ public class AccessServlet extends HttpServlet {
             String month = request.getParameter("month");
             String year = request.getParameter("year");
             String cardnumber = request.getParameter("cardnumber");
-            String bookingNotes = request.getParameter("bookingNotes");
+            String b_notes = request.getParameter("bookingNotes");
 
             String sqlstatement = "insert into customer values ("+c_no+", '"+forename+" "+surname+"',"+
             " '"+email+"', '"+addressline+", "+city+" "+postcode+"',"+
@@ -120,20 +120,20 @@ public class AccessServlet extends HttpServlet {
             
             String pricePerNight = "select price from rates where r_class='"+roomtype+"';";
             resultSet = statement.executeQuery(pricePerNight);
-            double b_cost = 0;
+            double price = 0;
             while (resultSet.next()) {
-                b_cost = resultSet.getDouble("price");
-                out.println("The b_cost per night is: " + b_cost);
+                price = resultSet.getDouble("price");
+                out.println("The price per night is: " + price);
             }
-            System.out.println("The b_cost per night is: " + b_cost);
-            
+            System.out.println("The price per night is: " + price);
+            int r_no;
             
             String availableRoom = "select MIN(r.r_no) from room r where r.r_no "
                     + "NOT IN (select rb.r_no from roombooking rb where checkin "
                     + "<= '"+checkout+"' and checkout >= '"+checkin+"' group by rb.r_no) "
                     + "and r_class='"+roomtype+"';";
             resultSet = statement.executeQuery(availableRoom);
-            int r_no = 0;
+            r_no = 0;
             while (resultSet.next()) {
                 r_no = resultSet.getInt("min");
                 out.println("The room you are booking is: " + r_no);
@@ -149,6 +149,26 @@ public class AccessServlet extends HttpServlet {
             String roomBooking = "insert into roombooking values ("+r_no+", "+b_ref+", '"+checkin+"', '"+checkout+"');";
             
             statement.execute(roomBooking);
+            
+            
+            String numberOfDaysStayed = "SELECT(SELECT checkout from roombooking "
+                    + "where b_ref='"+b_ref+"' and r_no='"+r_no+"') - (SELECT checkin from "
+                    + "roombooking where b_ref='"+b_ref+"' and r_no='"+r_no+"') as stay_days;";
+            resultSet = statement.executeQuery(numberOfDaysStayed);
+            int daysStay = 0;
+            while (resultSet.next()) {
+                daysStay = resultSet.getInt("stay_days");
+                out.println("The number of days you are staying is: " + daysStay);
+            }
+            System.out.println("The number of days you are staying is: " + daysStay);
+            
+            double b_cost = price * daysStay * numOfRooms;
+            
+            String updateBooking = "update booking set b_cost="+b_cost+", b_outstanding="+b_cost+", b_notes='"+b_notes+"' where b_ref="+b_ref+";";
+            
+            statement.execute(updateBooking);
+            out.println("The total b_cost is: " + b_cost);
+            System.out.println("b_cost is: " + b_cost);
             
 
             
