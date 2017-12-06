@@ -84,11 +84,11 @@ public class CheckDates extends HttpServlet {
 //            " '"+card+"', '"+month+"/"+year+"', '"+cardnumber+"');";
 //            System.out.println(sqlstatement);
 
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("checkin"));
+            Date date = new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("checkin"));
             checkin = new java.sql.Date(date.getTime());
             System.out.println(checkin);
 
-            Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("checkout"));
+            Date date2 = new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("checkout"));
             checkout = new java.sql.Date(date2.getTime());
             System.out.println(checkout);
 

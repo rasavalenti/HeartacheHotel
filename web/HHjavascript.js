@@ -85,9 +85,11 @@ function saveBookingPage()
 
 }
 
-//Calendar datepicker for booking
-$(function () {
-    $("#checkIn").datepicker();
-    $("#checkOut").datepicker();
-});
 
+//Calendar datepicker for booking
+
+
+$(function () {
+    $("#checkIn").datepicker({dateFormat:'dd-mm-yy'});
+    $("#checkOut").datepicker({dateFormat:'dd-mm-yy'});
+});
