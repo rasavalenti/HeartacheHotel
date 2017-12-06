@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author fvq13ndu
@@ -80,7 +81,7 @@ public class AccessServlet extends HttpServlet {
             String month = request.getParameter("month");
             String year = request.getParameter("year");
             String cardnumber = request.getParameter("cardnumber");
-            String bookingNotes = request.getParameter("bookingNotes");
+            String b_notes = request.getParameter("bookingNotes");
 
             String sqlstatement = "insert into customer values ("+c_no+", '"+forename+" "+surname+"',"+
             " '"+email+"', '"+addressline+", "+city+" "+postcode+"',"+
@@ -94,6 +95,9 @@ public class AccessServlet extends HttpServlet {
             String roomtype = CheckDates.roomtype;
 
             int numOfRooms = CheckDates.numOfRooms;
+            
+//            int numberOfDays = Days.daysBetween(checkin, checkout).getDays();
+//            System.out.println(numberOfDays);
             
             if (checkin == null & checkout == null & roomtype == null & numOfRooms == 0) {
             out.println("We don't have enough rooms for the specified dates.");
@@ -113,6 +117,61 @@ public class AccessServlet extends HttpServlet {
             }
             
             System.out.println("The booking reference is: " + b_ref);
+            
+            String pricePerNight = "select price from rates where r_class='"+roomtype+"';";
+            resultSet = statement.executeQuery(pricePerNight);
+            double price = 0;
+            while (resultSet.next()) {
+                price = resultSet.getDouble("price");
+                out.println("The price per night is: " + price);
+            }
+            System.out.println("The price per night is: " + price);
+            int r_no;
+            
+            String availableRoom = "select MIN(r.r_no) from room r where r.r_no "
+                    + "NOT IN (select rb.r_no from roombooking rb where checkin "
+                    + "<= '"+checkout+"' and checkout >= '"+checkin+"' group by rb.r_no) "
+                    + "and r_class='"+roomtype+"';";
+            resultSet = statement.executeQuery(availableRoom);
+            r_no = 0;
+            while (resultSet.next()) {
+                r_no = resultSet.getInt("min");
+                out.println("The room you are booking is: " + r_no);
+            }
+            System.out.println("The r_no is: " + r_no);
+            
+            String Booking = "insert into booking values ("+b_ref+", "+c_no+", 0, 0, '');";
+            
+            statement.execute(Booking);
+            
+            System.out.println(Booking);
+            
+            String roomBooking = "insert into roombooking values ("+r_no+", "+b_ref+", '"+checkin+"', '"+checkout+"');";
+            
+            statement.execute(roomBooking);
+            
+            
+            String numberOfDaysStayed = "SELECT(SELECT checkout from roombooking "
+                    + "where b_ref='"+b_ref+"' and r_no='"+r_no+"') - (SELECT checkin from "
+                    + "roombooking where b_ref='"+b_ref+"' and r_no='"+r_no+"') as stay_days;";
+            resultSet = statement.executeQuery(numberOfDaysStayed);
+            int daysStay = 0;
+            while (resultSet.next()) {
+                daysStay = resultSet.getInt("stay_days");
+                out.println("The number of days you are staying is: " + daysStay);
+            }
+            System.out.println("The number of days you are staying is: " + daysStay);
+            
+            double b_cost = price * daysStay * numOfRooms;
+            
+            String updateBooking = "update booking set b_cost="+b_cost+", b_outstanding="+b_cost+", b_notes='"+b_notes+"' where b_ref="+b_ref+";";
+            
+            statement.execute(updateBooking);
+            out.println("The total b_cost is: " + b_cost);
+            System.out.println("b_cost is: " + b_cost);
+            
+
+            
             
             
         } catch (ClassNotFoundException | SQLException e) {
