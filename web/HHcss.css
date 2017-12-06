@@ -481,6 +481,14 @@ div.Footer a:visited {
     display: inline-block;
 }
 
+.Pricing {
+    background-color: grey;
+    color: white;
+    padding: 2%;
+    display: inline-block;
+    float: right;
+}
+
 div.tab button {
     background-color: #f1f1f1;
     float: left;
