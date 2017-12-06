@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
@@ -58,7 +59,17 @@ public class AccessServlet extends HttpServlet {
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
 //                statement.executeUpdate(insertSQL);
-            int c_no = (int)(Math.random() * 10000 + 130000);
+            statement.execute("set schema 'HeartacheHotelDB';");
+            
+            String maxCno = "select MAX(c_no) as maxcno from customer;";
+            ResultSet resultSet = statement.executeQuery(maxCno);
+            int c_no=0;
+            while (resultSet.next()) {
+                c_no = resultSet.getInt("maxcno");
+                c_no = c_no + 1;
+                out.println("The c_no is: " + c_no);
+            }
+            
             String forename = request.getParameter("forename");
             String surname = request.getParameter("surname");
             String email = request.getParameter("email");
@@ -69,6 +80,7 @@ public class AccessServlet extends HttpServlet {
             String month = request.getParameter("month");
             String year = request.getParameter("year");
             String cardnumber = request.getParameter("cardnumber");
+            String bookingNotes = request.getParameter("bookingNotes");
 
             String sqlstatement = "insert into customer values ("+c_no+", '"+forename+" "+surname+"',"+
             " '"+email+"', '"+addressline+", "+city+" "+postcode+"',"+
@@ -88,10 +100,20 @@ public class AccessServlet extends HttpServlet {
             }
             
             System.out.println("From AccessServlet: "+checkin+" "+checkout+" "+roomtype+" "+numOfRooms);
-            
-            statement.execute("set schema 'HeartacheHotelDB';");
 
             statement.execute(sqlstatement);
+            
+            String maxBRef = "select MAX(b_ref) as maxbref from booking;";
+            resultSet = statement.executeQuery(maxBRef);
+            int b_ref=0;
+            while (resultSet.next()) {
+                b_ref = resultSet.getInt("maxbref");
+                b_ref = b_ref + 1;
+                out.println("The b_ref is: " + b_ref);
+            }
+            
+            System.out.println("The booking reference is: " + b_ref);
+            
             
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
