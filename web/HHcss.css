@@ -331,7 +331,7 @@ div.Footer a:visited {
     display: inline-block;
     float: right;
     padding: 1%;
-    
+
 }
 
 #SocialMedia { 
@@ -399,15 +399,15 @@ div.Footer a:visited {
 }
 
 .LocalAttractions {
-   display: inline-block;
-   width: 40%;
-   padding-left: 2%;
-   padding-right: 2%;
-   background-color: #f2d9d9;
-   margin: 2em;
-   margin-left: 5%;
-   margin-right: 5%;
-   padding-bottom: 2%;
+    display: inline-block;
+    width: 40%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #f2d9d9;
+    margin: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 2%;
 }
 
 .LocalAttractions h3 {
@@ -432,15 +432,15 @@ div.Footer a:visited {
 }
 
 .Facilities {
-   display: inline-block;
-   width: 40%;
-   padding-left: 2%;
-   padding-right: 2%;
-   background-color: #f2d9d9;
-   margin: 2em;
-   margin-left: 5%;
-   margin-right: 5%;
-   padding-bottom: 2%;
+    display: inline-block;
+    width: 40%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #f2d9d9;
+    margin: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 2%;
 }
 
 .Facilities h3 {
@@ -465,15 +465,15 @@ div.Footer a:visited {
 }
 
 .Rooms {
-   display: inline-block;
-   width: 40%;
-   padding-left: 2%;
-   padding-right: 2%;
-   background-color: #f2d9d9;
-   margin: 2em;
-   margin-left: 5%;
-   margin-right: 5%;
-   padding-bottom: 2%;
+    display: inline-block;
+    width: 40%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #f2d9d9;
+    margin: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 2%;
 }
 
 .Rooms h3 {
@@ -624,4 +624,602 @@ div.tab button:hover {
     padding-left: 0.5em;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+@media screen and (max-width: 480px) {
+    /*Banner picture*/
+    .banner{
+        width: 100%;
+    }
+
+    .banner img{
+        width: 100%;
+        float: top;
+    }
+
+    div.tab {
+        overflow: hidden;
+        background-color: #f1f1f1; 
+    }
+
+    .Tab {
+        position: fixed;
+        bottom: 0;
+        right: 1%;
+        background-color: grey;
+        padding-left: 1em;
+        padding-right: 1em;
+        font-weight: bold;
+        z-index: -1;
+        font-size: large;
+    }
+
+    body {
+        font-family: 'Barlow Semi Condensed', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+        color: #ebd8bc;
+    }
+
+    div.Header {
+        top: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .LogoTitle {
+        font-size: 200%;
+        position: absolute;
+        margin: 0pt auto;
+        display: block;
+        text-align: center;
+        width: 100%;
+        top: 20%;
+        color: white;   
+    }
+
+    #LogoLink {
+        position: absolute;
+    }
+
+    #TextOptions {
+        position: absolute;
+        float: right;
+        top: 0;
+        padding-top: 1%;
+        padding-left: 1%;
+        color: white;
+        font-size: medium;
+    }
+
+    div.Navigation {
+        text-align: center;
+    }
+
+    div.Navigation ul {
+        background-color: #a86763;   
+        list-style-type: none;    
+        overflow: hidden;   
+        margin-left: auto;   
+        margin-right: auto;   
+        padding: 0;  
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin: 0;   
+        top: 0;
+    }
+
+    div.Navigation li { 
+        color: #ebd8bc;   
+        border-left: solid 2px #ebd8bc;
+        font-size: xx-large;
+        top: 0;  
+        display: inline-block;   
+        text-align: center;  
+        padding-left: 2%;   
+        padding-top: 0;    
+        padding-bottom: 0;  
+        padding-right: 2%;  
+        text-decoration: none;
+    }
+
+    .Navigation a {
+        color: #ebd8bc;
+        text-decoration: none;
+    }
+
+    .Navigation a:visited {
+        color: #ebd8bc;
+        text-decoration: none;
+    }
+
+    div.ReviewMain {
+        text-align: left;    
+        padding-top: 3%;  
+        padding-bottom: 3%;   
+        padding-left: 15%;   
+        padding-right: 15%;
+    }
+
+    div.ReviewMain h2 {
+        text-align: center;  
+        padding-bottom: 3em;
+    }
+
+    div.AlternativeMain {
+        text-align: center;   
+        position: relative;
+        padding-top: 3%;  
+        padding-bottom: 3%;
+        position: relative;
+        width: 70%;
+        margin-left: 15%;   
+        margin-right: 15%;   
+        padding-top: 3%;   
+        padding-bottom: 3%;
+    }
+
+    div.AlternativeMain h2 {  
+        font-size: 300%;
+        top: 15em;
+        text-align: center; 
+    }
+
+    div.ContactUsMain {
+        text-align: center;   
+        position: relative;
+        padding-top: 3%;  
+        padding-bottom: 3%;
+        position: relative;
+        width: 70%;
+        height: 50em;
+        margin-left: 15%;   
+        margin-right: 15%;   
+        padding-top: 3%;   
+        padding-bottom: 3%;
+    }
+
+    div.ContactUs h2 {  
+        font-size: 300%;
+        text-align: center; 
+    }
+
+    div.Main {
+        position: relative;
+        width: 70%;
+        height: 1500px;
+        margin-left: 15%;   
+        margin-right: 15%;   
+        padding-top: 3%;   
+        padding-bottom: 3%;
+    }
+
+    div.Main h2 {
+        font-size: 300%;
+        text-align: center;   
+        padding-bottom: 1%;
+    }
+
+    div.Main p {  
+        text-align: center;
+    }
+
+    #book legend {
+        margin: 1em;
+    }
+
+    #book label {
+        margin-left: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    #manage legend {
+        margin: 1em;
+    }
+
+    #manage label {
+        margin-left: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .FormInput {
+        margin: 1em;
+    }
+
+    div.FindUsMain {
+        position: relative;
+        width: 70%;
+        height: 900px;
+        margin-left: 15%;   
+        margin-right: 15%;   
+        padding-top: 3%;   
+        padding-bottom: 3%;
+    }
+
+    div.FindUsMain h2 {
+        font-size: 300%;
+        text-align: center;   
+    }
+
+    div.FindUsMain p {  
+        text-align: center;
+    }
+
+    #Lost {
+        position: absolute;
+        display: inline-block;
+        right: 0;
+        width: 40%;
+    }
+
+    #Lost ul {
+        list-style-type: circle;
+    }
+
+    div.Booking { 
+        float: right; 
+        right: 0;
+        padding-top: 10%;   
+        padding-left: 5%;  
+        padding-right: 5%;  
+        padding-bottom: 10%;  
+        background-color: yellow;  
+        margin-left: 1%; 
+        margin-top: 1%;  
+        margin-right: 1%;
+    }
+
+    div.Previews {
+        width: 75%;    
+        margin: 0 auto;    
+        padding-top: 5%;   
+        padding-bottom: 5%;
+    }
+
+    div.Previews img { 
+        display: inline-block;
+        position: absolute; 
+        margin: auto; 
+        top: 0;  
+        left: 0;  
+        right: 0;  
+        bottom: 0;
+    }
+
+    div.Footer {  
+        background-color: #666666; 
+        width: 100%;
+        height: 200px;
+        margin: 0;  
+        bottom: 0;
+        position: relative;
+    }
+
+    div.Footer img { 
+        float: left;  
+        display: inline-block;
+    }
+
+    div.Footer ul {  
+        display: inline-block;
+        margin-bottom: 0;  
+        text-decoration: none;  
+        border-left: 1px; 
+        border-left-color: white;
+        border-left-style: solid; 
+        padding-left: 2em;
+        margin-left: 1%;
+    }
+
+    div.Footer a:visited { 
+        color: white;  
+        text-decoration: none;
+    }
+
+    #FooterLogo {
+        height:150px; 
+        width: 150px;
+        padding: 1%;
+    }
+
+    #FooterEmail {
+        color: white;
+    }
+
+    #FooterEmail a {
+        color: white;
+        text-decoration: underline;
+    }
+
+    #FooterEmail a:visited {
+        color: white;
+        text-decoration: underline;
+    }
+
+    #FooterCopyright {
+        color: white;
+        padding-top: 0;
+    }
+
+    #tripAdviser {
+        display: inline-block;
+        float: right;
+        padding: 1%;
+
+    }
+
+    #SocialMedia { 
+        display: block;
+        padding-right: 1%;
+        padding-top: 1em;
+        text-align: right;
+        color: white;
+        float: right;
+    }
+
+    #SocialMedia img {
+        width: 3em;
+        height: 3em;
+        padding-left: 1em;
+    }
+
+    #Trademark {
+        float: bottom; 
+        text-align: center;  
+        margin: 0; 
+        margin-left: auto;  
+        margin-right: auto;  
+        display: block;
+    }
+
+    #EnquiryForm {
+        display: inline-block;
+        font-size: x-large;
+        float: left;
+        width: 35%;
+        border-right: grey 1px solid;
+        padding-left: 15%;
+        text-align: left;
+    }
+
+    #EnquiryForm input {
+        margin-bottom: 1em;
+    }
+
+    #EnquiryForm textarea {
+        margin-bottom: 1em;
+    }
+
+    #AlternativeContact {
+        display: inline-block;
+        font-size: large;
+        float: right;
+        width: 20%;
+        text-align: left;
+    }
+
+    #AlternativeContact a {
+        color: black;
+        text-decoration: underline;
+    }
+
+    #AlternativeContact a:visited {
+        color: black;
+        text-decoration: underline;
+    }
+
+    #AlternativeContact h3 {
+        font-size: 200%;
+    }
+
+    .LocalAttractions {
+        display: inline-block;
+        width: 40%;
+        padding-left: 2%;
+        padding-right: 2%;
+        background-color: #f2d9d9;
+        margin: 2em;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-bottom: 2%;
+    }
+
+    .LocalAttractions h3 {
+        font-size: 200%;
+    }
+
+    .LocalAttractions img {
+        width: 50%;
+        display: block;
+        left: 0;
+        float: left;
+    }
+
+    .LocalAttractions p {
+        display: block;
+        width: 45%;
+        text-align: right;
+        float: right;
+        right: 0;
+        padding-left: 1em;
+        font-size: large;
+    }
+
+    .Facilities {
+        display: inline-block;
+        width: 40%;
+        padding-left: 2%;
+        padding-right: 2%;
+        background-color: #f2d9d9;
+        margin: 2em;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-bottom: 2%;
+    }
+
+    .Facilities h3 {
+        font-size: 200%;
+    }
+
+    .Facilities img {
+        width: 50%;
+        display: block;
+        left: 0;
+        float: left;
+    }
+
+    .Facilities p {
+        display: block;
+        width: 45%;
+        text-align: right;
+        float: right;
+        right: 0;
+        padding-left: 1em;
+        font-size: large;
+    }
+
+    .Rooms {
+        display: inline-block;
+        width: 40%;
+        padding-left: 2%;
+        padding-right: 2%;
+        background-color: #f2d9d9;
+        margin: 2em;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-bottom: 2%;
+    }
+
+    .Rooms h3 {
+        font-size: 200%;
+    }
+
+    .Rooms img {
+        width: 50%;
+        display: block;
+        left: 0;
+        float: left;
+    }
+
+    .Rooms p {
+        display: block;
+        width: 45%;
+        text-align: right;
+        float: right;
+        right: 0;
+        padding-left: 1em;
+        font-size: large;
+    }
+
+    .LocalLinks {
+        background-color: grey;
+        color: white;
+        padding: 1em;
+        bottom: 0;
+        display: inline-block;
+    }
+
+    .Pricing {
+        background-color: grey;
+        color: white;
+        padding: 2%;
+        display: inline-block;
+        float: right;
+    }
+
+    div.tab button {
+        background-color: #f1f1f1;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+    }
+
+    div.tab button:hover {
+        background-color: #ddd;
+    }
+
+
+    .tabcontent {
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        animation: fadeEffect 1s;
+    }
+
+    @keyframes fadeEffect {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    /* Preview hover images */
+    .previews {
+        position: relative;
+        display: flex;
+        width: 200pt;
+        height: 200pt;
+        text-align: center;
+    }
+
+    .text {
+        position: absolute;
+        margin: 0 auto;
+        width: 30%;
+        top: 20%;
+        left: 35%;
+        border: solid;
+        opacity: 0;       
+    }
+
+    .image {
+        position: absolute;
+        margin: auto;
+        opacity: 1;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .previews:hover .image {
+        opacity: 0.4;
+        transition: 0.3s;
+    }
+
+    .previews:hover .text {
+        opacity: 1;
+        border: solid;
+        transition: opacity 0.3s ease-in;
+    }
+
+    /* jQuery Datepicker */
+    .ui-widget-content{
+        padding: 1em;
+        background: white;
+        color: black;
+        border: black 2px solid;
+    }
+
+    .ui-widget-content a {
+        margin: 0.2em;
+        text-align: center;
+        border-left: black 1px solid;
+        padding-left: 0.5em;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
