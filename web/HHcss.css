@@ -117,19 +117,6 @@ div.Navigation li {
     text-decoration: none;
 }
 
-div.ReviewMain {
-    text-align: left;    
-    padding-top: 3%;  
-    padding-bottom: 3%;   
-    padding-left: 15%;   
-    padding-right: 15%;
-}
-
-div.ReviewMain h2 {
-    text-align: center;  
-    padding-bottom: 3em;
-}
-
 div.AlternativeMain {
     text-align: center;   
     position: relative;
@@ -144,6 +131,23 @@ div.AlternativeMain {
 }
 
 div.AlternativeMain h2 {  
+    font-size: 300%;
+    top: 15em;
+    text-align: center; 
+}
+
+div.ReviewMain {
+    text-align: left;   
+    position: relative;
+    padding-top: 3%;  
+    padding-bottom: 3%;
+    width: 70%;
+    height: 800px;
+    margin-left: 15%;   
+    margin-right: 15%;   
+}
+
+div.ReviewMain h2 {  
     font-size: 300%;
     top: 15em;
     text-align: center; 
@@ -171,7 +175,7 @@ div.ContactUs h2 {
 div.Main {
     position: relative;
     width: 70%;
-    height: 1500px;
+    height: 1000px;
     margin-left: 15%;   
     margin-right: 15%;   
     padding-top: 3%;   
@@ -188,8 +192,37 @@ div.Main p {
     text-align: center;
 }
 
+div.BookingMain {
+    position: relative;
+    width: 70%;
+    height: 300px;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.BookingMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+div.BookingMain p {  
+    text-align: center;
+}
+
 #book legend {
     margin: 1em;
+}
+
+.ReviewPrint {
+    border: black 1px solid;
+    float: right;
+    height: 30%;
+    width: 30%;
+    padding: 1%;
+    margin-right: 10%;
 }
 
 #book label {
@@ -592,13 +625,34 @@ div.tab button:hover {
     transition: opacity 0.3s ease-in;
 }
 
+#ReviewForm {
+    display: inline-block;
+    font-size: x-large;
+    float: left;
+    width: 35%;
+    border-right: grey 1px solid;
+    padding-left: 15%;
+    text-align: left;
+}
+
+#ReviewForm input {
+    margin-bottom: 1em;
+}
+
+#ReviewForm textarea {
+    margin-bottom: 1em;
+}
+
 /* Reviews slideshow */
 #reviewSlides {
     padding: 1%;
-    display: flex;
-    height: 300px;
-    position: relative;
+    display: inline-block;
     border: solid 2pt;
+    width: 40%;
+    height: 30%;
+    vertical-align:central ;
+    margin-top: 5%;
+    float: right;
 }
 
 .review {
@@ -607,6 +661,10 @@ div.tab button:hover {
     opacity: 0;
     transition: 1s;
     padding: 1em;
+    text-size: xx-large;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* jQuery Datepicker */
