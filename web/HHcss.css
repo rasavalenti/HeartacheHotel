@@ -107,6 +107,16 @@ div.Navigation li {
     text-decoration: none;
 }
 
+.Navigation a {
+    color: #ebd8bc;
+    text-decoration: none;
+}
+
+.Navigation a:visited {
+    color: #ebd8bc;
+    text-decoration: none;
+}
+
 div.ReviewMain {
     text-align: left;    
     padding-top: 3%;  
@@ -242,7 +252,6 @@ div.Footer {
     background-color: #666666; 
     width: 100%;
     height: 200px;
-    padding: 1%; 
     margin: 0;  
     bottom: 0;
     position: relative;
@@ -269,18 +278,45 @@ div.Footer a:visited {
     text-decoration: none;
 }
 
-#FooterEmail {  
-    float: right;
-    display: inline-block;
-    padding-top: 2%;
-    padding-right: 2%;  
-    padding-bottom: 2%; 
-    margin: 0; 
-    border-left: 1px;
-    border-left-color: white;
-    border-left-style: solid; 
-    padding-left: 2em;
+#FooterEmail {
     color: white;
+}
+
+#FooterEmail a {
+    color: white;
+    text-decoration: underline;
+}
+
+#FooterEmail a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+#FooterCopyright {
+    color: white;
+    padding-top: 0;
+}
+
+#tripAdviser {
+    display: inline-block;
+    float: right;
+    padding: 1%;
+    
+}
+
+#SocialMedia { 
+    display: block;
+    padding-right: 1%;
+    padding-top: 1em;
+    text-align: right;
+    color: white;
+    float: right;
+}
+
+#SocialMedia img {
+    width: 3em;
+    height: 3em;
+    padding-left: 1em;
 }
 
 #Trademark {
@@ -316,6 +352,16 @@ div.Footer a:visited {
     float: right;
     width: 20%;
     text-align: left;
+}
+
+#AlternativeContact a {
+    color: black;
+    text-decoration: underline;
+}
+
+#AlternativeContact a:visited {
+    color: black;
+    text-decoration: underline;
 }
 
 #AlternativeContact h3 {
@@ -454,8 +500,6 @@ div.tab button:hover {
     from {opacity: 0;}
     to {opacity: 1;}
 }
-
-
 
 /* Picture Slideshow */
 .imageSlides {
