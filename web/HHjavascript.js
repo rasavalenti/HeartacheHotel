@@ -6,93 +6,63 @@
 
 function switchToManage() {
 
-    document.getElementById('book').style.display = 'none';
-    document.getElementById('manage').style.display = 'block';
-}
+document.getElementById('book').style.display = 'none';
+        document.getElementById('manage').style.display = 'block';
+        }
 
 function switchToBook() {
 
-    document.getElementById('manage').style.display = 'none';
-    document.getElementById('book').style.display = 'block';
-}
+document.getElementById('manage').style.display = 'none';
+        document.getElementById('book').style.display = 'block';
+        }
 
 $(document).ready(function () {
-    $("#manage").hide();
-    $("#book").show();
-});
-
-
+$("#manage").hide();
+        $("#book").show();
+        });
 //Image Slideshow
-function slideshow() {
-    var elements = document.querySelectorAll('.slide');
-    if (curSlide === elements.length) {
+        function slideshow() {
+        var elements = document.querySelectorAll('.slide');
+                if (curSlide === elements.length) {
         curSlide = 0;
-    }
-
-    for (x = 0; x < elements.length; x++) {
-        if (x === curSlide) {
-            elements[x].style.opacity = 1;
-        } else {
-            elements[x].style.opacity = 0;
         }
-    }
-    curSlide++;
-}
+
+        for (x = 0; x < elements.length; x++) {
+        if (x === curSlide) {
+        elements[x].style.opacity = 1;
+        } else {
+        elements[x].style.opacity = 0;
+        }
+        }
+        curSlide++;
+                }
 
 //Review Slideshow
 function reviewSlideshow() {
-    var elements = document.querySelectorAll('.review');
-    if (revSlide === elements.length) {
-        revSlide = 0;
-    }
+var elements = document.querySelectorAll('.review');
+        if (revSlide === elements.length) {
+revSlide = 0;
+}
 
-    for (x = 0; x < elements.length; x++) {
-        if (x === revSlide) {
-            elements[x].style.opacity = 1;
-        } else {
-            elements[x].style.opacity = 0;
+for (x = 0; x < elements.length; x++) {
+if (x === revSlide) {
+elements[x].style.opacity = 1;
+} else {
+elements[x].style.opacity = 0;
+}
+}
+revSlide++;
         }
-    }
-    revSlide++;
-}
-
-//The saveBookingPage function gets the information from the bookin form and makes it into
-//an sql statement
-function saveBookingPage()
-{
-    var c_no = Math.floor((Math.random() * 10000) + 13000);
-    //The random c_no needs to be checked against the existing customers to make 
-    //sure it doesn't duplicate
-
-    var forename = document.getElementById("forename").value;
-    var surname = document.getElementById("surname").value;
-    var email = document.getElementById("email").value;
-    var addressline = document.getElementById("addressline").value;
-    var city = document.getElementById("city").value;
-    var postcode = document.getElementById("postcode").value;
-    var card = document.getElementById("card").value;
-    var month = document.getElementById("month").value;
-    var year = document.getElementById("year").value;
-    var cardnumber = document.getElementById("cardnumber").value;
-
-    var sqlstatement = "insert into customer values (" + c_no + ", '" + forename + " " + surname + "'," +
-            " '" + email + "', '" + addressline + ", " + city + " " + postcode + "'," +
-            " '" + card + "', '" + month + "/" + year + "', '" + cardnumber + "');";
-
-    //alert is here to check how the sql statement looks
-    alert("THE SQL STATEMENT IS: " + sqlstatement);
-}
 
 
 //Calendar datepicker for booking
 $(function () {
-    $("#checkIn").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
-    //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
-});
-
-function checkOutDate() {
-    alert("Check out date" + document.getElementById("checkIn").value);
-    $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value, maxDate: "+1Y"});
-    var minDate = $( "#checkOut" ).datepicker( "option", "minDate" );
-    alert(minDate);
-}
+$("#checkIn").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
+        //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
+        });
+        function checkOutDate() {
+        alert("Check out date" + document.getElementById("checkIn").value);
+                $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value, maxDate: "+1Y"});
+                var minDate = $("#checkOut").datepicker("option", "minDate");
+                alert(minDate);
+                }

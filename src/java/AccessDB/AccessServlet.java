@@ -170,6 +170,43 @@ public class AccessServlet extends HttpServlet {
             out.println("The total b_cost is: " + b_cost);
             System.out.println("b_cost is: " + b_cost);
 
+            request.setAttribute("c_no", c_no);
+            request.setAttribute("forename", forename);
+            request.setAttribute("surname", surname);
+            request.setAttribute("email", email);
+
+            if (cardnumber.length() == 16) {
+                String secretcardnumber = "**** **** **** " + cardnumber.substring(11, 15);
+                request.setAttribute("secretcardnumber", secretcardnumber);
+            }
+            request.setAttribute("addressline", addressline);
+
+            request.setAttribute("city", city);
+            request.setAttribute("postcode", postcode);
+            request.setAttribute("b_ref", b_ref);
+            request.setAttribute("checkin", checkin);
+            request.setAttribute("checkout", checkout);
+
+            String roomtypename = null;
+            switch (roomtype) {
+                case "std_t":
+                    roomtypename = "Standard Twin";
+                    break;
+                case "std_d":
+                    roomtypename = "Standard Double";
+                    break;
+                case "sup_d":
+                    roomtypename = "Premium Double";
+                    break;
+                case "sup_t":
+                    roomtypename = "Premium Twin";
+                    break;
+            }
+
+            request.setAttribute("roomtype", roomtypename);
+            request.setAttribute("numofrooms", numOfRooms);
+            request.getRequestDispatcher("BookingConfirmation.jsp").forward(request, response);
+
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }
