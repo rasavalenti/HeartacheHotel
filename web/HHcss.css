@@ -136,6 +136,44 @@ div.AlternativeMain h2 {
     text-align: center; 
 }
 
+div.HousekeepingMain {
+    text-align: center;   
+    position: relative;
+    padding-top: 3%;  
+    padding-bottom: 3%;
+    position: relative;
+    width: 70%;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.HousekeepingMain h2 {  
+    font-size: 300%;
+    top: 15em;
+    text-align: center; 
+}
+
+div.ReceptionMain {
+    text-align: center;   
+    position: relative;
+    padding-top: 3%;  
+    padding-bottom: 3%;
+    position: relative;
+    width: 70%;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.ReceptionMain h2 {  
+    font-size: 300%;
+    top: 15em;
+    text-align: center; 
+}
+
 div.ReviewMain {
     text-align: left;   
     position: relative;
@@ -1280,4 +1318,5 @@ div.tab button:hover {
         margin-top: 0;
         margin-bottom: 0;
     }
+      
 }
