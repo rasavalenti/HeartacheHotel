@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Reception View</title>
+        <title>Reception</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" media="(max-width: 600px)" href="max-width-600px.css">
         <link rel = "stylesheet"
@@ -10,13 +10,27 @@
         href = "HHcss.css" />
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
     </head>
+    
     <body>
-        <div class="ReceptionMain">
-            <h1>Reception</h1>
-            
-            <div class="RView">
-                <p></p>
+                   
+        <div class="Header">
+            <p id="TextOptions">Text Options</p>
+            <div class="LogoTitle">
+                <h1>Reception Portal</h1>
+                <a class="Logo" href="Home.html"><img src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
+            </div>
+            <div class="banner">
+                <img src="images\Header1.png" alt="norfolk">
             </div>
         </div>
+        
+        <div class="main">
+            <form method="GET" name="receptionForm" action="HotelReception">
+                Booking Reference: <br>
+                <input type="text" name="bookingRefInput" id="bookingRefInput"> <br>
+                <input type="submit" name="getDetails" value="Get Details" id="getDetails">
+            </form>
+        </div>
+            
     </body>
 </html>

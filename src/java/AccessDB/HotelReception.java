@@ -15,19 +15,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class housekeeping extends HttpServlet {
+/**
+ *
+ * @author MarySymons
+ */
+public class HotelReception extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
-//The following lines are here to check the connection between sql and netbeans
-//          String insertSQL;  
-//          insertSQL = "insert into customer values (123470, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
-//          System.out.println(insertSQL);
 
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
@@ -41,33 +39,25 @@ public class housekeeping extends HttpServlet {
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
-//                statement.executeUpdate(insertSQL);
-            statement.execute("SET SCHEMA 'HeartacheHotelDB';");
+            // statement.executeUpdate(insertSQL);
+            statement.execute("set schema 'HeartacheHotelDB';");
 
-            
-            
-            
-// what is below.....??            
-//            String maxCno = "select MAX(c_no) as maxcno from customer;";
-//            ResultSet resultSet = statement.executeQuery(maxCno);
-//            int c_no = 0;
-//            while (resultSet.next()) {
-//                c_no = resultSet.getInt("maxcno");
-//                c_no = c_no + 1;
-//                out.println("The c_no is: " + c_no);
-//            }
+            String bookRef = request.getParameter("bookingRefInput");
+            String getCustomer = "SELECT forename, surname, email, postcode, "
+                    + "checkin, checkout FROM customer WHERE b_ref = '" + bookRef + "';";
 
-            String forename = request.getParameter("forename");
-            String surname = request.getParameter("surname");
-            String email = request.getParameter("email");
+            ResultSet resultSet = statement.executeQuery(getCustomer);
 
-            String sqlstatement = "SELECT (r_no, r_status, r_notes) FROM "
-                    + "room;"; //need to order by checked out date oldest first
+            // Printing the actor names whilst the resultSet is not empty
+            while (resultSet.next()) {
+                System.out.println("Booking reference: " + bookRef
+                        + "\nName: " + resultSet.getString("forename") + " " + resultSet.getString("surname")
+                        + "\nEmail: " + resultSet.getString("email")
+                        + "\nPostcode: " + resultSet.getString("postcode")
+                        + "\nCheck-In: " + resultSet.getString("checkin")
+                        + "\nCheck-Out: " + resultSet.getString("checkout"));
+            }
 
-            statement.execute(sqlstatement);
-
-            // need to close the connection
-            
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }
@@ -87,8 +77,10 @@ public class housekeeping extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+
         } catch (ParseException ex) {
-            Logger.getLogger(AccessServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AccessServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -105,8 +97,10 @@ public class housekeeping extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+
         } catch (ParseException ex) {
-            Logger.getLogger(AccessServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AccessServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
