@@ -8,22 +8,6 @@
         <servlet-name>AccessServlet</servlet-name>
         <url-pattern>/AccessServlet</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>CheckDates</servlet-name>
-        <servlet-class>AccessDB.CheckDates</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CheckDates</servlet-name>
-        <url-pattern>/CheckDates</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>HotelReception</servlet-name>
-        <servlet-class>AccessDB.HotelReception</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HotelReception</servlet-name>
-        <url-pattern>/HotelReception</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

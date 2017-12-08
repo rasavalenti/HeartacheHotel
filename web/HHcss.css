@@ -722,10 +722,3 @@ div.tab button:hover {
     margin-bottom: 0;
 }
 
-@media only screen
-and (max-device-width : 480px) {
-    .Main {
-        background: red;
-    }
-      
-}

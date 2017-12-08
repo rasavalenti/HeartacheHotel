@@ -2,13 +2,12 @@
 
 <html>
     <head>
-        <title>Reception</title>
+        <title>CheckInOut</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" media="(max-width: 600px)" href="max-width-600px.css">
-        <link rel = "stylesheet"
-        type = "text/css"
-        href = "HHcss.css" />
-        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="HHcss.css">
+        <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type ="text/javascript"></script>
+        <script src ="HHjavascript.js"></script>
     </head>
     
     <body>
@@ -16,7 +15,7 @@
         <div class="Header">
             <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
-                <h1>Reception Portal</h1>
+                <h1>Reception Check-In/Out</h1>
                 <a class="Logo" href="Home.html"><img src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
@@ -24,11 +23,15 @@
             </div>
         </div>
         
-        <div class="main">
-            <form method="GET" name="receptionForm" action="HotelReception">
+        <div>
+            <form method="POST" name="receptionForm" action="HotelReception">
                 Booking Reference: <br>
                 <input type="text" name="bookingRefInput" id="bookingRefInput"> <br>
                 <input type="submit" name="getDetails" value="Get Details" id="getDetails">
+            </form>
+            
+            <form method="POST" name="changeStatus" action="">
+                
             </form>
             
         </div>
