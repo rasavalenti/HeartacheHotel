@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author fvq13ndu
+ * @author qhf13exu
  */
 public class HotelReception extends HttpServlet {
 
@@ -40,12 +41,10 @@ public class HotelReception extends HttpServlet {
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
-        System.out.println("hello");
-        
+
         try {
             System.out.println("in try");
-            
+
             String insertSQL;
 
 //            // The following lines are here to check the connection between sql and netbeans
@@ -66,62 +65,76 @@ public class HotelReception extends HttpServlet {
 //            statement.execute(insertSQL);
             statement.execute("set schema 'HeartacheHotelDB';");
 
-            System.out.println("atfer connection");
-
             String bookRef = request.getParameter("bookingRefInput");
 
             System.out.println("Booking ref is: " + bookRef);
 
             String getCustomer = "SELECT A.b_ref, A.c_no, c_name, c_email, "
                     + "c_address, c_cardtype, c_cardexp, c_cardno, b_outstanding, "
-                    + "checkin, checkout FROM booking AS A JOIN customer As B "
-                    + "ON A.c_no = B.c_no JOIN	roombooking AS C ON A.b_ref = C.b_ref "
+                    + "checkin, checkout, C.r_no, r_status FROM booking AS A "
+                    + "JOIN customer As B ON A.c_no = B.c_no "
+                    + "JOIN roombooking AS C ON A.b_ref = C.b_ref "
+                    + "JOIN room AS D ON C.r_no = D.r_no "
                     + "WHERE A.b_ref='" + bookRef + "';";
 
             ResultSet resultSet = statement.executeQuery(getCustomer);
 
-            // Printing the actor names whilst the resultSet is not empty
-            while (resultSet.next()) {
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                
-                out.println("<title>Customer Check In / Out</title>");
-                out.println("<meta charset=\"UTF-8\">");
-                out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"HHcss.css\">");
-                out.println("<script src =\"http://code.jquery.com/jquery-1.9.1.js\"></script>");
-                out.println("<script type =\"text/javascript\"></script>");
-                out.println("<script src =\"HHjavascript.js\"></script>");
-                out.println("<style>");
-                out.println(".monkey {");
-                out.println("background: red;");
-                out.println("}");
-                out.println("</style>");                
-                
-                out.println("</head>");
-                
-                out.println("<body>");
-                
-                out.println("<div class=\"monkey\">");
-                
-                out.println("Booking reference: " + bookRef
-                        + "<br>Name: " + resultSet.getString("c_name")
-                        + "<br>Email: " + resultSet.getString("c_email")
-                        + "<br>Address: " + resultSet.getString("c_address")
-                        + "<br>Check-In: " + resultSet.getString("checkin")
-                        + "<br>Check-Out: " + resultSet.getString("checkout"));
-                
-                out.println("</div");
-                
-                out.println("</body>");
-                
-                out.println("</html>");
-                
-                
-                
+            System.out.println(resultSet.next());
+
+            if (!resultSet.next()) {
+                out.println("The booking reference " + bookRef + " is not valid.\n");
+                out.println("Go back and try again.");
             }
-        } 
-        catch (ClassNotFoundException | SQLException e) {
+
+            String c_name, c_email, c_address, checkin, checkout, r_no, r_status;
+            
+            while (resultSet.next()) {
+
+                c_name = resultSet.getString("c_name");
+                c_email = resultSet.getString("c_email");
+                c_address = resultSet.getString("c_address");
+                checkin = resultSet.getString("checkin");
+                checkout = resultSet.getString("checkout");
+                r_no = resultSet.getString(1);
+                r_status = resultSet.getString(1);
+                        
+                request.setAttribute("bookRef", bookRef);
+                request.setAttribute("c_name", c_name);
+                request.setAttribute("c_email", c_email);
+                request.setAttribute("c_address", c_address);
+                request.setAttribute("checkin", checkin);
+                request.setAttribute("checkout", checkout);
+            }
+            
+            String numRooms = "SELECT COUNT(C.r_no) FROM booking AS A "
+                    + "JOIN customer As B ON A.c_no = B.c_no "
+                    + "JOIN roombooking AS C ON A.b_ref = C.b_ref "
+                    + "JOIN room AS D ON C.r_no = D.r_no "
+                    + "WHERE A.b_ref='" + bookRef + "';";
+            
+            resultSet = statement.executeQuery(numRooms);
+            
+            while (resultSet.next()) {
+                String no_rooms = resultSet.getString(1);
+                request.setAttribute("no_rooms", no_rooms);
+            }
+            
+            String getRooms = "(SELECT C.r_no FROM booking AS A JOIN customer As B "
+                    + "ON A.c_no = B.c_no JOIN roombooking AS C ON A.b_ref = C.b_ref "
+                    + "JOIN room AS D ON C.r_no = D.r_no WHERE A.b_ref = '13505')";
+            
+            resultSet = statement.executeQuery(getRooms);
+            
+            ArrayList<String> r_nos = new ArrayList();
+            
+            while (resultSet.next()) {
+                r_nos.add(resultSet.getString(1));
+                request.setAttribute("r_nos", r_nos);
+            }
+            
+            request.getRequestDispatcher("CheckInOutGuests.jsp").forward(request, response);
+
+        } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }
     }
