@@ -43,7 +43,7 @@
 
             </table>
             <br/><br/>
-            Note: Please keep note of your customer number and booking reference, you might require them to edit your booking.
+            Note: Please keep note of your customer number and booking reference, you will require them to edit your booking.
             <br/><br/>
             You can print this page, or save it as PDF for reference:
             <br/><br/>
