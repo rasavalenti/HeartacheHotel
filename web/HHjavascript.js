@@ -54,6 +54,40 @@ function reviewSlideshow() {
     revSlide++;
 }
 
+function getReview() {
+        text = first.value + Review.value;
+        document.getElementById("first").innerHTML += '<p>'+text;
+        document.getElementById("Review").innerHTML = '<p>'+text;
+        document.getElementById("first" + "Review").value = "Submit";
+    }
+
+//The saveBookingPage function gets the information from the bookin form and makes it into
+//an sql statement
+function saveBookingPage()
+{
+    var c_no = Math.floor((Math.random() * 10000) + 13000);
+    //The random c_no needs to be checked against the existing customers to make 
+    //sure it doesn't duplicate
+
+    var forename = document.getElementById("forename").value;
+    var surname = document.getElementById("surname").value;
+    var email = document.getElementById("email").value;
+    var addressline = document.getElementById("addressline").value;
+    var city = document.getElementById("city").value;
+    var postcode = document.getElementById("postcode").value;
+    var card = document.getElementById("card").value;
+    var month = document.getElementById("month").value;
+    var year = document.getElementById("year").value;
+    var cardnumber = document.getElementById("cardnumber").value;
+
+    var sqlstatement = "insert into customer values (" + c_no + ", '" + forename + " " + surname + "'," +
+            " '" + email + "', '" + addressline + ", " + city + " " + postcode + "'," +
+            " '" + card + "', '" + month + "/" + year + "', '" + cardnumber + "');";
+
+    //alert is here to check how the sql statement looks
+    alert("THE SQL STATEMENT IS: " + sqlstatement);
+}
+
 
 //Calendar datepicker for booking
 $(function () {

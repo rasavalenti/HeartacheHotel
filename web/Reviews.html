@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Leave a Review</title>
-                <link rel = "stylesheet"
-                type = "text/css"
-                href = "HHcss.css" />
-                <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+            <title>Leave a Review</title>
+            <link rel = "stylesheet"
+            type = "text/css"
+            href = "HHcss.css" />
+            <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+            <script src="HHjavascript.js"></script>
+            <link rel="stylesheet" media="(max-width: 600px)" href="max-width-600px.css">
+            <meta name="description" content="Heartache review page" />
+            <meta name="keywords" content="hotel, service, reviews, opinions, review" />
+            <meta name="robots" content="index, follow" />
+            <meta name="author" content="Heartache Hotel staff" />
 	</head>
 	
 	<body>
@@ -17,7 +23,7 @@
                 <a class="Logo" href="Home.html"><img src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
-                <img src="images\Header7.png" alt="norfolk">
+                <img src="images\Header7.png" alt="Cosy Lounge" />
             </div>
         </div>
             
@@ -34,31 +40,59 @@
                 </ul>
             </div>
 		
-		<div class="Main">
+		<div class="ReviewMain">
 			<h2>Like our service? Leave a review!</h2>
 			
 			<form id="ReviewForm">
 				First name:<br>
-				<input type="text" name="first" required="required"><br>
+                                <input type="text" name="first" required="required" placeholder="Enter your first name"><br>
 				Last name:<br>
-				<input type="text" name="last" required="required"><br>
+				<input type="text" name="last" required="required" placeholder="Enter your surname"><br>
 				Email address:<br>
-				<input type="text" name="email" required="required"><br>
+                                <input type="text" name="email" required="required" placeholder="Enter your email"><br>
 				
 				Please write your review here: <br>
-				<textarea name="Review" cols="30" rows="10">Enter your comments...</textarea> <br>
+				<textarea name="Review" cols="30" rows="10" placeholder="Enter your comments here..."></textarea> <br>
 				
 				Do you want to be contacted about your feedback? <br>
-				<input type="radio" name="reply" value="yes"> Yes <br>
+				<input type="radio" name="reply" value="yes" checked="checked"> Yes <br>
 				<input type="radio" name="reply" value="no"> No <br>
 				
-				<input type="submit" value="Submit">
+				<input type="submit" onclick="getReview()" value="Submit">
+                               
 			</form>
-							
+                        
+            <div class="ReviewPrint">
+                             
+                <script>
+                    function getReview() {
+                        text = first.value + Review.value;
+                        document.getElementById("first").innerHTML += '<p>'+text;
+                        document.getElementById("Review").innerHTML = '<p>'+text;
+                        document.getElementById("first" + "Review").value = "Submit";
+                    }
+                </script>
+                
+                <script>
+                    ReviewForm.getReview()
+                </script>
+                
+                <script>
+                    var revSlide = 0; //current slide counter                
+                    reviewSlideshow();
+                    setInterval(reviewSlideshow, 4000);
+                </script>  
+                
+            </div>
+                        							
 		</div>
+            
+            
+            
+            
 		
         <div class="Footer">
-            <img id="FooterLogo" src="images\vk.png" alt="Heartache Logo">
+            <img id="FooterLogo" src="images\vk.png" alt="Heartache Logo" />
 
             <ul id="FooterLinks">
                 <li><a href="Home.html">Home</a></li>
@@ -90,7 +124,7 @@
             </ul>
             
             
-            <img id="tripAdviser" src="images\trip.png" alt="Owl" style="height:150px; width:150px">
+            <img id="tripAdviser" src="images\trip.png" alt="Owl" style="height:150px; width:150px" />
             
             <div id="SocialMedia">
                 <p>SOCIAL MEDIA LINKS</p>
