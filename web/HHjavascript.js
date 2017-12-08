@@ -94,9 +94,10 @@ $(function () {
     $("#checkIn").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
     //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
 });
+
 function checkOutDate() {
-    alert("Check out date" + document.getElementById("checkIn").value);
+//    alert("Check out date" + document.getElementById("checkIn").value);
     $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value, maxDate: "+1Y"});
     var minDate = $("#checkOut").datepicker("option", "minDate");
-    alert(minDate);
+//    alert(minDate);
 }

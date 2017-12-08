@@ -24,6 +24,14 @@
         <servlet-name>HotelReception</servlet-name>
         <url-pattern>/HotelReception</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ManageBooking</servlet-name>
+        <servlet-class>AccessDB.ManageBooking</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageBooking</servlet-name>
+        <url-pattern>/ManageBooking</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -6,7 +6,7 @@
         <!--<script src ="http://code.jquery.com/jquery-1.9.1.js"></script>-->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        
+
         <script type ="text/javascript"></script>
         <script src ="HHjavascript.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
@@ -39,7 +39,7 @@
             </ul>
         </div>
 
-        <div class="BookingMain">
+        <div class="Main">
             <div class="tab">           
                 <button id="makeBooking" onclick="switchToBook()"> Make a booking </button>
                 <button id="manageBooking" onclick="switchToManage()"> Manage a booking </button>
@@ -51,25 +51,24 @@
 
                     <label> Check-in: </label><input type="text" name ="checkin" id="checkIn" onchange="checkOutDate();" oninput="this.onchange();">
                     <label> Check-out: </label><input type="text" name ="checkout" id="checkOut">
+                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();">
                     <label> Room type: </label><select name="roomtype" id="roomtype">
                         <option value="std_d">Standard Double</option>
                         <option value="std_t">Standard Twin</option>
                         <option value="sup_d">Premium Double</option>
                         <option value="sup_t">Premium Twin</option>
                     </select>
-                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" min="1" max="10">
-
                     <br/>
                     <input class="FormInput" type="submit" value="Check Availability" onclick="javascript:location.href = 'BookingForm.html'">    
                 </fieldset>
             </form> 
 
-            <form id="manage" class="tabcontent" method="POST">
+            <form id="manage" class="tabcontent" method="POST" action="ManageBooking">
                 <fieldset>
                     <legend>Manage a Booking</legend>
 
-                    <label> Booking Reference: </label><input type="text" name ="booking reference">
-                    <label> Email: </label><input type="email" name ="emai">
+                    <label> Customer Reference: </label><input type="text" name ="manage_c_no">
+                    <label> Email: </label><input type="email" name ="email">
                     <br/>
                     <input class="FormInput" type="submit" value="Manage Booking">                       
                 </fieldset>
@@ -90,7 +89,7 @@
                 <li><a href="FindUs.html">Find us</a></li>
                 <li><a href="ContactUs.html">Contact us</a></li>
             </ul>
-                       
+
             <ul id="FooterEmail">
                 <li>CONTACT US</li>
                 <li><a href="mailto:heartachehotel@heartachehotel.com? Subject=Queries" target="_top">Click to Email</a></li>
@@ -101,17 +100,17 @@
                 <li>Norfolk</li>
                 <li>NR3 4LE</li>
             </ul>
-            
+
             <ul id="FooterCopyright">
                 <li>COPYRIGHT</li>
                 <li>@Copyright 2017</li>
                 <li>Heartache Hotel</li>
                 <li>All Rights Reserved</li>
             </ul>
-            
-            
+
+
             <img id="tripAdviser" src="images\trip.png" alt="Owl" style="height:150px; width:150px" />
-            
+
             <div id="SocialMedia">
                 <p>SOCIAL MEDIA LINKS</p>
                 <a href="https://en-gb.facebook.com/" target="_blank"><img src="images\facebook.png" alt="Facebook" /></a>
