@@ -114,8 +114,9 @@ public class HotelReception extends HttpServlet {
             
             resultSet = statement.executeQuery(numRooms);
             
+            int no_rooms;
             while (resultSet.next()) {
-                String no_rooms = resultSet.getString(1);
+                no_rooms = resultSet.getInt(1);
                 request.setAttribute("no_rooms", no_rooms);
             }
             
@@ -125,10 +126,14 @@ public class HotelReception extends HttpServlet {
             
             resultSet = statement.executeQuery(getRooms);
             
-            ArrayList<String> r_nos = new ArrayList();
-            
+            //
+            // trying to separate room numbers to make separate update statements
+            //
+            ArrayList r_nos = new ArrayList();
             while (resultSet.next()) {
-                r_nos.add(resultSet.getString(1));
+                for (int i=0; i < no_rooms;i++) {
+                    ;
+                }
                 request.setAttribute("r_nos", r_nos);
             }
             
