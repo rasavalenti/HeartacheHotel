@@ -5,24 +5,28 @@
         <title>Reception</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="HHcss.css" />
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
     </head>
     
     <body>
-        <div>
-            <table>
-                <tr>
-                    <td>Booking reference:</td>
-                    <td>request.getParameter("b_ref")</td>
-                </tr>
-                <tr>
-                    <td>Forename:</td>
-                    <td>request.getParameter("forename")</td>
-                </tr>
-                <tr>
-                    <td>Surname:</td>
-                    <td>request.getParameter("surname")</td>
-                </tr>
-            </table>
+        <div class="Header">
+            <p id="TextOptions">Text Options</p>
+            <div class="LogoTitle">
+                <h1>Reception Portal</h1>
+                <!--<a class="Logo" href="Home.html"><img src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>-->
+            </div>
+            <div class="banner">
+                <img src="images\Header1.png" alt="norfolk">
+            </div>
+        </div>
+        
+        <div class="main">
+            <form method="GET" name="receptionForm" action="AccessServlet">
+                Booking Reference: <br>
+                <input type="text" name="bookingRefInput" id="bookingRefInput"> <br>
+                <input type="submit" name="getDetails" value="Get Details" id="getDetails">
+            </form>
         </div>
     </body>
 </html>
