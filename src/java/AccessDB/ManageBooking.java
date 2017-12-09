@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -57,17 +58,77 @@ public class ManageBooking extends HttpServlet {
             Statement statement = connection.createStatement();
 //                statement.executeUpdate(insertSQL);
             statement.execute("set schema 'HeartacheHotelDB';");
-            
-            String c_ref = request.getParameter("manage_c_no");
-            
-            String SQLStatement = "select c.c_no, b.b_ref, rb.r_no, c.c_name, c.c_email, c.c_address, c.c_cardno, b.b_outstanding, " +
-                    "rb.checkin, rb.checkout from customer c, booking b, roombooking rb " +
-                    "where c.c_no=b.c_no and b.b_ref=rb.b_ref and c.c_no="+c_ref+";";
-            
+
+            String c_no = request.getParameter("manage_c_no");
+            String c_email = request.getParameter("email");
+
+            System.out.println(c_email);
+
+            String SQLStatement = "select c.c_no, c.c_name, c.c_email, c.c_address, "
+                    + "c.c_cardno from customer c where c.c_no=" + c_no + " and c_email='" + c_email + "';";
+
             System.out.println(SQLStatement);
+            statement.executeQuery(SQLStatement);
 
+            ResultSet resultSet = statement.executeQuery(SQLStatement);
 
-           
+            String c_name = null;
+            String c_address = null;
+            String c_cardno = null;
+
+            while (resultSet.next()) {
+                c_name = resultSet.getString("c_name");
+                c_cardno = resultSet.getString("c_cardno");
+                c_address = resultSet.getString("c_address");
+                c_email = resultSet.getString("c_email");
+            }
+
+            if (c_cardno.length() == 16) {
+                String secret_c_cardno = "**** **** **** " + c_cardno.substring(11, 15);
+                request.setAttribute("manage_c_cardno", secret_c_cardno);
+            }
+
+            String SQLStatement2 = "select b_ref from booking  where c_no=" + c_no + ";";
+
+            System.out.println(SQLStatement2);
+            statement.executeQuery(SQLStatement2);
+
+            resultSet = statement.executeQuery(SQLStatement2);
+
+            ArrayList<String> bookingReferences = new ArrayList();
+            while (resultSet.next()) {
+                bookingReferences.add(resultSet.getString("b_ref"));
+            }
+            System.out.println(bookingReferences);
+
+            String b_refs = bookingReferences.toString();
+            b_refs = b_refs.substring(2, b_refs.length());
+            b_refs = b_refs.substring(0, b_refs.length() - 2);
+
+            int numOfBRefs = bookingReferences.size();
+
+            request.setAttribute("manage_c_no", c_no);
+            request.setAttribute("manage_c_name", c_name);
+            request.setAttribute("manage_c_address", c_address);
+            request.setAttribute("manage_c_email", c_email);
+            request.setAttribute("numOfBRefs", numOfBRefs);
+            request.setAttribute("bookingReferences", b_refs);
+            
+//            ArrayList<String> rooms;
+//            for (String b_ref : bookingReferences) {
+//                rooms = new ArrayList();
+//                String showRooms = "select rb.r_no from "
+//                        + "booking b, roombooking rb where "
+//                        + "b.b_ref=rb.b_ref and b.b_ref=" + b_ref + ";";
+//                resultSet = statement.executeQuery(showRooms);
+//                while (resultSet.next()) {
+//                    rooms.add(resultSet.getString("r_no"));
+//                }
+//                System.out.println(rooms);
+//            }
+            
+
+            request.getRequestDispatcher("BookingManage.jsp").forward(request, response);
 
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);

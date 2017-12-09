@@ -19,7 +19,34 @@ function switchToBook() {
 $(document).ready(function () {
     $("#manage").hide();
     $("#book").show();
+    $("#m_manageBooking").hide();
+    $("#m_cancelBooking").hide();
+    $("#m_editDetails").hide();
 });
+
+function switchToCancelBooking() {
+
+    document.getElementById('m_manageBooking').style.display = 'none';
+    document.getElementById('m_editDetails').style.display = 'none';
+    document.getElementById('m_cancelBooking').style.display = 'block';
+}
+
+function switchToAddRooms() {
+
+    document.getElementById('m_cancelBooking').style.display = 'none';
+    document.getElementById('m_editDetails').style.display = 'none';
+    document.getElementById('m_manageBooking').style.display = 'block';
+}
+
+function switchToEditDetails() {
+
+    document.getElementById('m_cancelBooking').style.display = 'none';
+    document.getElementById('m_manageBooking').style.display = 'none';
+    document.getElementById('m_editDetails').style.display = 'block';
+}
+
+
+
 //Image Slideshow
 function slideshow() {
     var elements = document.querySelectorAll('.slide');

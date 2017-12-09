@@ -28,7 +28,7 @@
 
                 <tr><td colspan="2"><strong>Payment information</strong></td></tr>
                 <tr><td>Card number:</label></td><td>${secretcardnumber}</td></tr>
-                <tr><td>Address:</td><td>${addressline}</td></tr>
+                <tr><td>Billing address:</td><td>${addressline}</td></tr>
                 <tr><td>City:</td><td>${city}</td></tr>
                 <tr><td>Post Code:</td><td>${postcode}</td></tr>
                 <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
@@ -40,7 +40,7 @@
                 <tr><td>Room type:</td><td>${roomtype}</td></tr>
                 <tr><td>Number of Rooms:</td><td>${numofrooms}</td></tr>
                 <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-
+                
             </table>
             <br/><br/>
             Note: Please keep note of your customer number and booking reference, you will require them to edit your booking.

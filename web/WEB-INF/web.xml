@@ -32,6 +32,14 @@
         <servlet-name>ManageBooking</servlet-name>
         <url-pattern>/ManageBooking</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RoomStatus</servlet-name>
+        <servlet-class>AccessDB.RoomStatus</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RoomStatus</servlet-name>
+        <url-pattern>/RoomStatus</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
