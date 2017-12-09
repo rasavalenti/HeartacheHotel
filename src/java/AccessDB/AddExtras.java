@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AccessDB;
 
 import java.io.IOException;
@@ -25,13 +20,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author qhf13exu
  */
-public class PayAndCheckOut extends HttpServlet {
+public class AddExtras extends HttpServlet {
 
  
     
     static int b_outstanding;
     static int b_cost;
-    static int extras;
+    static int total;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
@@ -55,39 +50,64 @@ public class PayAndCheckOut extends HttpServlet {
             Statement statement = connection.createStatement();
             //statement.execute("set schema 'HeartacheHotelDB';");
 
-            String getOutstanding = "SELECT b_outstanding, b_cost, "
-                    + "checkin, checkout, C.r_no, r_status FROM booking AS A "
+            String bookRef = request.getParameter("bookRef");
+            request.setAttribute("bookRef", bookRef);
+            
+            String temp1, temp2;
+            int choice1, choice2, choice3, choice4, 
+                    amount1, amount2, amount3, amount4;
+            
+            temp1 = request.getParameter("choice1");
+            temp2 = request.getParameter("amount1");
+            choice1 = Integer.parseInt(temp1);
+            amount1 = Integer.parseInt(temp2);
+            
+            temp1 = request.getParameter("choice2");
+            temp2 = request.getParameter("amount2");
+            choice2 = Integer.parseInt(temp1);
+            amount2 = Integer.parseInt(temp2);
+            
+            temp1 = request.getParameter("choice3");
+            temp2 = request.getParameter("amount3");
+            choice3 = Integer.parseInt(temp1);
+            amount3 = Integer.parseInt(temp2);
+            
+            temp1 = request.getParameter("choice4");
+            temp2 = request.getParameter("amount4");
+            choice4 = Integer.parseInt(temp1);
+            amount4 = Integer.parseInt(temp2);
+            
+            int cost = (choice1 * amount1) +
+                    (choice2 * amount2) +
+                    (choice3 * amount3) + 
+                    (choice4 * amount4);
+            
+            request.setAttribute("cost", cost);
+            
+            String getOutstanding = "SELECT b_outstanding FROM booking AS A "
                     + "JOIN customer As B ON A.c_no = B.c_no "
                     + "JOIN roombooking AS C ON A.b_ref = C.b_ref "
                     + "JOIN room AS D ON C.r_no = D.r_no "
-                    + "WHERE A.b_ref='" + HotelReception.bookRef + "';";
-
-            System.out.println(getOutstanding);
-            ResultSet resultSet = statement.executeQuery(getOutstanding);
+                    + "WHERE A.b_ref='" + bookRef + "';";
             
-            System.out.println("after resultSet");
+            ResultSet resultSet = statement.executeQuery(getOutstanding);
             
             while (resultSet.next()) {
                 b_outstanding = resultSet.getInt("b_outstanding");
-                b_cost = resultSet.getInt("b_cost");
                 request.setAttribute("b_outstanding", b_outstanding);
-                request.setAttribute("b_cost", b_cost);
             }
-
-            System.out.println("b_outstanding: " +b_outstanding);
             
-            extras = b_outstanding - b_cost;
-            request.setAttribute("extras", extras);
-            
-            System.out.println("extras: " + extras);
-            
-            String payOutstanding = "UPDATE booking SET b_outstanding = 0 "
-                    + "WHERE b_ref=" + HotelReception.bookRef + ";";
-            statement.execute(payOutstanding);
+            total = b_outstanding + cost;
+            request.setAttribute("total", total);
+            request.setAttribute("cost", cost);
+                        
+            String updateOutstanding = "UPDATE booking SET b_outstanding = "
+                    + total+ "WHERE b_ref=" + bookRef + ";";
+            statement.execute(updateOutstanding);
             
             connection.close();
             
-            request.getRequestDispatcher("PaymentReceipt.jsp").forward(request, response);
+            request.getRequestDispatcher("AddExtraConfirm.jsp").forward(request, response);
                     
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);

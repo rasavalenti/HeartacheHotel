@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Extras</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" media="(max-width: 600px)" href="max-width-600px.css">
+        <link rel = "stylesheet" type = "text/css" href = "HHcss.css" />
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+    </head>
+    <body>
+        <div class="main">
+            <h1>Add extra items</h1>
+            <form method="POST" name="addExtras" action="AddExtras">
+                <table id="extraItems">
+                    <tr>
+                        <td>Booking Ref:</td>
+                        <td>
+                            <input type="text" name="bookRef">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Item 1: </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="choice1" id="choice1">
+                                <option value="0">Nothing</option>
+                                <option value="1">Coke - £1</option>
+                                <option value="2">Coffee - £2</option>
+                                <option value="1">Water - £1</option>
+                                <option value="1">Popcorn - £1</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" name="amount1" id="amount1" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Item 2: </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="choice2" id="choice2">
+                                <option value="0">Nothing</option>
+                                <option value="1">Coke - £1</option>
+                                <option value="2">Coffee - £2</option>
+                                <option value="1">Water - £1</option>
+                                <option value="1">Popcorn - £1</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" name="amount2" id="amount2" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Item 3: </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="choice3" id="choice3">
+                                <option value="0">Nothing</option>
+                                <option value="1">Coke - £1</option>
+                                <option value="2">Coffee - £2</option>
+                                <option value="1">Water - £1</option>
+                                <option value="1">Popcorn - £1</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" name="amount3" id="amount3" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Item 4: </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="choice4" id="choice4">
+                                <option value="0">Nothing</option>
+                                <option value="1">Coke - £1</option>
+                                <option value="2">Coffee - £2</option>
+                                <option value="1">Water - £1</option>
+                                <option value="1">Popcorn - £1</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number"  name="amount4" id="amount4" value="0">
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+    </body>
+</html>
