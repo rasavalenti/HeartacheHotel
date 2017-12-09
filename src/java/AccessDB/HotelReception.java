@@ -37,15 +37,21 @@ public class HotelReception extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.text.ParseException
      */
+    static int no_rooms;
+    static String bookRef;
+    static ArrayList<String> r_nos;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
+//            if (!resultSet.next()) {
+//                out.println("The booking reference " + bookRef + " is not valid.\n");
+//                out.println("Go back and try again.");
+//            }
         try {
-            System.out.println("in try");
-
-            String insertSQL;
+//            String insertSQL;
 
 //            // The following lines are here to check the connection between sql and netbeans
 //            insertSQL = "insert into customer values (987654, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
@@ -65,7 +71,7 @@ public class HotelReception extends HttpServlet {
 //            statement.execute(insertSQL);
             statement.execute("set schema 'HeartacheHotelDB';");
 
-            String bookRef = request.getParameter("bookingRefInput");
+            bookRef = request.getParameter("bookingRefInput");
 
             System.out.println("Booking ref is: " + bookRef);
 
@@ -79,15 +85,8 @@ public class HotelReception extends HttpServlet {
 
             ResultSet resultSet = statement.executeQuery(getCustomer);
 
-            System.out.println(resultSet.next());
+            String c_name, c_email, c_address, checkin, checkout;
 
-            if (!resultSet.next()) {
-                out.println("The booking reference " + bookRef + " is not valid.\n");
-                out.println("Go back and try again.");
-            }
-
-            String c_name, c_email, c_address, checkin, checkout, r_no, r_status;
-            
             while (resultSet.next()) {
 
                 c_name = resultSet.getString("c_name");
@@ -95,9 +94,7 @@ public class HotelReception extends HttpServlet {
                 c_address = resultSet.getString("c_address");
                 checkin = resultSet.getString("checkin");
                 checkout = resultSet.getString("checkout");
-                r_no = resultSet.getString(1);
-                r_status = resultSet.getString(1);
-                        
+
                 request.setAttribute("bookRef", bookRef);
                 request.setAttribute("c_name", c_name);
                 request.setAttribute("c_email", c_email);
@@ -105,39 +102,35 @@ public class HotelReception extends HttpServlet {
                 request.setAttribute("checkin", checkin);
                 request.setAttribute("checkout", checkout);
             }
-            
+
             String numRooms = "SELECT COUNT(C.r_no) FROM booking AS A "
                     + "JOIN customer As B ON A.c_no = B.c_no "
                     + "JOIN roombooking AS C ON A.b_ref = C.b_ref "
                     + "JOIN room AS D ON C.r_no = D.r_no "
                     + "WHERE A.b_ref='" + bookRef + "';";
-            
+
             resultSet = statement.executeQuery(numRooms);
-            
-            int no_rooms;
+
+            no_rooms = 0;
             while (resultSet.next()) {
                 no_rooms = resultSet.getInt(1);
                 request.setAttribute("no_rooms", no_rooms);
             }
-            
+
             String getRooms = "(SELECT C.r_no FROM booking AS A JOIN customer As B "
                     + "ON A.c_no = B.c_no JOIN roombooking AS C ON A.b_ref = C.b_ref "
-                    + "JOIN room AS D ON C.r_no = D.r_no WHERE A.b_ref = '13505')";
-            
+                    + "JOIN room AS D ON C.r_no = D.r_no WHERE A.b_ref = '" + bookRef + "')";
+
             resultSet = statement.executeQuery(getRooms);
-            
-            //
-            // trying to separate room numbers to make separate update statements
-            //
-            ArrayList r_nos = new ArrayList();
+
+            r_nos = new ArrayList();
             while (resultSet.next()) {
-                for (int i=0; i < no_rooms;i++) {
-                    ;
-                }
-                request.setAttribute("r_nos", r_nos);
+                r_nos.add(resultSet.getString("r_no"));
             }
             
+            request.setAttribute("r_nos", r_nos);
             request.getRequestDispatcher("CheckInOutGuests.jsp").forward(request, response);
+//            connection.close();
 
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);

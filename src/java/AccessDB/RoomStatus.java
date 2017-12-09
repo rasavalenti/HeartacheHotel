@@ -43,13 +43,11 @@ public class RoomStatus extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            System.out.println("in try");
+            //String insertSQL;
 
-//            String insertSQL;
-
-//            // The following lines are here to check the connection between sql and netbeans
-//            insertSQL = "insert into customer values (987654, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
-//            System.out.println(insertSQL);
+            // The following lines are here to check the connection between sql and netbeans
+            //insertSQL = "insert into customer values (6523690, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
+            //System.out.println(insertSQL);
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  
@@ -62,25 +60,24 @@ public class RoomStatus extends HttpServlet {
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
-//            statement.execute(insertSQL);
-            statement.execute("set schema 'HeartacheHotelDB';");
-
+            //statement.execute(insertSQL);
+            // doesn't work with this...
+            //statement.execute("set schema 'HeartacheHotelDB';");
+ 
             String status = request.getParameter("roomStatus");
+            System.out.println(status);
 
-            String changeRoomStatus = "UPDATE ";
-            
-            ResultSet resultSet = statement.execute(changeRoomStatus);
-            
-            while (resultSet.next()) {
-                String no_rooms = resultSet.getString(1);
-                request.setAttribute("no_rooms", no_rooms);
+            String changeRoomStatus;
+            for (String room : HotelReception.r_nos) {
+                changeRoomStatus = "UPDATE room SET r_status = '" + status + "' "
+                        + "WHERE r_no = '" + room + "';";
+                System.out.println(changeRoomStatus);
+                statement.execute(changeRoomStatus);
             }
-            
-            
-            
-            
-            //request.getRequestDispatcher("CheckInOutGuests.jsp").forward(request, response);
 
+            out.println("Updates were successful yay for you");
+
+            connection.close();
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }
