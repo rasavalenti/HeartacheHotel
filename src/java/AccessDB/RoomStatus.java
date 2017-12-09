@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -63,21 +64,29 @@ public class RoomStatus extends HttpServlet {
             //statement.execute(insertSQL);
             // doesn't work with this...
             //statement.execute("set schema 'HeartacheHotelDB';");
- 
+
             String status = request.getParameter("roomStatus");
             System.out.println(status);
 
-            String changeRoomStatus;
-            for (String room : HotelReception.r_nos) {
-                changeRoomStatus = "UPDATE room SET r_status = '" + status + "' "
-                        + "WHERE r_no = '" + room + "';";
-                System.out.println(changeRoomStatus);
-                statement.execute(changeRoomStatus);
-            }
+            RequestDispatcher rd;
+            
+            if (status == "C") {
+                rd = request.getRequestDispatcher("PayCheckOut.jsp");
+                rd.forward(request, response);
+            } else {
 
+                String changeRoomStatus;
+                for (String room : HotelReception.r_nos) {
+                    changeRoomStatus = "UPDATE room SET r_status = '" + status + "' "
+                            + "WHERE r_no = '" + room + "';";
+                    System.out.println(changeRoomStatus);
+                    statement.execute(changeRoomStatus);
+                }
+            }
             out.println("Updates were successful yay for you");
 
             connection.close();
+
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }

@@ -130,7 +130,8 @@ public class HotelReception extends HttpServlet {
             
             request.setAttribute("r_nos", r_nos);
             request.getRequestDispatcher("CheckInOutGuests.jsp").forward(request, response);
-//            connection.close();
+            
+            connection.close();
 
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);

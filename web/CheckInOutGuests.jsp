@@ -57,6 +57,7 @@
                         <select id="roomStatus" name="roomStatus">
                             <option value="X">Check-in</option>
                             <option value="C">Check-out</option>
+                            <option value="A">Make available</option>
                         </select>
                     </td>
                     <td>
