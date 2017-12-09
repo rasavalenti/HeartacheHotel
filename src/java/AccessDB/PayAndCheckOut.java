@@ -5,7 +5,6 @@
  */
 package AccessDB;
 
-import static AccessDB.HotelReception.bookRef;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -17,7 +16,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,29 +25,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author qhf13exu
  */
-public class RoomStatus extends HttpServlet {
+public class PayAndCheckOut extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.text.ParseException
-     */
+ 
+    
+    static int b_outstanding;
+    static String b_notes;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        try {
-            //String insertSQL;
 
-            // The following lines are here to check the connection between sql and netbeans
-            //insertSQL = "insert into customer values (6523690, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
-            //System.out.println(insertSQL);
+        try {
+
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  
@@ -62,66 +52,39 @@ public class RoomStatus extends HttpServlet {
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
-            //statement.execute(insertSQL);
-            // doesn't work with this...
             //statement.execute("set schema 'HeartacheHotelDB';");
 
-            String status = request.getParameter("roomStatus");
-            System.out.println(status);
+            String getOutstanding = "SELECT b_outstanding, b_notes, "
+                    + "checkin, checkout, C.r_no, r_status FROM booking AS A "
+                    + "JOIN customer As B ON A.c_no = B.c_no "
+                    + "JOIN roombooking AS C ON A.b_ref = C.b_ref "
+                    + "JOIN room AS D ON C.r_no = D.r_no "
+                    + "WHERE A.b_ref='" + HotelReception.bookRef + "';";
 
-            RequestDispatcher rd;
+            System.out.println(getOutstanding);
+            ResultSet resultSet = statement.executeQuery(getOutstanding);
 
-            System.out.println("in Roomstatus.java");
-            
-            if (status.equals("C")) {
+            while (resultSet.next()) {
 
-                String getDetails = "SELECT A.c_no, c_name, c_email, c_address, "
-                        + "c_cardtype, c_cardexp, c_cardno FROM customer AS A "
-                        + "JOIN booking AS B ON A.c_no=B.c_no WHERE b_ref ='"
-                        + HotelReception.bookRef + "'";
-              
-                ResultSet resultSet;
-                resultSet = statement.executeQuery(getDetails);
+                b_outstanding = resultSet.getInt("b_outstanding");
+                b_notes = resultSet.getString("b_notes");
 
-                String c_no, c_name, c_email, c_address, c_cardtype, c_cardexp, c_cardno;
-
-                while (resultSet.next()) {
-                    c_no = resultSet.getString("c_no");
-                    c_name = resultSet.getString("c_name");
-                    c_email = resultSet.getString("c_email");
-                    c_address = resultSet.getString("c_address");
-                    c_cardtype = resultSet.getString("c_cardtype");
-                    c_cardexp = resultSet.getString("c_cardexp");
-                    c_cardno = resultSet.getString("c_cardno");
-                    
-                    request.setAttribute("c_no", c_no);
-                    request.setAttribute("c_name", c_name);
-                    request.setAttribute("c_email", c_email);
-                    request.setAttribute("c_address", c_address);
-                    request.setAttribute("c_cardtype", c_cardtype);
-                    request.setAttribute("c_cardexp", c_cardexp);
-                    request.setAttribute("c_cardno", c_cardno);
-                }
-
-                rd = request.getRequestDispatcher("PayCheckOut.jsp");
-                rd.forward(request, response);
-            } else {
-
-                System.out.println("in else");
-                String changeRoomStatus;
-                for (String room : HotelReception.r_nos) {
-                    changeRoomStatus = "UPDATE room SET r_status = '" + status + "' "
-                            + "WHERE r_no = '" + room + "';";
-                    System.out.println(changeRoomStatus);
-                    statement.execute(changeRoomStatus);
-                }
-                
-                out.println("Updates were successful yay for you");
+                request.setAttribute("b_outstanding", b_outstanding);
+                request.setAttribute("b_notes", b_notes);
             }
 
+            System.out.println(b_outstanding);
+            System.out.println(b_notes);
+            
+            String payOutstanding = "UPDATE booking SET b_outstanding = 0 "
+                    + "WHERE b_ref=" + HotelReception.bookRef + ";";
+            statement.executeQuery(payOutstanding);
+            
+            connection.close(); 
+            
+            request.getRequestDispatcher("PaymentReceipt.jsp").forward(request, response);
 
-            connection.close();
-
+                    
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }

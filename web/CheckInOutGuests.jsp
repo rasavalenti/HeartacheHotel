@@ -61,7 +61,7 @@
                         </select>
                     </td>
                     <td>
-                        <input type="submit" value="Update">
+                        <input type="submit" value="Update" onclick="javascript:location.href = 'CheckInOutGuests.jsp'">
                     </td>
                 </form>
                 </tr>
