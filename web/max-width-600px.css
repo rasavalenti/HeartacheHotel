@@ -1,14 +1,63 @@
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
     body {
-        background-color: #ebd8bc;
+        background-color: white;
+    }
+    
+    div.Main {
+    position: relative;
+    width: 70%;
+    height: 1000px;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 1%;   
+    padding-bottom: 3%;
+}
+
+div.Main h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+    padding-top: 0;
+}
+
+div.Main p {  
+    text-align: center;
+}
+    
+    .LogoTitle {
+        width: 100%;
+        top: 0;
+    }
+    
+    #MainLogo {
+        display: none;
     }
     
     .Header #TextOptions {
         display: none;
     }
+
+    
+    .Header h1 {
+        font-size: 150%;
+    }
     
     .imageSlides {
         display: none;
+    }
+    
+    .Navigation {
+        max-width: 100%;
+        width: auto;
+        padding-bottom: 0;
+    }
+    
+    .Navigation li {
+        font-size: x-small;
+    }
+    
+    .Navigation li {
+        font-size: x-small;
     }
     
     .AlternativeMain {
@@ -65,10 +114,32 @@
     
     .BookingMain {
         display: inline-block;
+        margin-top: 10%;
         float: bottom;
-        height: 100%;
+        margin-bottom: 40%;
     }
     
+    .BookingMain form {
+        padding-bottom: 2em;
+    }
+    
+    .BookingManageMain {
+        height: 100em;
+        margin-bottom: 20%;
+    }
+    
+    .HousekeepingMain {
+        display: inline-block;
+        margin-top: 10%;
+        float: bottom;
+        margin-bottom: 40%;
+    }
+    
+    .HousekeepingMain form {
+        padding-bottom: 2em;
+    }
+    
+        
     .tab {
         background-color: white;
     }
@@ -78,42 +149,48 @@
         display: inline-block;
     }
     
+    #book label {
+        display: block;
+    }
+    
+    #manage label {
+        display: inline-block;
+    }
+    
+    #book, #manage input {
+        display: block;
+        margin-left: 2em;
+        padding-left: 2em;
+        
+    }
+    
     #book input {
         margin: 1%;
     }
     
     .FindUsMain {
-        max-width: 100%;
-        width: auto;
-        height: 100%;
-        margin-bottom: 130%;
+        height: 60em;
+        margin-bottom: 125%;
     }
     
     #hotelMap {
-        max-width: 100%;
-        width: 70%;
-        height: 60%;
+        width: 20em;
+        height: 30em;
     }
     
     #Lost {
         display: block;
         width: 100%;
     }
-
-    h1 {
-        font-size: 100%;
-        display: none;
-        top: 0;
-        
-    }
     
     .Header img {
-        display: none;
+        max-width: 100%;
+        width: auto;
     }
     
     .ContactUsMain {
-        height: 100%;
-        margin-bottom: 80%;
+        height: 150em;
+        margin-bottom: 100%;
         width: 80%;
     }
     
@@ -130,9 +207,36 @@
         margin-right: auto;
     }
     
+    .AlternativeMain {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+    }
     
+    .Facilities {
+        background-color: #f2d9d9;
+        margin-right: 0;
+        margin-left: 0;
+        padding: 5%;
+        margin-bottom: 3em;
+    }
     
-    #FooterLogo, #SocialMedia, #tripAdviser {
+    .Facilities img, p {
+        display: block;
+        width: 100%;
+        padding-bottom: 1em;
+    }
+    
+    .Facilities p {
+        float: none;
+        text-align: left;
+        width: 15em;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 0;
+    }
+    
+    #FooterLogo, #SocialMedia, #tripAdviser, #FooterCopyright {
         display: none;
     }
     
@@ -147,4 +251,30 @@
     .HousekeepingMain h1 {
         display: block;
     }
+    
+    #roomtype {
+        margin-bottom: 1em;
+    }
+    
+    .ui-widget-content{
+    padding: 1em;
+    background: white;
+    color: black;
+    border: black 2px solid;
 }
+
+.ui-widget-content a {
+    margin: 0.2em;
+    text-align: center;
+    border-left: black 1px solid;
+    padding-left: 0.5em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#WideArea {
+    width: 15em;
+}
+
+}
+
