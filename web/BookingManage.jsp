@@ -19,7 +19,7 @@
         <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
         <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
-        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1500px)" href="min-width-600px.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
 
         <!--External Stylesheets-->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
