@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+/* global rooms */
+
 function switchToManage() {
 
     document.getElementById('book').style.display = 'none';
@@ -115,4 +117,16 @@ function checkOutDate() {
     $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value, maxDate: "+1Y"});
     var minDate = $("#checkOut").datepicker("option", "minDate");
 //    alert(minDate);
+}
+
+// function for showing checked out rooms in table
+function showTables()
+{
+    var table = document.getElementById("roomTable");
+    for (var i = 0; i < rooms.length; i++) {
+        console.log("room[" + i + "]: " + rooms[i]);
+        var tr = table.insertRow(i+1);
+        var td = tr.insertCell(0);
+        td.innerHTML = rooms[i];
+    }
 }

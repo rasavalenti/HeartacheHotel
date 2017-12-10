@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <td>Customer number is:</td>
-                    <td>${c_no}</td>
+                    <td>Bob${c_no}</td>
                 </tr>
                 <tr>
                     <td>Name:</td>

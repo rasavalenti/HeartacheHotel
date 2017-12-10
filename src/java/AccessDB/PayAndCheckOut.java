@@ -53,7 +53,7 @@ public class PayAndCheckOut extends HttpServlet {
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
-            //statement.execute("set schema 'HeartacheHotelDB';");
+            statement.execute("set schema 'HeartacheHotelDB';");
 
             String getOutstanding = "SELECT b_outstanding, b_cost, "
                     + "checkin, checkout, C.r_no, r_status FROM booking AS A "

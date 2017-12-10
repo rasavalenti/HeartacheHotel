@@ -41,12 +41,44 @@
         <url-pattern>/RoomStatus</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>PayAndCheckOut</servlet-name>
+        <servlet-class>AccessDB.PayAndCheckOut</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PayAndCheckOut</servlet-name>
+        <url-pattern>/PayAndCheckOut</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddExtras</servlet-name>
+        <servlet-class>AccessDB.AddExtras</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddExtras</servlet-name>
+        <url-pattern>/AddExtras</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>AddRooms</servlet-name>
         <servlet-class>AccessDB.AddRooms</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddRooms</servlet-name>
         <url-pattern>/AddRooms</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddRooms2</servlet-name>
+        <servlet-class>AccessDB.AddRooms2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddRooms2</servlet-name>
+        <url-pattern>/AddRooms2</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ShowRooms</servlet-name>
+        <servlet-class>AccessDB.ShowRooms</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowRooms</servlet-name>
+        <url-pattern>/ShowRooms</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

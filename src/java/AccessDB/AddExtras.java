@@ -48,7 +48,7 @@ public class AddExtras extends HttpServlet {
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
-            //statement.execute("set schema 'HeartacheHotelDB';");
+            statement.execute("set schema 'HeartacheHotelDB';");
 
             String bookRef = request.getParameter("bookRef");
             request.setAttribute("bookRef", bookRef);

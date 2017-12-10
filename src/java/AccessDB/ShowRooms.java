@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AccessDB;
 
-import static AccessDB.HotelReception.bookRef;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -27,18 +21,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author qhf13exu
  */
-public class RoomStatus extends HttpServlet {
+public class ShowRooms extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.text.ParseException
-     */
+    static int numRooms;
+    static ArrayList<String> roomNums;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
@@ -64,61 +51,38 @@ public class RoomStatus extends HttpServlet {
             Statement statement = connection.createStatement();
             //statement.execute(insertSQL);
             // doesn't work with this...
-            statement.execute("set schema 'HeartacheHotelDB';");
+            //statement.execute("set schema 'HeartacheHotelDB';");
 
-            String status = request.getParameter("roomStatus");
-            System.out.println(status);
-
-            RequestDispatcher rd;
-
-            System.out.println("in Roomstatus.java");
+            ResultSet resultSet;
             
-            if (status.equals("C")) {
-
-                String getDetails = "SELECT A.c_no, c_name, c_email, c_address, "
-                        + "c_cardtype, c_cardexp, c_cardno FROM customer AS A "
-                        + "JOIN booking AS B ON A.c_no=B.c_no WHERE b_ref ='"
-                        + HotelReception.bookRef + "'";
-              
-                ResultSet resultSet;
-                resultSet = statement.executeQuery(getDetails);
-
-                String c_no, c_name, c_email, c_address, c_cardtype, c_cardexp, c_cardno;
-
-                while (resultSet.next()) {
-                    c_no = resultSet.getString("c_no");
-                    c_name = resultSet.getString("c_name");
-                    c_email = resultSet.getString("c_email");
-                    c_address = resultSet.getString("c_address");
-                    c_cardtype = resultSet.getString("c_cardtype");
-                    c_cardexp = resultSet.getString("c_cardexp");
-                    c_cardno = resultSet.getString("c_cardno");
-                    
-                    request.setAttribute("c_no", c_no);
-                    request.setAttribute("c_name", c_name);
-                    request.setAttribute("c_email", c_email);
-                    request.setAttribute("c_address", c_address);
-                    request.setAttribute("c_cardtype", c_cardtype);
-                    request.setAttribute("c_cardexp", c_cardexp);
-                    request.setAttribute("c_cardno", c_cardno);
-                }
-                
-                rd = request.getRequestDispatcher("PayCheckOut.jsp");
-                rd.forward(request, response);
-            } else {
-
-                System.out.println("in else");
-                String changeRoomStatus;
-                for (String room : HotelReception.r_nos) {
-                    changeRoomStatus = "UPDATE room SET r_status = '" + status + "' "
-                            + "WHERE r_no = '" + room + "';";
-                    System.out.println(changeRoomStatus);
-                    statement.execute(changeRoomStatus);
-                }
-                
-                out.println("Updates were successful.");
+            String numCheckedOutRooms = "SELECT COUNT(DISTINCT(rb.r_no)) as num "
+                    + "FROM roombooking rb, room r "
+                    + "WHERE rb.r_no = r.r_no and r_status = 'C'";
+            resultSet = statement.executeQuery(numCheckedOutRooms);
+            
+            while(resultSet.next()){
+                numRooms = resultSet.getInt(1);
             }
-
+            
+            
+            String getCheckedOutRooms = "SELECT DISTINCT(rb.r_no), r.r_status "
+                    + "FROM roombooking rb, room r "
+                    + "WHERE rb.r_no = r.r_no and r_status = 'C' "
+                    + "ORDER BY rb.r_no";
+            resultSet = statement.executeQuery(getCheckedOutRooms);
+            
+            roomNums= new ArrayList();
+            
+            while(resultSet.next()){
+                roomNums.add(resultSet.getString("r_no"));
+            }
+            
+            System.out.println(roomNums);
+           
+            request.setAttribute("roomNums", roomNums);
+            
+            RequestDispatcher rd;
+            request.getRequestDispatcher("HousekeepingShowRooms.jsp").forward(request, response);
 
             connection.close();
 
@@ -175,3 +139,53 @@ public class RoomStatus extends HttpServlet {
     }// </editor-fold>
 
 }
+
+//            String status = request.getParameter("roomStatus");
+//            System.out.println(status);
+//if (status.equals("C")) {
+//
+//                String getDetails = "SELECT A.c_no, c_name, c_email, c_address, "
+//                        + "c_cardtype, c_cardexp, c_cardno FROM customer AS A "
+//                        + "JOIN booking AS B ON A.c_no=B.c_no WHERE b_ref ='"
+//                        + HotelReception.bookRef + "'";
+//              
+//                ResultSet resultSet;
+//                resultSet = statement.executeQuery(getDetails);
+//
+//                String c_no, c_name, c_email, c_address, c_cardtype, c_cardexp, c_cardno;
+//
+//                
+//                
+//                while (resultSet.next()) {
+//                    c_no = resultSet.getString("c_no");
+//                    c_name = resultSet.getString("c_name");
+//                    c_email = resultSet.getString("c_email");
+//                    c_address = resultSet.getString("c_address");
+//                    c_cardtype = resultSet.getString("c_cardtype");
+//                    c_cardexp = resultSet.getString("c_cardexp");
+//                    c_cardno = resultSet.getString("c_cardno");
+//                    
+//                    request.setAttribute("c_no", c_no);
+//                    request.setAttribute("c_name", c_name);
+//                    request.setAttribute("c_email", c_email);
+//                    request.setAttribute("c_address", c_address);
+//                    request.setAttribute("c_cardtype", c_cardtype);
+//                    request.setAttribute("c_cardexp", c_cardexp);
+//                    request.setAttribute("c_cardno", c_cardno);
+//                }
+//
+//                rd = request.getRequestDispatcher("PayCheckOut.jsp");
+//                rd.forward(request, response);
+//            } else {
+//
+//                System.out.println("in else");
+//                String changeRoomStatus;
+//                for (String room : HotelReception.r_nos) {
+//                    changeRoomStatus = "UPDATE room SET r_status = '" + status + "' "
+//                            + "WHERE r_no = '" + room + "';";
+//                    System.out.println(changeRoomStatus);
+//                    statement.execute(changeRoomStatus);
+//                }
+//                
+//                out.println("Updates were successful yay for you");
+//            }
