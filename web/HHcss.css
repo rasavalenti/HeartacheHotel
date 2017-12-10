@@ -737,3 +737,13 @@ div.tab button:hover {
     margin-bottom: 0;
 }
 
+#AddRooms_conf {
+    border-collapse:collapse;
+    border:1px solid black;
+}
+
+#AddRooms_conf td{
+    border:1px solid black;
+    padding: 10px;
+}
+

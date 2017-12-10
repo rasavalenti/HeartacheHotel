@@ -51,9 +51,7 @@ public class CheckDates extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
 
-//The following lines are here to check the connection between sql and netbeans
-//            insertSQL = "insert into customer values (123470, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
-//            System.out.println(insertSQL);
+
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  
@@ -66,23 +64,6 @@ public class CheckDates extends HttpServlet {
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
-//                statement.executeUpdate(insertSQL);
-//            int c_no = (int)(Math.random() * 10000 + 130000);
-//            String forename = request.getParameter("forename");
-//            String surname = request.getParameter("surname");
-//            String email = request.getParameter("email");
-//            String addressline = request.getParameter("addressline");
-//            String city = request.getParameter("city");
-//            String postcode = request.getParameter("postcode");
-//            String card = request.getParameter("usercard");
-//            String month = request.getParameter("month");
-//            String year = request.getParameter("year");
-//            String cardnumber = request.getParameter("cardnumber");
-//
-//            String sqlstatement = "insert into customer values ("+c_no+", '"+forename+" "+surname+"',"+
-//            " '"+email+"', '"+addressline+", "+city+" "+postcode+"',"+
-//            " '"+card+"', '"+month+"/"+year+"', '"+cardnumber+"');";
-//            System.out.println(sqlstatement);
 
             Date date = new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("checkin"));
             checkin = new java.sql.Date(date.getTime());

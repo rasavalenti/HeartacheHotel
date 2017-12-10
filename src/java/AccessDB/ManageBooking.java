@@ -102,8 +102,8 @@ public class ManageBooking extends HttpServlet {
             System.out.println(bookingReferences);
 
             String b_refs = bookingReferences.toString();
-            b_refs = b_refs.substring(2, b_refs.length());
-            b_refs = b_refs.substring(0, b_refs.length() - 2);
+            b_refs = b_refs.substring(1, b_refs.length());
+            b_refs = b_refs.substring(0, b_refs.length() - 1);
 
             int numOfBRefs = bookingReferences.size();
 

@@ -40,6 +40,14 @@
         <servlet-name>RoomStatus</servlet-name>
         <url-pattern>/RoomStatus</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AddRooms</servlet-name>
+        <servlet-class>AccessDB.AddRooms</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddRooms</servlet-name>
+        <url-pattern>/AddRooms</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
