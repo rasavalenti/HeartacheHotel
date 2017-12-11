@@ -76,7 +76,6 @@ public class AddRooms2 extends HttpServlet {
             int availableNumOfRooms = 0;
             while (resultSet.next()) {
                 availableNumOfRooms = resultSet.getInt("COUNT");
-                out.println("The total number of rooms available for the specified date and room type is: " + availableNumOfRooms + " .<br />");
             }
 
             System.out.println("you wanted " + numOfRooms + " rooms");
@@ -157,8 +156,17 @@ public class AddRooms2 extends HttpServlet {
                 rd.forward(request, response);
 
             } else {
+                out.println("<html>\n"
+                        + "    <head>\n"
+                        + "        <title>Try Again</title>\n"
+                        + "        <link rel=\"stylesheet\" type=\"text/css\" href=\"HHcss.css\">\n"
+                        + "\n"
+                        + "    </head>");
+                out.println("<body>");
+                out.println("<div class=\"Main\">");
+                out.println("<h1>Please try again:</h1>");
                 out.println("Sorry, we do not have enough rooms for the specified date.<br />");
-
+                out.println("The total number of rooms available for the specified date and room type is: " + availableNumOfRooms + " .<br />");
                 out.println("The rooms still available for your chosen dates are: <br />");
                 resultSet = statement.executeQuery("select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
                         + "from roombooking rb where checkin <= '" + AddRooms.checkout + "' and checkout >= '" + AddRooms.checkin + "' group by rb.r_no) "
@@ -192,9 +200,12 @@ public class AddRooms2 extends HttpServlet {
                     availableNumOfRooms = resultSet.getInt("COUNT");
                     out.println(availableNumOfRooms + " Premium Twin rooms. <br />");
                 }
-                out.println("Please try booking again. If you need assistance, please contact us <a href=\"ContactUs.html/\">here</a> .");
+                out.println("Please try booking again. If you need assistance, please contact us <a href=\"ContactUs.html\">here</a>.<br/><br/>");
 
                 System.out.println("We don't have anough rooms for the specified date");
+                out.println("<input type=button name=\"Exit_CancelRooms\" value=\"Exit\" onclick=\"javascript:location.href = 'Booking.html'\">");
+                out.println("</div>");
+                out.println("</body>");
             }
 
 //            statement.execute(sqlstatement);

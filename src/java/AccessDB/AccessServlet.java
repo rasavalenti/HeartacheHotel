@@ -170,6 +170,7 @@ public class AccessServlet extends HttpServlet {
             out.println("The total b_cost is: " + b_cost);
             System.out.println("b_cost is: " + b_cost);
 
+            request.setAttribute("b_cost", b_cost);
             request.setAttribute("c_no", c_no);
             request.setAttribute("forename", forename);
             request.setAttribute("surname", surname);

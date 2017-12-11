@@ -671,6 +671,12 @@ div.BookingMain p {
     margin-bottom: 1em;
 }
 
+#book2 fieldset {
+    float: right;
+    width: 30%;
+    display: inline-block;
+}
+
 #manage legend {
     margin: 1em;
 }

@@ -70,6 +70,24 @@
                 </script>
 
             </div>
+            
+            <form id="book2" class="tabcontent" method="POST" action="CheckDates">
+                <fieldset>
+                    <legend>Make a Booking</legend>
+
+                    <label> Check-in: </label><input type="text" name ="checkin" id="checkIn" onchange="checkOutDate();" oninput="this.onchange();">
+                    <label> Check-out: </label><input type="text" name ="checkout" id="checkOut">
+                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();">
+                    <label> Room type: </label><select name="roomtype" id="roomtype">
+                        <option value="std_d">Standard Double</option>
+                        <option value="std_t">Standard Twin</option>
+                        <option value="sup_d">Premium Double</option>
+                        <option value="sup_t">Premium Twin</option>
+                    </select>
+                    <br/>
+                    <input class="FormInput" type="submit" value="Check Availability" onclick="javascript:location.href = 'BookingForm.html'">    
+                </fieldset>
+            </form> 
 
             <div class="previews">
                 <div id="roomPreview" onclick="location.href = 'Rooms.html'">
