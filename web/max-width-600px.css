@@ -2,75 +2,138 @@
     body {
         background-color: white;
     }
-    
+
     div.Main {
-    position: relative;
-    width: 70%;
-    height: 1000px;
-    margin-left: 15%;   
-    margin-right: 15%;   
-    padding-top: 1%;   
-    padding-bottom: 3%;
-}
+        position: relative;
+        width: 70%;
+        height: 800px;
+        margin-left: 15%;   
+        margin-right: 15%;   
+        padding-top: 1%;   
+        padding-bottom: 3%;
+    }
 
-div.Main h2 {
-    font-size: 300%;
-    text-align: center;   
-    padding-bottom: 1%;
-    padding-top: 0;
-}
+    div.Main h2 {
+        font-size: 300%;
+        text-align: center;   
+        padding-bottom: 1%;
+        padding-top: 0;
+    }
 
-div.Main p {  
-    text-align: center;
-}
-    
+    div.Main p {  
+        text-align: center;
+    }
+
     .LogoTitle {
         width: 100%;
         top: 0;
     }
-    
+
     #MainLogo {
         display: none;
     }
-    
+
     .Header #TextOptions {
         display: none;
     }
 
-    
+
     .Header h1 {
         font-size: 150%;
     }
-    
-    .imageSlides {
-        display: none;
+
+    .imageSlides img {
+        max-width: 100%;
+        width: auto;
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding: 0;
     }
     
+    .Welcome {
+        font-size: small;
+    }
+    
+    .imageSlides {
+        width: 70%;
+    }
+
     .Navigation {
         max-width: 100%;
         width: auto;
         padding-bottom: 0;
     }
-    
+
+
+
+    div.ShowRoomsMain {
+        position: relative;
+        width: 80%;
+        height: 60em;
+        margin-left: 15%;   
+        margin-right: 15%;   
+        padding-top: 3%;   
+        padding-bottom: 3%;
+    }
+
+    .RoomsForm {
+        width: 10em;
+        height: 10em;
+    }
+
+    #formDetails {
+        margin-bottom: 1em;
+    }
+
     .Navigation li {
         font-size: x-small;
     }
     
-    .Navigation li {
-        font-size: x-small;
-    }
-    
+    div.AddRoomsConfirmMain {
+    position: relative;
+    width: 100%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+#LastHeaderItem {
+    display: none;
+}
+
+#book2 {
+    display: none;
+}
+
+h2 {
+    margin-top: 2%;
+}
+
+div.AddRoomsConfirmMain table { 
+    width: 12em;
+    height: 10em;
+    display: block;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
     .AlternativeMain {
         max-width: 100%;
         width: 50%;
     }
-    
+
     .ReviewMain {
         display: block;
         height: 100%;
         margin-bottom: 20%;
     }
-    
+
     #ReviewForm {
         max-height: 100%;
         height: auto;
@@ -82,16 +145,16 @@ div.Main p {
         border: none;
         position: absolute;
     }
-    
+
     #ReviewForm input {
         position: relative;
         display: inline-block;
     }
-    
+
     .ReviewPrint {
         display: none;
     }
-    
+
     .Rooms, .Facilities, .LocalAttractions {
         width: 100%;
         padding: 10%;
@@ -99,117 +162,117 @@ div.Main p {
         margin-right: auto;
         background-color: #a86763; 
     }
-    
+
     .Rooms, .Facilities, .LocalAttractions img {
         width: 100%;
     }
-    
+
     .Rooms, .Facilities, .LocalAttractions p {
         width: 100%;
     }
-    
+
     .Rooms, .Facilities, .LocalAttractions a {
         margin: 5%;
     }
-    
+
     .BookingMain {
         display: inline-block;
         margin-top: 10%;
         float: bottom;
         margin-bottom: 40%;
     }
-    
+
     .BookingMain form {
         padding-bottom: 2em;
     }
-    
+
     .BookingManageMain {
         height: 120em;
         margin-bottom: 20%;
     }
-    
+
     .HousekeepingMain {
         display: inline-block;
         margin-top: 10%;
         float: bottom;
         margin-bottom: 40%;
     }
-    
+
     .HousekeepingMain form {
         padding-bottom: 2em;
     }
-    
+
     .BookingReceiptMain {
         width: 100%;
     }
-    
+
     #receipt {
         width: 12em;
         height: 9em;
     }
-    
+
     .PayCheckOutMain form {
         margin-top: 1em;
     }
-    
+
     #formDetails {
         width: 14em;
     }
-        
+
     .tab {
         background-color: white;
     }
-    
+
     #book, #manage {
         background-color: white;
         display: inline-block;
     }
-    
+
     #book label {
         display: block;
     }
-    
+
     #manage label {
         display: inline-block;
     }
-    
+
     #book, #manage input {
         display: block;
         margin-left: 2em;
         padding-left: 2em;
-        
+
     }
-    
+
     #book input {
         margin: 1%;
     }
-    
+
     .FindUsMain {
         height: 60em;
         margin-bottom: 125%;
     }
-    
+
     #hotelMap {
         width: 20em;
         height: 30em;
     }
-    
+
     #Lost {
         display: block;
         width: 100%;
     }
-    
+
     .Header img {
         max-width: 100%;
         width: auto;
     }
-    
+
     .ContactUsMain {
         height: 150em;
         margin-bottom: 100%;
         width: 80%;
     }
-    
+
     #AlternativeContact, #EnquiryForm {
         display: block;
         margin: 5%;
@@ -222,13 +285,13 @@ div.Main p {
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     .AlternativeMain {
         margin-left: 0;
         margin-right: 0;
         padding-left: 0;
     }
-    
+
     .Facilities {
         background-color: #f2d9d9;
         margin-right: 0;
@@ -236,13 +299,13 @@ div.Main p {
         padding: 5%;
         margin-bottom: 3em;
     }
-    
+
     .Facilities img, p {
         display: block;
         width: 100%;
         padding-bottom: 1em;
     }
-    
+
     .Facilities p {
         float: none;
         text-align: left;
@@ -251,7 +314,7 @@ div.Main p {
         margin-right: auto;
         padding-bottom: 0;
     }
-    
+
     .Rooms {
         background-color: #f2d9d9;
         margin-right: 0;
@@ -259,13 +322,13 @@ div.Main p {
         padding: 5%;
         margin-bottom: 3em;
     }
-    
+
     .Rooms img, p {
         display: block;
         width: 100%;
         padding-bottom: 1em;
     }
-    
+
     .Rooms p {
         float: none;
         text-align: left;
@@ -274,7 +337,7 @@ div.Main p {
         margin-right: auto;
         padding-bottom: 0;
     }
-    
+
     .LocalAttractions {
         background-color: #f2d9d9;
         margin-right: 0;
@@ -282,13 +345,13 @@ div.Main p {
         padding: 5%;
         margin-bottom: 3em;
     }
-    
+
     .LocalAttractions img, p {
         display: block;
         width: 100%;
         padding-bottom: 1em;
     }
-    
+
     .LocalAttractions p {
         float: none;
         text-align: left;
@@ -297,46 +360,46 @@ div.Main p {
         margin-right: auto;
         padding-bottom: 0;
     }
-    
+
     #FooterLogo, #SocialMedia, #tripAdviser, #FooterCopyright {
         display: none;
     }
-    
+
     .Footer {
         height: auto;
     }
-    
+
     .ReceptionMain h1 {
         display: block;
     }
-    
+
     .HousekeepingMain h1 {
         display: block;
     }
-    
+
     #roomtype {
         margin-bottom: 1em;
     }
-    
+
     .ui-widget-content{
-    padding: 1em;
-    background: white;
-    color: black;
-    border: black 2px solid;
-}
+        padding: 1em;
+        background: white;
+        color: black;
+        border: black 2px solid;
+    }
 
-.ui-widget-content a {
-    margin: 0.2em;
-    text-align: center;
-    border-left: black 1px solid;
-    padding-left: 0.5em;
-    margin-top: 0;
-    margin-bottom: 0;
-}
+    .ui-widget-content a {
+        margin: 0.2em;
+        text-align: center;
+        border-left: black 1px solid;
+        padding-left: 0.5em;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 
-#WideArea {
-    width: 15em;
-}
+    #WideArea {
+        width: 15em;
+    }
 
 }
 

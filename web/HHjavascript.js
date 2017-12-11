@@ -109,13 +109,26 @@ function saveBookingPage()
 //Calendar datepicker for booking
 $(function () {
     $("#checkIn").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
+    $("#checkInHP").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
     //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
 });
 
 function checkOutDate() {
 //    alert("Check out date" + document.getElementById("checkIn").value);
-    $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value, maxDate: "+1Y"});
+    $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkInHP").value, maxDate: "+1Y"});
     var minDate = $("#checkOut").datepicker("option", "minDate");
+//    alert(minDate);
+}
+
+//$(function () {
+//    $("#checkInHP").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
+//    //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
+//});
+
+function checkOutDate2() {
+//    alert("Check out date" + document.getElementById("checkIn").value);
+    $("#checkOutHP").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkInHP").value, maxDate: "+1Y"});
+    var minDate = $("#checkOutHP").datepicker("option", "minDate");
 //    alert(minDate);
 }
 

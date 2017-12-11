@@ -17,7 +17,7 @@
         <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
         <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
-        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1500px)" href="min-width-600px.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
 
         <!--External Stylesheets-->
         <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -32,7 +32,6 @@
     <body>
 
         <div class="Header">
-            <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
                 <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>

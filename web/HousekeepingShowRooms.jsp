@@ -8,17 +8,28 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+        <!--Metadata-->
+        <title>Rooms</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
+        
+        <!--External style sheets-->
         <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+        
+        <!--JavaScript Links-->
         <script type ="text/javascript"></script>
         <script src ="HHjavascript.js"></script>
-        <title>Rooms</title>
+        
     </head>
     <body>
         
         <div class="Header">
-            <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
                 <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
@@ -29,15 +40,16 @@
         </div>
         
         <div class="ShowRoomsMain">
-        <h1>Checked out rooms</h1>
+        <h2>Checked out rooms</h2>
+        <div class="RoomsForm">
         <form method="POST" name="housekeepingUpdate" id="housekeepingUpdate" action="">
-            <table>
+            <table id="showRooms">
                 <tr>
-                    <td colspan="2"><input type="button" name="refresh" value="Refresh" id="refresh" onclick="ShowRooms.java"></td>                   
+                    <td colspan="2"><input class="FormOutput" type="button" name="refresh" value="Refresh" id="refresh" onclick="ShowRooms.java"></td>                   
                 </tr>
                 <tr>
-                    <td><input type="text" name="roomNumber" id="roomNumber"</td>
-                    <td><input type="submit" value="Change" name="submitHousekeeping" id="submitHousekeeping"</td>
+                    <td><input class="FormOutput" type="text" name="roomNumber" id="roomNumber"</td>
+                    <td><input class="FormOutput" type="submit" value="Change" name="submitHousekeeping" id="submitHousekeeping"</td>
                 </tr>
             </table>
         </form>
@@ -50,6 +62,7 @@
                     showTables();
             </script>
         </table>
+        </div>
         </div>
                     
                     <div class="Footer">

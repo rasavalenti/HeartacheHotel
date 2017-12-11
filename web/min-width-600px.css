@@ -17,6 +17,30 @@
         margin-left: 0;
     }
     
+    #formDetails {
+        margin-bottom: 2em;
+    }
+    
+    div.AddRoomsConfirmMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.AddRoomsConfirmMain table { 
+    width: 25em;
+    height: 10em;
+    display: block;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+    
     #EnquiryForm {
         padding-left: 0;
         margin-left: 0;
@@ -31,6 +55,53 @@
     #AlternativeContact p {
         width: 10em;
     }
+    
+    .HomepageBooking {
+        display: none;
+    }
+    
+    #Welcome {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .imageSlides {
+        display: block;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .imageSlides img {
+        max-width: 100%;
+        width: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    div.Main {
+        height: 900px;
+    }
+    
+    div.ShowRoomsMain {
+    position: relative;
+    width: 80%;
+    height: 60em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+.RoomsForm {
+    width: 15em;
+    height: 10em;
+}
         
     .tab {
         background-color: white;

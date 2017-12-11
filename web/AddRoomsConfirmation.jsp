@@ -8,19 +8,29 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+        <!--Metadata-->
         <title>Booking Form</title>
+        
+        <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
+        
+        <!--External stylesheets-->
         <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+        
+        <!--JavaScript Links-->
         <script type ="text/javascript"></script>
         <script src ="HHjavascript.js"></script>
-
+        
     </head>
     <body>
         
         <div class="Header">
-            <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
-                <h1>The Heartache Hotel</h1>
+                <h2>The Heartache Hotel</h2>
                 <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
@@ -28,8 +38,8 @@
             </div>
         </div>
         
-        <div class="Main">       
-            <h1> Changes after adding rooms </h1>
+        <div class="AddRoomsConfirmMain">       
+            <h2> Changes after adding rooms </h2>
             <table id="AddRooms_conf">
                 
                 <tr><td>&nbsp;</td><td><strong>Before:</strong></td><td><strong>Now:</strong></td></tr>

@@ -63,6 +63,11 @@ div.Header {
 div.tab {
     overflow: hidden;
     background-color: #f1f1f1; 
+    color: black;
+}
+
+.BookingMain a, a:visited, a:hover {
+    color: black;
 }
 
 /*How our text options box will show onscreen*/
@@ -130,8 +135,9 @@ div.Navigation li {
 /*CSS for Home*/
 div.Main {
     position: relative;
+    
     width: 70%;
-    height: 1000px;
+    height: 1200px;
     margin-left: 15%;   
     margin-right: 15%;   
     padding-top: 3%;   
@@ -149,6 +155,8 @@ div.Main h2 {
 div.Main p {  
     text-align: center;
 }
+
+
 
 /*DIV for alternative main where main CSS does not work*/
 div.AlternativeMain {
@@ -508,6 +516,34 @@ div.ReceptionPortalMain input {
     margin: 2%;
 }
 
+div.ShowRoomsMain {
+    position: relative;
+    width: 50%;
+    height: 60em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+/*CSS for BookingManage header*/
+div.ShowRoomsMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+/*CSS for BookingManage table elements*/
+.RoomsForm {
+    margin-left: auto;
+    width: 60%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
 div.BookingReceiptMain {
     position: relative;
     width: 70%;
@@ -585,6 +621,40 @@ div.BookingReferenceMain input {
     margin: 2%;
 }
 
+div.AddRoomsMain {
+    position: relative;
+    width: 60%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.AddRoomsMain h2 {
+    font-size: 300%;  
+    padding-bottom: 1%;
+}
+
+div.AddRoomsMain table { 
+    width: 30%;
+    display: block;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+div.AddRoomsMain a {
+    text-decoration: underline;
+    color: grey;
+    font-size: x-large;
+}
+
+div.AddRoomsMain input {
+    margin-top: 2%;
+}
+
 #ReceiptTitle {
     text-decoration: underline;
 }
@@ -632,6 +702,30 @@ div.PayCheckOutMain input {
     background-color: grey;
 }
 
+div.AddRoomsConfirmMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.AddRoomsConfirmMain h2 {
+    font-size: 300%;  
+    padding-bottom: 1%;
+}
+
+div.AddRoomsConfirmMain table { 
+    width: 30%;
+    display: block;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
 div.BookingMain {
     position: relative;
     width: 70%;
@@ -671,11 +765,44 @@ div.BookingMain p {
     margin-bottom: 1em;
 }
 
-#book2 fieldset {
+#Welcome {
+    font-size: x-large;
+}
+
+.HomepageHeaders {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.HomepageHeaders img {
+    width: 16%;
+    height: auto;
+}
+
+.HomepageBooking {
     float: right;
     width: 30%;
+    font-size: x-large;
+    margin-right: 5%;
     display: inline-block;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
+
+#book2 fieldset {
+    padding-top: 10%;
+    padding-bottom: 2%;
+    padding-left: 1em;
+    
+}
+
+#book2 input {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+
 
 #manage legend {
     margin: 1em;
@@ -689,6 +816,30 @@ div.BookingMain p {
 
 .FormInput {
     margin: 1em;
+}
+
+div.BookingCancelMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.BookingCancelMain h2 {
+    font-size: 300%;  
+    padding-bottom: 1%;
+}
+
+div.BookingCancelMain table { 
+    width: 50%;
+    display: block;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
 }
 
 div.FindUsMain {
@@ -734,22 +885,7 @@ div.Booking {
     margin-right: 1%;
 }
 
-div.Previews {
-    width: 75%;    
-    margin: 0 auto;    
-    padding-top: 5%;   
-    padding-bottom: 5%;
-}
 
-div.Previews img { 
-    display: inline-block;
-    position: absolute; 
-    margin: auto; 
-    top: 0;  
-    left: 0;  
-    right: 0;  
-    bottom: 0;
-}
 
 div.Footer {  
     background-color: #666666; 
@@ -1038,26 +1174,27 @@ div.tab button:hover {
 /* Picture Slideshow */
 .imageSlides {
     padding: 1em;
-    height: 500px;
+    margin-left: 5%;
+    width: 50%;
     position: relative;
+    display: inline-block;
+}
+
+.FarLeft a {
+    border-left: none;
 }
 
 .slide {
     position: absolute;
-    max-height: 100%;
+    max-width: 100%;
+    width: auto;
     opacity: 0;
     transition: 1s;
     padding: 1em;
 }
 
 /* Preview hover images */
-.previews {
-    position: relative;
-    display: flex;
-    width: 200pt;
-    height: 200pt;
-    text-align: center;
-}
+
 
 .text {
     position: absolute;
@@ -1075,17 +1212,6 @@ div.tab button:hover {
     opacity: 1;
     max-height: 100%;
     max-width: 100%;
-}
-
-.previews:hover .image {
-    opacity: 0.4;
-    transition: 0.3s;
-}
-
-.previews:hover .text {
-    opacity: 1;
-    border: solid;
-    transition: opacity 0.3s ease-in;
 }
 
 #ReviewForm {
@@ -1140,6 +1266,7 @@ div.tab button:hover {
 
 .ui-widget-content a {
     margin: 0.2em;
+    color: black;
     text-align: center;
     border-left: black 1px solid;
     padding-left: 0.5em;

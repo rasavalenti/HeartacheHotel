@@ -6,13 +6,25 @@
 
 <html>
     <head>
+        
+        <!--Metadata-->
         <title>Booking Form</title>
+        
+        <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
+        
+        <!--External Stylesheets-->
         <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+        
+        <!--JavaScript Links-->
         <script type ="text/javascript"></script>
         <script src ="HHjavascript.js"></script>
-
+        
     </head>
+    
     <body>
         
         <div class="Header">
@@ -26,7 +38,7 @@
             </div>
         </div>
         
-        <div class="Main">       
+        <div class="AddRoomsMain">       
             <h1> Add Rooms to an Existing Booking </h1>
             <table id="formDetails">
                 
@@ -43,16 +55,16 @@
                 
             </table>
                 
-                <form method="POST" name="addRoomsForm" action="AddRooms2">
+                <form id="addRoomsForm" method="POST" name="addRoomsForm" action="AddRooms2">
                         
-                        <label> Number of rooms you would like to add: </label><input type="number" name="add_r_num" id="add_r_num">
-
+                    <label> Number of rooms you would like to add: </label><input type="number" name="add_r_num" id="add_r_num"><br>
+                    <br/>
                         <label> Room type: </label><select name="add_r_roomtype" id="add_r_roomtype">
                         <option value="std_d">Standard Double</option>
                         <option value="std_t">Standard Twin</option>
                         <option value="sup_d">Premium Double</option>
                         <option value="sup_t">Premium Twin</option>
-                        </select>
+                        </select> <br/>
 
                
                     <input class="FormInput" type="submit" value="Add Rooms">

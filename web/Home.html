@@ -25,7 +25,6 @@
 
     <body>
         <div class="Header">
-            <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
                 <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
@@ -37,7 +36,7 @@
 
         <div class="Navigation">
             <ul>
-                <li><a href="Home.html">Home</a></li>
+                <li class="FarLeft"><a href="Home.html">Home</a></li>
                 <li><a href="Booking.html">Bookings</a></li>
                 <li><a href="Rooms.html">Rooms</a></li>
                 <li><a href="Facilities.html">Facilities</a></li>
@@ -50,12 +49,22 @@
 
         <div class="Main">
 
-            <div> 
+            <div>
+                
+                <div class="HomepageHeaders">
+                    <img src="images\EateriesNor.png" alt="Table" />
+                    <img src="images\Breakfast.png" alt="Breakfast" />
+                    <img src="images\Double2.png" alt="Double Room" />
+                    <img src="images\Norfolk1.png" alt="NorfolkWindmill" />
+                    <img src="images\Twin1.png" alt="Twin room" />
+                    <img id="LastHeaderItem" src="images\NorCathedral.png" alt="Cathedral" />
+                </div>
+                
                 <h2>Welcome to the Heartache Hotel</h2>
                 <p id="Welcome">
-                    <i>"The Heartache Hotel is situated in the heart of Norfolk.<br>
-                        We're perfectly placed for a cosy weekend away, or getting to local business meetings.<br>
-                        Check our availability, then come and see us soon!"</i>
+                    <i>"Located in the heart of Norfolk, the Heartache Hotel is perfect for any occasion.<br> 
+                        Be it a cosy weekend escape or a busy business trip, the Heartache Hotel is available<br>
+                        all year round. We're looking forward to seeing you soon!"</i>
                 </p>
             </div>
 
@@ -71,13 +80,14 @@
 
             </div>
             
+            <div class="HomepageBooking">
             <form id="book2" class="tabcontent" method="POST" action="CheckDates">
                 <fieldset>
                     <legend>Make a Booking</legend>
 
-                    <label> Check-in: </label><input type="text" name ="checkin" id="checkIn" onchange="checkOutDate();" oninput="this.onchange();">
-                    <label> Check-out: </label><input type="text" name ="checkout" id="checkOut">
-                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();">
+                    <label> Check-in: </label><input type="text" name ="checkin" id="checkInHP" onchange="checkOutDate2();" oninput="this.onchange();"><br>
+                    <label> Check-out: </label><input type="text" name ="checkout" id="checkOutHP"><br>
+                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();"><br>
                     <label> Room type: </label><select name="roomtype" id="roomtype">
                         <option value="std_d">Standard Double</option>
                         <option value="std_t">Standard Twin</option>
@@ -85,24 +95,9 @@
                         <option value="sup_t">Premium Twin</option>
                     </select>
                     <br/>
-                    <input class="FormInput" type="submit" value="Check Availability" onclick="javascript:location.href = 'BookingForm.html'">    
+                    <input class="HomepageFormInput" type="submit" value="Check Availability" onclick="javascript:location.href = 'BookingForm.html'">    
                 </fieldset>
-            </form> 
-
-            <div class="previews">
-                <div id="roomPreview" onclick="location.href = 'Rooms.html'">
-                    <img src="images\room1.jpg" class="image" alt="dog" />
-                    <div class="text">
-                        Rooms
-                    </div>
-                </div>
-
-                <!--                <div id="facilitiesPreview" onclick="location.href = 'Facilities.html'">
-                                    <img src="garden.jpg" class="image" alt="garden">
-                                    <div class="text">
-                                        Facilities
-                                    </div>
-                                </div>-->
+            </form>
             </div>
 
         </div>
