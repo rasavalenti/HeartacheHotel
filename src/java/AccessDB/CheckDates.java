@@ -43,14 +43,12 @@ public class CheckDates extends HttpServlet {
     static java.sql.Date checkout;
     static String roomtype;
     static int numOfRooms;
-    
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-
 
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
@@ -86,65 +84,73 @@ public class CheckDates extends HttpServlet {
                     + "and r_class='" + roomtype + "' group by r.r_class";
             System.out.println(query);
             ResultSet resultSet = statement.executeQuery(query);
-            
-//            response.sendRedirect("BookingForm.html");
 
+//            response.sendRedirect("BookingForm.html");
             int availableNumOfRooms = 0;
             while (resultSet.next()) {
                 availableNumOfRooms = resultSet.getInt("COUNT");
-                out.println("The total number of rooms available for the specified date and room type is: " + availableNumOfRooms + " .<br />");
             }
-            
 
             System.out.println("you wanted " + numOfRooms + " rooms");
             System.out.println("we have " + availableNumOfRooms + " rooms");
-            
+
             RequestDispatcher rd;
-            
 
             if (availableNumOfRooms - numOfRooms >= 0) {
                 rd = request.getRequestDispatcher("BookingForm.html");
                 rd.forward(request, response);
                 System.out.println("We have enough rooms");
             } else {
+                out.println("<html>\n"
+                        + "    <head>\n"
+                        + "        <title>Try Again</title>\n"
+                        + "        <link rel=\"stylesheet\" type=\"text/css\" href=\"HHcss.css\">\n"
+                        + "\n"
+                        + "    </head>");
+                out.println("<body>");
+                out.println("<div class=\"Main\">");
+                out.println("<h1>Please try again:</h1>");
                 out.println("Sorry, we do not have enough rooms for the specified date.<br />");
-                
+                out.println("The total number of rooms available for the specified date and room type is: " + availableNumOfRooms + " .<br />");
                 out.println("The rooms still available for your chosen dates are: <br />");
                 resultSet = statement.executeQuery("select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
-                    + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
-                    + "and r_class='std_d' group by r.r_class");
+                        + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
+                        + "and r_class='std_d' group by r.r_class");
                 while (resultSet.next()) {
-                availableNumOfRooms = resultSet.getInt("COUNT");
-                
-                out.println(availableNumOfRooms + " Standard Double rooms, <br />");
-            }
-                
-            resultSet = statement.executeQuery("select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
-                    + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
-                    + "and r_class='std_t' group by r.r_class");
+                    availableNumOfRooms = resultSet.getInt("COUNT");
+
+                    out.println(availableNumOfRooms + " Standard Double rooms, <br />");
+                }
+
+                resultSet = statement.executeQuery("select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
+                        + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
+                        + "and r_class='std_t' group by r.r_class");
                 while (resultSet.next()) {
-                availableNumOfRooms = resultSet.getInt("COUNT");
-                out.println(availableNumOfRooms + " Standard Twin rooms, <br />");
-            }
-                
-            resultSet = statement.executeQuery("select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
-                    + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
-                    + "and r_class='sup_d' group by r.r_class");
+                    availableNumOfRooms = resultSet.getInt("COUNT");
+                    out.println(availableNumOfRooms + " Standard Twin rooms, <br />");
+                }
+
+                resultSet = statement.executeQuery("select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
+                        + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
+                        + "and r_class='sup_d' group by r.r_class");
                 while (resultSet.next()) {
-                availableNumOfRooms = resultSet.getInt("COUNT");
-                out.println(availableNumOfRooms + " Premium Double rooms, <br />");
-            }
-                
-            resultSet = statement.executeQuery("select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
-                    + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
-                    + "and r_class='sup_t' group by r.r_class");
+                    availableNumOfRooms = resultSet.getInt("COUNT");
+                    out.println(availableNumOfRooms + " Premium Double rooms, <br />");
+                }
+
+                resultSet = statement.executeQuery("select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
+                        + "from roombooking rb where checkin <= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
+                        + "and r_class='sup_t' group by r.r_class");
                 while (resultSet.next()) {
-                availableNumOfRooms = resultSet.getInt("COUNT");
-                out.println(availableNumOfRooms + " Premium Twin rooms. <br />");
-            }
-                out.println("Please try booking again. If you need assistance, please contact us <a href=\"ContactUs.html/\">here</a> .");
-                
+                    availableNumOfRooms = resultSet.getInt("COUNT");
+                    out.println(availableNumOfRooms + " Premium Twin rooms. <br />");
+                }
+                out.println("Please try booking again. If you need assistance, please contact us <a href=\"ContactUs.html\">here</a>.<br/><br/>");
+
                 System.out.println("We don't have anough rooms for the specified date");
+                out.println("<input type=button name=\"Exit_CancelRooms\" value=\"Exit\" onclick=\"javascript:location.href = 'Booking.html'\">");
+                out.println("</div>");
+                out.println("</body>");
             }
 
 //            statement.execute(sqlstatement);

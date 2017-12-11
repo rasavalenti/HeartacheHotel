@@ -66,31 +66,26 @@
 
             </table>
             <br/>
+
             <button class="FormInput" onclick="switchToAddRooms()">Add more rooms</button> 
-            <button class="FormInput" onclick="switchToEditDetails()">Edit personal details</button>
-            <button class="FormInput" onclick="switchToCancelBooking()">Cancel booking</button> 
+            <button class="FormInput" onclick="switchToCancelBooking()">Cancel booking</button>  
             <br/><br/>
 
-            <form id="m_manageBooking" class="tabcontent2">
+            <form id="m_manageBooking" class="tabcontent2" action="AddRooms">
                 <fieldset>
                     <legend>Add rooms to an existing booking:</legend>
                     <label>Enter booking reference: </label><input type="text" name="m_b_ref" id="m_b_ref">
-
+                    <br/>
+                    <input class="FormInput" type="submit" value="Add rooms">  
                 </fieldset>
             </form> 
 
-            <form id="m_cancelBooking" class="tabcontent2">
+            <form id="m_cancelBooking" class="tabcontent2" action="Cancel Booking">
                 <fieldset>
                     <legend>Cancel an existing booking:</legend>
                     <label>Enter booking reference: </label><input type="text" name="c_b_ref" id="c_b_ref">
-                </fieldset>
-            </form>  
-
-            <form id="m_editDetails" class="tabcontent2">
-                <fieldset>
-                    <legend>Edit personal details:</legend>
-                    <label>New email: </label><input type="text" name="c_email" id="c_email">
-
+                    <br/>
+                    <input class="FormInput" type="submit" value="Cancel booking">  
                 </fieldset>
             </form>  
         </div>
