@@ -1,5 +1,12 @@
-<!DOCTYPE html>
+<%-- 
+    Document   : BookingForm
+    Created on : 11-Dec-2017, 20:29:38
+    Author     : fvq13ndu
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
 
@@ -37,10 +44,20 @@
         </div>
 
         <div class="BookingFormMain">
+
             <form method="POST" name="Form1" action="AccessServlet">
 
                 <fieldset>
                     <table id="formDetails">
+                        <tr><td colspan="2"><strong>Booking details</strong></td></tr>
+                        <tr><td><label> Check-in: </label></td> <td>${checkin}</td></tr>
+
+                        <tr><td><label> Check-out: </label></td> <td>${checkout}</td></tr>
+
+                        <tr><td><label> Number of rooms: </label> </td> <td>${numOfRooms}</td></tr>
+                        <tr><td><label> Room type: </label> </td> <td>${roomtypename}</td></tr>
+                        <tr><td><label> Total: </label> </td> <td>£ ${b_cost}</td></tr>
+                        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
                         <tr><td colspan="2"><strong>Personal details</strong></td></tr>
                         <tr><td><label for="forename"> Forename: </label></td> <td><input type="text" name="forename" id="forename"></td></tr>
 
@@ -110,8 +127,10 @@
 
                     </table>
                     <br/>
-                    <input class="FormInput" type="submit" value="Submit" onclick="javascript:location.href = 'BookingConfirmation.jsp'">
+                    <input class="FormInput" type="submit" value="Book" onclick="javascript:location.href = 'BookingConfirmation.jsp'">
                     <input class="FormInput" type="reset" value="Reset" id="reset_button">
+                    <input class="FormInput" type="button" value="Cancel" onclick="javascript:location.href = 'Booking.html'">
+                    
 
                 </fieldset>    
             </form>  

@@ -151,26 +151,13 @@ public class AccessServlet extends HttpServlet {
                 statement.execute(roomBooking);
             }
 
-            String numberOfDaysStayed = "SELECT(SELECT checkout from roombooking "
-                    + "where b_ref='" + b_ref + "' and r_no='" + r_no + "') - (SELECT checkin from "
-                    + "roombooking where b_ref='" + b_ref + "' and r_no='" + r_no + "') as stay_days;";
-            resultSet = statement.executeQuery(numberOfDaysStayed);
-            int daysStay = 0;
-            while (resultSet.next()) {
-                daysStay = resultSet.getInt("stay_days");
-                out.println("The number of days you are staying is: " + daysStay);
-            }
-            System.out.println("The number of days you are staying is: " + daysStay);
-
-            double b_cost = price * daysStay * numOfRooms;
-
-            String updateBooking = "update booking set b_cost=" + b_cost + ", b_outstanding=" + b_cost + ", b_notes='" + b_notes + "' where b_ref=" + b_ref + ";";
+            String updateBooking = "update booking set b_cost=" + CheckDates.b_cost + ", b_outstanding=" + CheckDates.b_cost + ", b_notes='" + b_notes + "' where b_ref=" + b_ref + ";";
 
             statement.execute(updateBooking);
-            out.println("The total b_cost is: " + b_cost);
-            System.out.println("b_cost is: " + b_cost);
+            out.println("The total b_cost is: " + CheckDates.b_cost);
+            System.out.println("b_cost is: " + CheckDates.b_cost);
 
-            request.setAttribute("b_cost", b_cost);
+            request.setAttribute("b_cost", CheckDates.b_cost);
             request.setAttribute("c_no", c_no);
             request.setAttribute("forename", forename);
             request.setAttribute("surname", surname);
@@ -187,24 +174,7 @@ public class AccessServlet extends HttpServlet {
             request.setAttribute("b_ref", b_ref);
             request.setAttribute("checkin", checkin);
             request.setAttribute("checkout", checkout);
-
-            String roomtypename = null;
-            switch (roomtype) {
-                case "std_t":
-                    roomtypename = "Standard Twin";
-                    break;
-                case "std_d":
-                    roomtypename = "Standard Double";
-                    break;
-                case "sup_d":
-                    roomtypename = "Premium Double";
-                    break;
-                case "sup_t":
-                    roomtypename = "Premium Twin";
-                    break;
-            }
-
-            request.setAttribute("roomtype", roomtypename);
+            request.setAttribute("roomtype", CheckDates.roomtypename);
             request.setAttribute("numofrooms", numOfRooms);
             request.getRequestDispatcher("BookingConfirmation.jsp").forward(request, response);
 

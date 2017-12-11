@@ -43,6 +43,8 @@ public class CheckDates extends HttpServlet {
     static java.sql.Date checkout;
     static String roomtype;
     static int numOfRooms;
+    static double b_cost;
+    static String roomtypename;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
@@ -91,13 +93,55 @@ public class CheckDates extends HttpServlet {
                 availableNumOfRooms = resultSet.getInt("COUNT");
             }
 
+            String pricePerNight = "select price from rates where r_class='" + roomtype + "';";
+            System.out.println(pricePerNight);
+            resultSet = statement.executeQuery(pricePerNight);
+            double price = 0;
+            while (resultSet.next()) {
+                price = resultSet.getDouble("price");
+            }
+            System.out.println("The price per night is: " + price);
+
+            long diff = Math.abs(date2.getTime() - date.getTime());
+            long diffDays = diff / (24 * 60 * 60 * 1000);
+            System.out.println("From CheckDates servlet, diffDays are: " + diffDays);
+            
+            long daysStay = diffDays;
+            b_cost = price * daysStay * numOfRooms;
+            
+            System.out.println(b_cost);
+            
+            request.setAttribute("b_cost", b_cost);
+            
+            switch (roomtype) {
+                case "std_t":
+                    roomtypename = "Standard Twin";
+                    break;
+                case "std_d":
+                    roomtypename = "Standard Double";
+                    break;
+                case "sup_d":
+                    roomtypename = "Premium Double";
+                    break;
+                case "sup_t":
+                    roomtypename = "Premium Twin";
+                    break;
+            }
+
+            request.setAttribute("roomtypename", roomtypename);
+            request.setAttribute("checkin", checkin);
+            request.setAttribute("checkout", checkout);
+            request.setAttribute("numOfRooms", numOfRooms);
+            request.setAttribute("b_cost", b_cost);
+            
+
             System.out.println("you wanted " + numOfRooms + " rooms");
             System.out.println("we have " + availableNumOfRooms + " rooms");
 
             RequestDispatcher rd;
 
             if (availableNumOfRooms - numOfRooms >= 0) {
-                rd = request.getRequestDispatcher("BookingForm.html");
+                rd = request.getRequestDispatcher("BookingForm.jsp");
                 rd.forward(request, response);
                 System.out.println("We have enough rooms");
             } else {
