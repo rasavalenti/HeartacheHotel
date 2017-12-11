@@ -1,77 +1,88 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<title>Contact Us</title>
-                <link rel = "stylesheet"
-                type = "text/css"
-                href = "HHcss.css" />
-                <link rel="stylesheet" media="(max-width: 600px)" href="max-width-600px.css">
-                <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
-	</head>
-	
-	<body>
-	
-	<div class="Header">
+    <head>
+
+        <!--Metadata-->
+        <title>Contact Us</title>
+        <meta name="description" content="Heartache contact" />
+        <meta name="keywords" content="phone, form, contact, email, " />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Heartache Hotel staff" />
+
+        <!--Style sheets-->
+        <link rel = "stylesheet" type = "text/css" href = "HHcss.css" />
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
+
+        <!--External Stylesheets-->
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+
+        <!--JavaScript Links-->
+
+    </head>
+
+    <body>
+
+        <div class="Header">
             <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
-                <a class="Logo" href="Home.html"><img src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
+                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
                 <img src="images\Header6.png" alt="Wetlands with boats" />
             </div>
         </div>
-            
-            <div class="Navigation">
-		<ul>
-                    <li><a href="Home.html">Home</a></li>
-                    <li><a href="Booking.html">Bookings</a></li>
-                    <li><a href="Rooms.html">Rooms</a></li>
-                    <li><a href="Facilities.html">Facilities</a></li>
-                    <li><a href="localattractions.html">Local Attractions</a></li>
-                    <li><a href="Reviews.html">Leave a Review</a></li>
-                    <li><a href="FindUs.html">Find us</a></li>
-                    <li><a href="ContactUs.html">Contact us</a></li>
-                </ul>
+
+        <div class="Navigation">
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Booking.html">Bookings</a></li>
+                <li><a href="Rooms.html">Rooms</a></li>
+                <li><a href="Facilities.html">Facilities</a></li>
+                <li><a href="localattractions.html">Local Attractions</a></li>
+                <li><a href="Reviews.html">Leave a Review</a></li>
+                <li><a href="FindUs.html">Find us</a></li>
+                <li><a href="ContactUs.html">Contact us</a></li>
+            </ul>
+        </div>
+
+        <div class="ContactUsMain">
+
+            <h2>Get in touch</h2>
+
+            <form id="EnquiryForm" action="/action_page.php" name="enquiries" method="post">
+
+                <h3>Message us direct:</h3>
+
+                First name:<br>
+                <input type="text" name="first" required="required" placeholder="Enter your first name"><br>
+                Last name:<br>
+                <input type="text" name="last" required="required" placeholder="Enter your surname"><br>
+                Email address:<br>
+                <input type="text" name="email" required="required" placeholder="Enter your email"><br>
+
+                Please enter your enquiry here: <br>
+                <textarea name="Review" cols="30" rows="10" placeholder="Enter your comments here..."></textarea> <br>
+
+                <input type="submit" value="Submit">
+
+            </form>
+
+            <div id="AlternativeContact">
+
+                <h3>Alternatively, contact us:</h3>
+
+                <p id="Phone">Call us on +44 000 000 000</p>
+                <p id="Email"><a href="mailto:heartachehotel@heartachehotel.com? Subject=Queries" target="_top">Click here to email</a></p>
+                <p id="Address">Or find us at: <br>Heartache Hotel<br>Queen's Road<br>Hethersett<br>Norfolk<br>NR3 4LE</p>
+
             </div>
-		
-		<div class="ContactUsMain">
-                    
-			<h2>Get in touch</h2>
-                        
-                        <form id="EnquiryForm" action="/action_page.php" name="enquiries" method="post">
-                            
-                            <h3>Message us direct:</h3>
-                            
-				First name:<br>
-				<input type="text" name="first" required="required" placeholder="Enter your first name"><br>
-				Last name:<br>
-				<input type="text" name="last" required="required" placeholder="Enter your surname"><br>
-				Email address:<br>
-				<input type="text" name="email" required="required" placeholder="Enter your email"><br>
-				
-				Please enter your enquiry here: <br>
-                                <textarea name="Review" cols="30" rows="10" placeholder="Enter your comments here..."></textarea> <br>
-								
-				<input type="submit" value="Submit">
-                                
-			</form>
-                        
-                        
-                        <div id="AlternativeContact">
-                            
-                            <h3>Alternatively, contact us:</h3>
-                        
-				<p id="Phone">Call us on +44 000 000 000</p>
-				<p id="Email"><a href="mailto:heartachehotel@heartachehotel.com? Subject=Queries" target="_top">Click here to email</a></p>
-				<p id="Address">Or find us at: <br> 1 Road Lane <br> Norwich <br> Norfolk <br> NR77 8FH </p>
-                        
-                        </div>
-                        
-                        </div>
-		
-		<div class="Footer">
+
+        </div>
+
+        <div class="Footer">
             <img id="FooterLogo" src="images\vk.png" alt="Heartache Logo" />
 
             <ul id="FooterLinks">
@@ -84,7 +95,7 @@
                 <li><a href="FindUs.html">Find us</a></li>
                 <li><a href="ContactUs.html">Contact us</a></li>
             </ul>
-                       
+
             <ul id="FooterEmail">
                 <li>CONTACT US</li>
                 <li><a href="mailto:heartachehotel@heartachehotel.com? Subject=Queries" target="_top">Click to Email</a></li>
@@ -95,17 +106,17 @@
                 <li>Norfolk</li>
                 <li>NR3 4LE</li>
             </ul>
-            
+
             <ul id="FooterCopyright">
                 <li>COPYRIGHT</li>
                 <li>@Copyright 2017</li>
                 <li>Heartache Hotel</li>
                 <li>All Rights Reserved</li>
             </ul>
-            
-            
+
+
             <img id="tripAdviser" src="images\trip.png" alt="Owl" style="height:150px; width:150px" />
-            
+
             <div id="SocialMedia">
                 <p>SOCIAL MEDIA LINKS</p>
                 <a href="https://en-gb.facebook.com/" target="_blank"><img src="images\facebook.png" alt="Facebook" /></a>
@@ -117,7 +128,7 @@
             </div>
 
         </div>
-		
-	</body>
-	
+
+    </body>
+
 </html>

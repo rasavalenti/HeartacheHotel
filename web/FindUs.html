@@ -1,111 +1,109 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Find us</title>
-                <link rel = "stylesheet"
-                type = "text/css"
-                href = "HHcss.css" />
-                <link rel="stylesheet" media="(max-width: 600px)" href="max-width-600px.css">
-                <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
-                <style type="text/css">    
-                #hotelMap {
-                display: inline-block;
-                width: 50%;
-                height: 70%;
-                text-align: center;
-                margin: 0;
+    <head>
+
+        <!--Metadata-->
+        <title>Find us</title>
+        <meta name="description" content="Heartache find us" />
+        <meta name="keywords" content="directions, address, heartache, map, googlemaps, opensource" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Heartache Hotel staff" />
+
+        <!--Style sheets-->
+        <link rel = "stylesheet" type = "text/css" href = "HHcss.css" />
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
+
+        <!--External stylesheets-->
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+        <script src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>
+        <script src="http://openlayers.org/api/OpenLayers.js"></script>
+
+        <!--JavaScript Links-->      
+        <script>
+            function init() {
+                map = new OpenLayers.Map("hotelMap");
+                var mapnik = new OpenLayers.Layer.OSM();
+                var zoom = 15;
+                var center = new OpenLayers.LonLat(1.17359, 52.59761).transform('EPSG:4326', 'EPSG:3857');
+                map.addLayer(mapnik);
+                map.setCenter(center, zoom);
             }
-            </style>
-            <script src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>
-            <script src="http://openlayers.org/api/OpenLayers.js"></script>
-            <script>
-                function init() {
-                    map = new OpenLayers.Map("hotelMap");
-                    var mapnik          = new OpenLayers.Layer.OSM();
-                    var zoom            = 15;
-                    var center          = new OpenLayers.LonLat(1.17359, 52.59761).transform('EPSG:4326', 'EPSG:3857');
-                    map.addLayer(mapnik);
-                    map.setCenter(center, zoom);
-                }
-                </script>
-            <meta name="description" content="Heartache find us" />
-            <meta name="keywords" content="directions, address, heartache, map, googlemaps, opensource" />
-            <meta name="robots" content="index, follow" />
-            <meta name="author" content="Heartache Hotel staff" />
-            
-	</head>
-	
-	<body onload="init();">
-	
-	<div class="Header">
+        </script>
+
+    </head>
+
+    <body onload="init();">
+
+        <div class="Header">
             <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
-                <a class="Logo" href="Home.html"><img src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
+                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
-                <img src="images\Header14.png" alt="Outdoor dining" />
+                <img src="images\Header4.png" alt="Seaside" />
             </div>
         </div>
-            
-            <div class="Navigation">
-		<ul>
-                    <li><a href="Home.html">Home</a></li>
-                    <li><a href="Booking.html">Bookings</a></li>
-                    <li><a href="Rooms.html">Rooms</a></li>
-                    <li><a href="Facilities.html">Facilities</a></li>
-                    <li><a href="localattractions.html">Local Attractions</a></li>
-                    <li><a href="Reviews.html">Leave a Review</a></li>
-                    <li><a href="FindUs.html">Find us</a></li>
-                    <li><a href="ContactUs.html">Contact us</a></li>
+
+        <div class="Navigation">
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Booking.html">Bookings</a></li>
+                <li><a href="Rooms.html">Rooms</a></li>
+                <li><a href="Facilities.html">Facilities</a></li>
+                <li><a href="localattractions.html">Local Attractions</a></li>
+                <li><a href="Reviews.html">Leave a Review</a></li>
+                <li><a href="FindUs.html">Find us</a></li>
+                <li><a href="ContactUs.html">Contact us</a></li>
+            </ul>
+        </div>
+
+        <div class="FindUsMain">
+
+            <h2>Find us</h2>
+
+            <div id="hotelMap"></div>
+            <script src="http://openlayers.org/api/OpenLayers.js"></script>
+            <script>
+        map.zoomToMaxExtent();
+            </script>
+
+            <div id="Lost">
+                <h2>Lost?</h2>
+
+                <p> We are located on Queens Road in Hethersett</p>
+
+                <h3>If Travelling from Wymondham...</h3>
+                <ul>
+                    <li>Take Harts Farm Road along the B1172</li>
+                    <li>At the roundabout, turn left</li>
+                    <li>At the next roundabout by Waitrose, turn right onto the B1172</li>
+                    <li>Follow the B1172 for 2.1 miles</li>
+                    <li>After passing Hethersett Old Hall School on the right, take the next exit onto Norwich Road</li>
+                    <li>Follow Norwich Road round past the Kings' Head and then the Queens' Head pubs</li>
+                    <li>Turn left onto Queen's Road</li>
+                    <li>Follow Queen's Road</li>
+                    <li>Find us on the right, by Hethersett Library</li>
+                </ul>
+
+                <h3>If Travelling from Norwich</h3>
+                <ul>
+                    <li>Follow the A11 (Newmarket Road) from Norwich into Eaton</li>
+                    <li>At the first roundabout, continue straight on</li>
+                    <li>At the second roundabout, take the third exit onto the B1172 next to the Thickthorn Bus Station</li>
+                    <li>Follow the B1172, turning left on the first roundabout</li>
+                    <li>Continue following the B1172 for 1.5 miles</li>
+                    <li>After passing the St. Remigius Church on your left, take the next right onto Norwich Road.</li>
+                    <li>Take the second right onto Queen's Road</li>
+                    <li>Follow Queen's Road</li>
+                    <li>Find us on the right, by Hethersett Library</li>
                 </ul>
             </div>
-		
-            <div class="FindUsMain">
-                
-		<h2>Find us</h2>
-                
-		<div id="hotelMap"></div>
-                    <script src="http://openlayers.org/api/OpenLayers.js"></script>
-                    <script>
-                        map.zoomToMaxExtent();
-                    </script>
-                    
-                    <div id="Lost">
-                    <h2>Lost?</h2>
-                    
-                    <p> We are located on Queens Road in Hethersett</p>
-                    
-                    <h3>If Travelling from Wymondham...</h3>
-                        <ul>
-                            <li>Take Harts Farm Road along the B1172</li>
-                            <li>At the roundabout, turn left</li>
-                            <li>At the next roundabout by Waitrose, turn right onto the B1172</li>
-                            <li>Follow the B1172 for 2.1 miles</li>
-                            <li>After passing Hethersett Old Hall School on the right, take the next exit onto Norwich Road</li>
-                            <li>Follow Norwich Road round past the Kings' Head and then the Queens' Head pubs</li>
-                            <li>Turn left onto Queen's Road</li>
-                            <li>Follow Queen's Road</li>
-                            <li>Find us on the right, by Hethersett Library</li>
-                        </ul>
-                    
-                    <h3>If Travelling from Norwich</h3>
-                    <ul>
-                        <li>Follow the A11 (Newmarket Road) from Norwich into Eaton</li>
-                        <li>At the first roundabout, continue straight on</li>
-                        <li>At the second roundabout, take the third exit onto the B1172 next to the Thickthorn Bus Station</li>
-                        <li>Follow the B1172, turning left on the first roundabout</li>
-                        <li>Continue following the B1172 for 1.5 miles</li>
-                        <li>After passing the St. Remigius Church on your left, take the next right onto Norwich Road.</li>
-                        <li>Take the second right onto Queen's Road</li>
-                        <li>Follow Queen's Road</li>
-                        <li>Find us on the right, by Hethersett Library</li>
-                    </ul>
-                    </div>
-			
-            </div>
-            
-		<div class="Footer">
+
+        </div>
+
+        <div class="Footer">
             <img id="FooterLogo" src="images\vk.png" alt="Heartache Logo" />
 
             <ul id="FooterLinks">
@@ -118,7 +116,7 @@
                 <li><a href="FindUs.html">Find us</a></li>
                 <li><a href="ContactUs.html">Contact us</a></li>
             </ul>
-                       
+
             <ul id="FooterEmail">
                 <li>CONTACT US</li>
                 <li><a href="mailto:heartachehotel@heartachehotel.com? Subject=Queries" target="_top">Click to Email</a></li>
@@ -129,16 +127,16 @@
                 <li>Norfolk</li>
                 <li>NR3 4LE</li>
             </ul>
-            
+
             <ul id="FooterCopyright">
                 <li>COPYRIGHT</li>
                 <li>@Copyright 2017</li>
                 <li>Heartache Hotel</li>
                 <li>All Rights Reserved</li>
             </ul>
-            
+
             <img id="tripAdviser" src="images\trip.png" alt="Owl" style="height:150px; width:150px" />
-            
+
             <div id="SocialMedia">
                 <p>SOCIAL MEDIA LINKS</p>
                 <a href="https://en-gb.facebook.com/" target="_blank"><img src="images\facebook.png" alt="Facebook" /></a>
@@ -150,7 +148,7 @@
             </div>
 
         </div>
-		
-	</body>
-	
+
+    </body>
+
 </html>

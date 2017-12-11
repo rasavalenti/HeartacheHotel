@@ -1,4 +1,5 @@
-/*Banner picture*/
+/*Standard aspects of every page*/
+/*Banner image CSS*/
 .banner{
     width: 100%;
 }
@@ -8,49 +9,45 @@
     float: top;
 }
 
-div.tab {
-    overflow: hidden;
-    background-color: #f1f1f1; 
-}
-
-.Tab {
-    position: fixed;
-    bottom: 0;
-    right: 1%;
-    background-color: grey;
-    padding-left: 1em;
-    padding-right: 1em;
-    font-weight: bold;
-    z-index: -1;
-    font-size: large;
-}
-
+/*Whole body text set, and margin/padding reset*/
 body {
     font-family: 'Barlow Semi Condensed', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-ul {
-    list-style: none;
-
+/*All links throughout body CSS*/
+body a {
+    text-decoration: none;
+    color: white;
 }
 
 a {
     text-decoration: none;
+    
 }
 
+/*sets all CSS for links once they've been visited*/
 a:visited {
     text-decoration: none;
     color: #ebd8bc;
 }
 
+/*Removes bulletpoints from ll unordered lists*/
+ul {
+    list-style: none;
+
+}
+
+/*Header CSS*/
 div.Header {
     top: 0;
     text-align: center;
-    width: 100%;
+    max-width: 100%;
+    width: auto;
 }
 
+/*DIV containing logo and header*/
 .LogoTitle {
     font-size: 200%;
     position: absolute;
@@ -62,10 +59,13 @@ div.Header {
     color: white;   
 }
 
-#LogoLink {
-    position: absolute;
+/*Booking tab CSS*/
+div.tab {
+    overflow: hidden;
+    background-color: #f1f1f1; 
 }
 
+/*How our text options box will show onscreen*/
 #TextOptions {
     position: absolute;
     float: right;
@@ -76,10 +76,12 @@ div.Header {
     font-size: medium;
 }
 
+/*DIV for navigation bar, including UL and OL*/
 div.Navigation {
     text-align: center;
 }
 
+/*CSS for all UL in navigation DIV*/
 div.Navigation ul {
     background-color: #a86763;   
     list-style-type: none;    
@@ -93,6 +95,7 @@ div.Navigation ul {
     top: 0;
 }
 
+/*CSS for all LI in navigation DIV*/
 div.Navigation li { 
     color: #ebd8bc;   
     border-left: solid 2px #ebd8bc;
@@ -107,16 +110,47 @@ div.Navigation li {
     text-decoration: none;
 }
 
+/*CSS for all links in navigation DIV*/
 .Navigation a {
     color: #ebd8bc;
     text-decoration: none;
 }
 
+/*CSS for all visited links in navigation DIV*/
 .Navigation a:visited {
     color: #ebd8bc;
     text-decoration: none;
 }
 
+/*Removes border from left of 'home' item in navigation DIV*/
+#FarLeft {
+    border-left: none;
+}
+
+/*CSS for Home*/
+div.Main {
+    position: relative;
+    width: 70%;
+    height: 1000px;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+/*CSS for Home header*/
+div.Main h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+/*CSS for Home text*/
+div.Main p {  
+    text-align: center;
+}
+
+/*DIV for alternative main where main CSS does not work*/
 div.AlternativeMain {
     text-align: center;   
     position: relative;
@@ -130,12 +164,14 @@ div.AlternativeMain {
     padding-bottom: 3%;
 }
 
+/*Alternative header CSS*/
 div.AlternativeMain h2 {  
     font-size: 300%;
     top: 15em;
     text-align: center; 
 }
 
+/*CSS for housekeeping page main*/
 div.HousekeepingMain {
     text-align: center;   
     position: relative;
@@ -149,12 +185,14 @@ div.HousekeepingMain {
     padding-bottom: 3%;
 }
 
+/*CSS for housekeeping header*/
 div.HousekeepingMain h2 {  
     font-size: 300%;
     top: 15em;
     text-align: center; 
 }
 
+/*CSS for reception main*/
 div.ReceptionMain {
     text-align: center;   
     position: relative;
@@ -168,12 +206,14 @@ div.ReceptionMain {
     padding-bottom: 3%;
 }
 
+/*CSS for reception header*/
 div.ReceptionMain h2 {  
     font-size: 300%;
     top: 15em;
     text-align: center; 
 }
 
+/*CSS for Reviews main*/
 div.ReviewMain {
     text-align: left;   
     position: relative;
@@ -185,12 +225,14 @@ div.ReviewMain {
     margin-right: 15%;   
 }
 
+/*CSS for Reviews main header*/
 div.ReviewMain h2 {  
     font-size: 300%;
     top: 15em;
     text-align: center; 
 }
 
+/*CSS for Contact Us Main*/
 div.ContactUsMain {
     text-align: center;   
     position: relative;
@@ -198,36 +240,284 @@ div.ContactUsMain {
     padding-bottom: 3%;
     position: relative;
     width: 70%;
-    height: 50em;
+    height: 40em;
     margin-left: 15%;   
     margin-right: 15%;   
     padding-top: 3%;   
     padding-bottom: 3%;
 }
 
+/*CSS for Contact Us main header*/
 div.ContactUs h2 {  
     font-size: 300%;
     text-align: center; 
 }
 
-div.Main {
+/*CSS for AddExtraConfirm*/
+div.ExtraMain {
     position: relative;
     width: 70%;
-    height: 1000px;
+    height: 500px;
     margin-left: 15%;   
     margin-right: 15%;   
     padding-top: 3%;   
     padding-bottom: 3%;
 }
 
-div.Main h2 {
+/*CSS for AddExtraConfirm header*/
+div.ExtraMain h2 {
     font-size: 300%;
     text-align: center;   
     padding-bottom: 1%;
 }
 
-div.Main p {  
-    text-align: center;
+/*CSS for AddExtraConfirm table elements*/
+div.ExtraMain table { 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+/*CSS for AddExtraMain link elements*/
+div.ExtraMain a {
+    text-decoration: underline;
+}
+
+/*CSS for BookingConfirmation*/
+div.ConfirmMain {
+    position: relative;
+    width: 70%;
+    height: 65em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+/*CSS for BookingConfirmation header*/
+div.ConfirmMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+/*CSS for BookingConfirmation table*/
+div.ConfirmMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+/*CSS for strong elements on BookingConfirmation*/
+div.ConfirmMain strong {
+    text-decoration: underline;
+}
+
+/*CSS for BookingForm*/
+div.BookingFormMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+/*CSS for BookingFormMain header*/
+div.BookingFormMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+/*CSS for BookingFormMain table elements*/
+div.BookingFormMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+/*CSS for fieldset on BookingFormMain table*/
+div.BookingFormMain fieldset {
+    padding: 3%;
+}
+
+/*CSS for strong elements on BookingFormMain*/
+div.BookingFormMain strong {
+    text-decoration: underline;
+}
+
+/*CSS for BookingManage*/
+div.BookingManageMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+/*CSS for BookingManage header*/
+div.BookingManageMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+/*CSS for BookingManage table elements*/
+div.BookingManageMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+/*CSS for fieldset element of BookingManage tables*/
+div.BookingManageMain fieldset {
+    padding: 3%;
+}
+
+/*CSS for strong elements on BookingManage*/
+div.BookingManageMain strong {
+    text-decoration: underline;
+}
+
+/*CSS for CheckInOutGuests*/
+div.CheckInMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+/*CSS for CheckInOutGuests header*/
+div.CheckInMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+/*CSS for CheckInOutGuests table elements*/
+div.CheckInMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+/*CSS for strong elements on CheckInOutGuests*/
+div.CheckInMain strong {
+    text-decoration: underline;
+}
+
+/*CSS for ReceptionAddExtras*/
+div.AddExtrasMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+/*CSS for ReceptionAddExtras header*/
+div.AddExtrasMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+/*CSS for ReceptionAddExtras table elements*/
+div.AddExtrasMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+/*CSS for fieldset of ReceptionAddExtras table elements*/
+div.AddExtrasMain fieldset {
+    padding: 3%;
+}
+
+/*CSS for strong elements of ReceptionAddExtras*/
+div.AddExtrasMain strong {
+    text-decoration: underline;
+}
+
+
+
+div.BookingReferenceMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.BookingReferenceMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+div.BookingReferenceMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+div.BookingReferenceMain strong {
+    text-decoration: underline;
+}
+
+div.BookingReferenceMain input {
+    margin: 2%;
+}
+
+#ReceiptTitle {
+    text-decoration: underline;
+}
+
+#Return {
+    padding: 5%;
+}
+
+#Return td {
+    padding: 0.5em;
+    background-color: grey;
 }
 
 div.BookingMain {
@@ -535,6 +825,8 @@ div.Footer a:visited {
     font-size: large;
 }
 
+
+
 .Rooms {
     display: inline-block;
     width: 40%;
@@ -737,13 +1029,45 @@ div.tab button:hover {
     margin-bottom: 0;
 }
 
-#AddRooms_conf {
-    border-collapse:collapse;
-    border:1px solid black;
+#hotelMap {
+    display: inline-block;
+    width: 50%;
+    height: 70%;
+    text-align: center;
+    margin: 0;
 }
 
-#AddRooms_conf td{
-    border:1px solid black;
-    padding: 10px;
+div.HousekeepingMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.HousekeepingMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+div.HousekeepingMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+div.HousekeepingMain strong {
+    text-decoration: underline;
+}
+
+div.HousekeepingMain fieldset {
+    padding: 3%;
 }
 

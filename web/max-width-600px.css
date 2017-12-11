@@ -139,6 +139,10 @@ div.Main p {
         padding-bottom: 2em;
     }
     
+    .BookingManageMain {
+        height: 100em;
+        margin-bottom: 20%;
+    }
         
     .tab {
         background-color: white;

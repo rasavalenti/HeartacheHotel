@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+        <!--Metadata-->
         <title>Book a Room</title>
+        <meta name="description" content="Heartache bookings" />
+        <meta name="keywords" content="booking, make, manage" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Heartache Hotel staff" />
+
+        <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
+
+        <!--External Style Sheets-->
         <!--<script src ="http://code.jquery.com/jquery-1.9.1.js"></script>-->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
 
+        <!--JavaScript Links-->
         <script type ="text/javascript"></script>
         <script src ="HHjavascript.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
-        <link rel="stylesheet" media="(max-width: 600px)" href="max-width-600px.css">
+
     </head>
 
     <body>
@@ -19,7 +32,7 @@
             <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
-                <a class="Logo" href="Home.html"><img src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
+                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
                 <img src="images\Header13.png" alt="Room with luggage" />
@@ -39,7 +52,7 @@
             </ul>
         </div>
 
-        <div class="Main">
+        <div class="BookingMain">
             <div class="tab">           
                 <button id="makeBooking" onclick="switchToBook()"> Make a booking </button>
                 <button id="manageBooking" onclick="switchToManage()"> Manage a booking </button>

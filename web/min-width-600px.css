@@ -1,0 +1,131 @@
+@media screen and (min-width: 600px) and (max-width: 1700px) {
+    .LogoTitle {
+        width: 100%;
+        top: 1em;
+    }
+    
+    .BookingMain {
+        margin-bottom: 10em;
+    }
+    
+    .BookingMain form {
+        padding-bottom: 2em;
+    }
+    
+    .ContactUsMain {
+        padding-left: 0;
+        margin-left: 0;
+    }
+    
+    #EnquiryForm {
+        padding-left: 0;
+        margin-left: 0;
+        border: none;
+        padding-right: 3em;
+    }
+    
+    #AlternativeContact {
+        padding-right: 3em;
+    }
+    
+    #AlternativeContact p {
+        width: 10em;
+    }
+        
+    .tab {
+        background-color: white;
+    }
+    
+    #book, #manage {
+        background-color: white;
+        display: inline-block;
+    }
+    
+    #book label {
+        display: block;
+    }
+    
+    #manage label {
+        display: inline-block;
+    }
+    
+    #book, #manage input {
+        display: block;
+        margin-left: 2em;
+        padding-left: 2em;
+        
+    }
+    
+    #MainLogo {
+        display : none;
+    }
+    
+    h1 {
+        max-width: 100%;
+        width: auto;
+        font-size: 200%;
+    }
+    
+    #FooterLogo, #tripAdviser, #SocialMedia {
+        display: none;
+    }
+    
+    .Facilities {
+    display: inline-block;
+    text-align: center;
+    width: 30em;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #f2d9d9;
+    margin: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 2%;
+    
+}
+
+.Facilities h3 {
+    font-size: 200%;
+}
+
+.Facilities img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding: 3em;
+    padding-bottom: 2em;
+    margin: 0;
+    float: none;
+}
+
+.Facilities p {
+    display: block;
+    width: 80%;    
+    text-align: left;
+    float: none;
+    padding: 1em;
+    margin-left: 2em;
+    padding-bottom: 1em;
+    padding-top: 0;
+    font-size: large;
+}
+
+.FindUsMain {
+    margin-bottom: 80%;
+}
+
+#hotelMap {
+    width: 35em;
+    height: 30em;
+}
+
+#Lost {
+    display: block;
+    width: 100%;
+    float: none;
+}
+    
+}
