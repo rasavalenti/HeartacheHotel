@@ -80,6 +80,22 @@
         <servlet-name>ShowRooms</servlet-name>
         <url-pattern>/ShowRooms</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CancelBooking</servlet-name>
+        <servlet-class>AccessDB.CancelBooking</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CancelBooking</servlet-name>
+        <url-pattern>/CancelBooking</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CancelBooking2</servlet-name>
+        <servlet-class>AccessDB.CancelBooking2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CancelBooking2</servlet-name>
+        <url-pattern>/CancelBooking2</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

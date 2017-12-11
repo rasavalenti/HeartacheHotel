@@ -36,6 +36,23 @@
         background-color: white;
     }
     
+    .PayCheckOutMain form {
+        margin-top: 1em;
+    }
+    
+    #formDetails {
+        width: 20em;
+    }
+    
+    .BookingReceiptMain {
+        width: 100%;
+    }
+    
+    #receipt {
+        width: 15em;
+        height: 9em;
+    }
+    
     #book, #manage {
         background-color: white;
         display: inline-block;
@@ -102,6 +119,92 @@
 }
 
 .Facilities p {
+    display: block;
+    width: 80%;    
+    text-align: left;
+    float: none;
+    padding: 1em;
+    margin-left: 2em;
+    padding-bottom: 1em;
+    padding-top: 0;
+    font-size: large;
+}
+
+.Rooms {
+    display: inline-block;
+    text-align: center;
+    width: 30em;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #f2d9d9;
+    margin: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 2%;
+    
+}
+
+.Rooms h3 {
+    font-size: 200%;
+}
+
+.Rooms img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding: 3em;
+    padding-bottom: 2em;
+    margin: 0;
+    float: none;
+}
+
+.Rooms p {
+    display: block;
+    width: 80%;    
+    text-align: left;
+    float: none;
+    padding: 1em;
+    margin-left: 2em;
+    padding-bottom: 1em;
+    padding-top: 0;
+    font-size: large;
+}
+
+.LocalAttractions {
+    display: inline-block;
+    text-align: center;
+    width: 30em;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #f2d9d9;
+    margin: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 2%;
+    
+}
+
+.LocalAttractions h3 {
+    font-size: 200%;
+}
+
+.LocalAttractions img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding: 3em;
+    padding-bottom: 2em;
+    margin: 0;
+    float: none;
+}
+
+.LocalAttractions p {
     display: block;
     width: 80%;    
     text-align: left;

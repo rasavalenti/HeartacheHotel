@@ -33,14 +33,14 @@
             <p id="TextOptions">Text Options</p>
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
-                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\vk.png" alt="logo" style="width: 200px; height: 200px;" /></a>
+                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
                 <img src="images\Header8.png" alt="Norfolk Farmland" />
             </div>
         </div>
 
-        <div class="Main">
+        <div class="PayCheckOutMain">
             <h1>Pay and check out</h1>
             <table id="formDetails">
 
@@ -95,7 +95,7 @@
         </div>
 
         <div class="Footer">
-            <img id="FooterLogo" src="images\vk.png" alt="Heartache Logo" />
+            <img id="FooterLogo" src="images\Logo.png" alt="Heartache Logo" />
 
             <ul id="FooterLinks">
                 <li><a href="Home.html">Home</a></li>

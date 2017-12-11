@@ -324,7 +324,7 @@ div.ConfirmMain strong {
 div.BookingFormMain {
     position: relative;
     width: 70%;
-    height: 40em;
+    height: 70em;
     margin-left: 15%;   
     margin-right: 15%;   
     padding-top: 3%;   
@@ -363,7 +363,7 @@ div.BookingFormMain strong {
 div.BookingManageMain {
     position: relative;
     width: 70%;
-    height: 40em;
+    height: 60em;
     margin-left: 15%;   
     margin-right: 15%;   
     padding-top: 3%;   
@@ -471,7 +471,85 @@ div.AddExtrasMain strong {
     text-decoration: underline;
 }
 
+div.ReceptionPortalMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
 
+div.ReceptionPortalMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+div.ReceptionPortalMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+div.ReceptionPortalMain a {
+    text-decoration: underline;
+    color: grey;
+    font-size: x-large;
+}
+
+
+div.ReceptionPortalMain input {
+    margin: 2%;
+}
+
+div.BookingReceiptMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.BookingReceiptMain h2 {
+    font-size: 300%;  
+    padding-bottom: 1%;
+}
+
+div.BookingReceiptMain table { 
+    width: 30%;
+    display: block;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+div.BookingReceiptMain a {
+    text-decoration: underline;
+    color: grey;
+    font-size: x-large;
+}
+
+div.BookingReceiptMain input {
+    margin-top: 2%;
+}
+
+div.ReceptionPortalMainText {
+    border: 3px #ebd8bc solid;
+    text-align: center;
+    width: 10em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2%;
+}
 
 div.BookingReferenceMain {
     position: relative;
@@ -509,6 +587,40 @@ div.BookingReferenceMain input {
 
 #ReceiptTitle {
     text-decoration: underline;
+}
+
+div.PayCheckOutMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.PayCheckOutMain h2 {
+    font-size: 300%;  
+    padding-bottom: 1%;
+}
+
+div.PayCheckOutMain table { 
+    width: 50%;
+    display: block;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+div.PayCheckOutMain a {
+    text-decoration: underline;
+    color: grey;
+    font-size: x-large;
+}
+
+div.PayCheckOutMain input {
+    margin-top: 2%;
 }
 
 #Return {

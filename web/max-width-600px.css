@@ -124,7 +124,7 @@ div.Main p {
     }
     
     .BookingManageMain {
-        height: 100em;
+        height: 120em;
         margin-bottom: 20%;
     }
     
@@ -139,9 +139,21 @@ div.Main p {
         padding-bottom: 2em;
     }
     
-    .BookingManageMain {
-        height: 100em;
-        margin-bottom: 20%;
+    .BookingReceiptMain {
+        width: 100%;
+    }
+    
+    #receipt {
+        width: 12em;
+        height: 9em;
+    }
+    
+    .PayCheckOutMain form {
+        margin-top: 1em;
+    }
+    
+    #formDetails {
+        width: 14em;
     }
         
     .tab {
@@ -232,6 +244,52 @@ div.Main p {
     }
     
     .Facilities p {
+        float: none;
+        text-align: left;
+        width: 15em;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 0;
+    }
+    
+    .Rooms {
+        background-color: #f2d9d9;
+        margin-right: 0;
+        margin-left: 0;
+        padding: 5%;
+        margin-bottom: 3em;
+    }
+    
+    .Rooms img, p {
+        display: block;
+        width: 100%;
+        padding-bottom: 1em;
+    }
+    
+    .Rooms p {
+        float: none;
+        text-align: left;
+        width: 15em;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 0;
+    }
+    
+    .LocalAttractions {
+        background-color: #f2d9d9;
+        margin-right: 0;
+        margin-left: 0;
+        padding: 5%;
+        margin-bottom: 3em;
+    }
+    
+    .LocalAttractions img, p {
+        display: block;
+        width: 100%;
+        padding-bottom: 1em;
+    }
+    
+    .LocalAttractions p {
         float: none;
         text-align: left;
         width: 15em;
