@@ -1,91 +1,85 @@
+<%-- 
+    Document   : HousekeepingShowRooms
+    Created on : 10-Dec-2017, 16:23:04
+    Author     : qhf13exu
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
 
         <!--Metadata-->
-        <title>Book a Room</title>
-        <meta name="description" content="Heartache bookings" />
-        <meta name="keywords" content="booking, make, manage" />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Heartache Hotel staff" />
+        <title>Rooms</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
         <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
         <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
 
-        <!--External Style Sheets-->
+        <!--External style sheets-->
+        <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
 
         <!--JavaScript Links-->
-        <!--<script src ="http://code.jquery.com/jquery-1.9.1.js"></script>-->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type ="text/javascript"></script>
         <script src ="HHjavascript.js"></script>
 
     </head>
-
     <body>
-
         <div class="Header">
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
                 <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
-                <img src="images\Header13.png" alt="Room with luggage" />
+                <img src="images\Header9.png" alt="Room with luggage" />
             </div>
         </div>
 
-        <div class="Navigation">
-            <ul>
-                <li class="FarLeft"><a href="Home.html">Home</a></li>
-                <li><a href="Booking.html">Bookings</a></li>
-                <li><a href="Rooms.html">Rooms</a></li>
-                <li><a href="Facilities.html">Facilities</a></li>
-                <li><a href="localattractions.html">Local Attractions</a></li>
-                <li><a href="Reviews.html">Leave a Review</a></li>
-                <li><a href="FindUs.html">Find us</a></li>
-                <li><a href="ContactUs.html">Contact us</a></li>
-            </ul>
-        </div>
+        <div class="ShowRoomsMain">
+            <h2>Checked out rooms</h2>
+            <div class="RoomsForm">
 
-        <div class="BookingMain">
-            <div class="tab">           
-                <button id="makeBooking" onclick="switchToBook()"> Make a booking </button>
-                <button id="manageBooking" onclick="switchToManage()"> Manage a booking </button>
-            </div>           
 
-            <form id="book" class="tabcontent" method="POST" action="CheckDates">
-                <fieldset>
-                    <legend>Make a Booking</legend>
-
-                    <label> Check-in: </label><input type="text" name="checkin" id="checkIn" onchange="checkOutDate();" oninput="this.onchange();">
-                    <label> Check-out: </label><input type="text" name="checkout" id="checkOut">
-                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();">
-                    <label> Room type: </label><select name="roomtype" id="roomtype">
-                        <option value="std_d">Standard Double</option>
-                        <option value="std_t">Standard Twin</option>
-                        <option value="sup_d">Premium Double</option>
-                        <option value="sup_t">Premium Twin</option>
-                    </select>
-                    <br/>
-                    <input class="FormInput" type="submit" value="Check Availability">
-                </fieldset>
-            </form> 
-
-            <form id="manage" class="tabcontent" method="POST" action="ManageBooking">
-                <fieldset>
-                    <legend>Manage a Booking</legend>
-
-                    <label> Customer Reference: </label><input type="text" name ="manage_c_no">
-                    <label> Email: </label><input type="email" name ="email">
-                    <br/>
-                    <input class="FormInput" type="submit" value="Manage Booking">                       
-                </fieldset>
-            </form> 
-
+                <table id="showRooms">
+                    <tr>
+                    <form method="POST" name="refresh" action="ShowRooms">
+                        <td colspan="2"><input class="FormOutput" type="Submit" value="Refresh" name="refresh" id="refresh"</td>
+                    </form>
+                    </tr>
+                    <form method="POST" name="housekeepingUpdate" id="housekeepingUpdate" action="hkRoomStatus">   
+                        <tr colspan="2">
+                            Room number did not match rooms below, try again.
+                            <td><input class="FormOutput" type="text" name="roomNumber" id="roomNumber"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="FormOutput" name="roomStatus" type="radio" id="radioAvailable" value="A"><label for="radioAvailable">Available</label>
+                            </td>
+                        </tr>
+                        <tr colspan="2">
+                            <td>
+                                <input class="FormOutput" name="roomStatus" type="radio" id="radioUnavailable" value="X"><label for="radioUnavailable">Unavailable</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input class="FormOutput" type="submit" value="Change" name="submitHousekeeping" id="submitHousekeeping"</td>
+                        </tr>
+                    </form>
+                </table>
+                
+                <table id="roomTable">
+                    <tr>
+                        <td>Room Number:</td>
+                    </tr>
+                    <script>
+                    var rooms = ${roomNums};
+                    showTables();
+                    </script>
+                </table>
+            </div>
         </div>
 
         <div class="Footer">
@@ -134,7 +128,5 @@
             </div>
 
         </div>
-
     </body>
-
 </html>

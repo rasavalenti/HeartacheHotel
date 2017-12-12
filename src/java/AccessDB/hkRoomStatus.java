@@ -1,14 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package AccessDB;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -21,16 +24,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author qhf13exu
  */
-public class ShowRooms extends HttpServlet {
+public class hkRoomStatus extends HttpServlet {
 
-    static int numRooms;
-    static ArrayList<String> roomNums;
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     * @throws java.text.ParseException
+     */
+    static String r_num;
+    static String r_status;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        
         try {
             //String insertSQL;
 
@@ -44,7 +57,7 @@ public class ShowRooms extends HttpServlet {
 
             // make a string for my DB’s connection url 
             String myDbURL = ("jdbc:postgresql://" + cmpHost + "/" + myDbName);
-
+            
             Class.forName("org.postgresql.Driver");
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
@@ -53,38 +66,37 @@ public class ShowRooms extends HttpServlet {
             // doesn't work with this...
             //statement.execute("set schema 'HeartacheHotelDB';");
 
-            ResultSet resultSet;
-
-            String numCheckedOutRooms = "SELECT COUNT(DISTINCT(rb.r_no)) as num "
-                    + "FROM roombooking rb, room r "
-                    + "WHERE rb.r_no = r.r_no and r_status = 'C'";
-            resultSet = statement.executeQuery(numCheckedOutRooms);
-
-            while (resultSet.next()) {
-                numRooms = resultSet.getInt(1);
+            r_status = request.getParameter("roomStatus");
+            r_num = request.getParameter("roomNumber");
+            request.setAttribute("r_num", r_num);
+            
+            if (r_status.equals("X")) {
+                request.setAttribute("r_status", "Unavailable");
+            } else if (r_status.equals("A")) {
+                request.setAttribute("r_status", "Available");
             }
-
-            String getCheckedOutRooms = "SELECT DISTINCT(rb.r_no), r.r_status "
-                    + "FROM roombooking rb, room r "
-                    + "WHERE rb.r_no = r.r_no and r_status = 'C' "
-                    + "ORDER BY rb.r_no";
-            resultSet = statement.executeQuery(getCheckedOutRooms);
-
-            roomNums = new ArrayList();
-
-            while (resultSet.next()) {
-                roomNums.add(resultSet.getString("r_no"));
+            
+            System.out.println("status: " + r_status);
+            System.out.println("room: " + r_num);
+            System.out.println(ShowRooms.roomNums);
+            
+            if (ShowRooms.roomNums.contains(r_num)) {
+                
+                RequestDispatcher rd;
+                
+                String changeRoomStatus;
+                
+                changeRoomStatus = "UPDATE room SET r_status = '" + r_status + "' "
+                        + "WHERE r_no = '" + r_num + "';";
+                System.out.println(changeRoomStatus);
+                statement.execute(changeRoomStatus);
+                connection.close();
+                
+                request.getRequestDispatcher("HousekeepingShowRoomsConfirm.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("HousekeepingShowRoomsError.jsp").forward(request, response);
             }
-
-            System.out.println(roomNums);
-
-            request.setAttribute("roomNums", roomNums);
-
-            RequestDispatcher rd;
-            request.getRequestDispatcher("HousekeepingShowRooms.jsp").forward(request, response);
-
-            connection.close();
-
+            
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }

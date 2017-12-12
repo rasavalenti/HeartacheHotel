@@ -21,14 +21,7 @@
 
         <!--JavaScript Links-->      
         <script>
-            function init() {
-                map = new OpenLayers.Map("hotelMap");
-                var mapnik = new OpenLayers.Layer.OSM();
-                var zoom = 15;
-                var center = new OpenLayers.LonLat(1.17359, 52.59761).transform('EPSG:4326', 'EPSG:3857');
-                map.addLayer(mapnik);
-                map.setCenter(center, zoom);
-            }
+            init();
         </script>
 
     </head>

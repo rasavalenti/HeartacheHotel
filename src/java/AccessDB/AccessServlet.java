@@ -43,9 +43,9 @@ public class AccessServlet extends HttpServlet {
         try {
             String insertSQL;
 
-//The following lines are here to check the connection between sql and netbeans
-//            insertSQL = "insert into customer values (123470, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
-//            System.out.println(insertSQL);
+            //The following lines are here to check the connection between sql and netbeans
+            //            insertSQL = "insert into customer values (123470, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
+            //            System.out.println(insertSQL);
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  

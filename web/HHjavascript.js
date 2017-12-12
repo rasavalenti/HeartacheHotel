@@ -23,7 +23,7 @@ $(document).ready(function () {
     $("#book").show();
     $("#m_manageBooking").hide();
     $("#m_cancelBooking").hide();
-    
+
 });
 
 function switchToCancelBooking() {
@@ -72,11 +72,11 @@ function reviewSlideshow() {
 }
 
 function getReview() {
-        text = first.value + Review.value;
-        document.getElementById("first").innerHTML += '<p>'+text;
-        document.getElementById("Review").innerHTML = '<p>'+text;
-        document.getElementById("first" + "Review").value = "Submit";
-    }
+    text = first.value + Review.value;
+    document.getElementById("first").innerHTML += '<p>' + text;
+    document.getElementById("Review").innerHTML = '<p>' + text;
+    document.getElementById("first" + "Review").value = "Submit";
+}
 
 //The saveBookingPage function gets the information from the bookin form and makes it into
 //an sql statement
@@ -109,9 +109,18 @@ function saveBookingPage()
 //Calendar datepicker for booking
 $(function () {
     $("#checkIn").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
+    $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: 0});
+
     $("#checkInHP").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
-    //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
+    $("#checkOutHP").datepicker({dateFormat: 'dd-mm-yy', minDate: 0});
+//    $("#checkOutHP").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkInHP").value + "1D"});
+
 });
+
+//$(function () {
+//    $("#checkInHP").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
+//    //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
+//});
 
 function checkOutDate() {
 //    alert("Check out date" + document.getElementById("checkIn").value);
@@ -119,11 +128,6 @@ function checkOutDate() {
     var minDate = $("#checkOut").datepicker("option", "minDate");
 //    alert(minDate);
 }
-
-//$(function () {
-//    $("#checkInHP").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
-//    //$("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: document.getElementById("checkIn").value});
-//});
 
 function checkOutDate2() {
 //    alert("Check out date" + document.getElementById("checkIn").value);
@@ -138,8 +142,18 @@ function showTables()
     var table = document.getElementById("roomTable");
     for (var i = 0; i < rooms.length; i++) {
         console.log("room[" + i + "]: " + rooms[i]);
-        var tr = table.insertRow(i+1);
+        var tr = table.insertRow(i + 1);
         var td = tr.insertCell(0);
         td.innerHTML = rooms[i];
     }
+}
+
+// js for interactive map on findus.html
+function init() {
+    map = new OpenLayers.Map("hotelMap");
+    var mapnik = new OpenLayers.Layer.OSM();
+    var zoom = 15;
+    var center = new OpenLayers.LonLat(1.17359, 52.59761).transform('EPSG:4326', 'EPSG:3857');
+    map.addLayer(mapnik);
+    map.setCenter(center, zoom);
 }

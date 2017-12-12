@@ -8,27 +8,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <!--Metadata-->
         <title>Rooms</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
         <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
         <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
-        
+
         <!--External style sheets-->
         <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
-        
+
         <!--JavaScript Links-->
         <script type ="text/javascript"></script>
         <script src ="HHjavascript.js"></script>
-        
+
     </head>
     <body>
-        
         <div class="Header">
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
@@ -38,34 +37,49 @@
                 <img src="images\Header9.png" alt="Room with luggage" />
             </div>
         </div>
-        
+
         <div class="ShowRoomsMain">
-        <h2>Checked out rooms</h2>
-        <div class="RoomsForm">
-        <form method="POST" name="housekeepingUpdate" id="housekeepingUpdate" action="">
-            <table id="showRooms">
-                <tr>
-                    <td colspan="2"><input class="FormOutput" type="button" name="refresh" value="Refresh" id="refresh" onclick="ShowRooms.java"></td>                   
-                </tr>
-                <tr>
-                    <td><input class="FormOutput" type="text" name="roomNumber" id="roomNumber"</td>
-                    <td><input class="FormOutput" type="submit" value="Change" name="submitHousekeeping" id="submitHousekeeping"</td>
-                </tr>
-            </table>
-        </form>
-        <table id="roomTable">
-            <tr>
-                <td>Room Number:</td>
-            </tr>
-            <script>
-                    var rooms = ${roomNums};
-                    showTables();
-            </script>
-        </table>
+            <h2>Checked out rooms</h2>
+            <div class="RoomsForm">
+                <table id="showRooms">
+                    <tr>
+                    <form method="POST" name="refresh" action="ShowRooms">
+                        <td colspan="2"><input class="FormOutput" type="Submit" value="Refresh" name="refresh" id="refresh"</td>
+                    </form>
+                    </tr>
+                    <form method="POST" name="housekeepingUpdate" id="housekeepingUpdate" action="hkRoomStatus">   
+                        <tr colspan="2">
+                            <td><input class="FormOutput" type="text" name="roomNumber" id="roomNumber"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="FormOutput" name="roomStatus" type="radio" id="radioAvailable" value="A"><label for="radioAvailable">Available</label>
+                            </td>
+                        </tr>
+                        <tr colspan="2">
+                            <td>
+                                <input class="FormOutput" name="roomStatus" type="radio" id="radioUnavailable" value="X"><label for="radioUnavailable">Unavailable</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input class="FormOutput" type="submit" value="Change" name="submitHousekeeping" id="submitHousekeeping"</td>
+                        </tr>
+                    </form>
+                </table>
+
+                <table id="roomTable">
+                    <tr>
+                        <td>Room Number:</td>
+                    </tr>
+                    <script>
+                        var rooms = ${roomNums};
+                        showTables();
+                    </script>
+                </table>
+            </div>
         </div>
-        </div>
-                    
-                    <div class="Footer">
+
+        <div class="Footer">
             <img id="FooterLogo" src="images\Logo.png" alt="Heartache Logo" />
 
             <ul id="FooterLinks">

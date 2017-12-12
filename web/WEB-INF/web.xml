@@ -96,6 +96,14 @@
         <servlet-name>CancelBooking2</servlet-name>
         <url-pattern>/CancelBooking2</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>hkRoomStatus</servlet-name>
+        <servlet-class>AccessDB.hkRoomStatus</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hkRoomStatus</servlet-name>
+        <url-pattern>/hkRoomStatus</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
