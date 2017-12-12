@@ -890,8 +890,6 @@ div.Booking {
     margin-right: 1%;
 }
 
-
-
 div.Footer {  
     background-color: #666666; 
     width: 100%;
@@ -948,6 +946,8 @@ div.Footer a:visited {
 }
 
 #tripAdviser {
+    width: 150px;
+    height: 150px;
     display: inline-block;
     float: right;
     padding: 1%;

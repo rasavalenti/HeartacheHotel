@@ -31,7 +31,7 @@
         <div class="Header">
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
-                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
+                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" /></a>
             </div>
             <div class="banner">
                 <img src="images\Header9.png" alt="Room with luggage" />
@@ -88,7 +88,7 @@
             </ul>
 
 
-            <img id="tripAdviser" src="images\trip.png" alt="Owl" style="height:150px; width:150px" />
+            <img id="tripAdviser" src="images\trip.png" alt="Owl" />
 
             <div id="SocialMedia">
                 <p>SOCIAL MEDIA LINKS</p>
