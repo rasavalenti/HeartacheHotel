@@ -140,7 +140,7 @@ function checkOutDate2() {
 //    alert(minDate);
 }
 
-// function for showing checked out rooms in table
+// functions for showing variable arraylists of rooms in table
 function showTables()
 {
     var table = document.getElementById("roomTable");
@@ -152,6 +152,49 @@ function showTables()
     }
 }
 
+function startTable()
+{
+    var table = document.getElementById("startTable");
+    for (var i = 0; i < rooms.length; i++) {
+        console.log("room[" + i + "]: " + rooms[i]);
+        var tr = table.insertRow(i + 1);
+        var td = tr.insertCell(0);
+        td.innerHTML = rooms[i];
+    }
+}
+
+function checkinTable()
+{
+    var table = document.getElementById("checkinTable");
+    for (var i = 0; i < rooms.length; i++) {
+        console.log("room[" + i + "]: " + rooms[i]);
+        var tr = table.insertRow(i + 1);
+        var td = tr.insertCell(0);
+        td.innerHTML = rooms[i];
+    }
+}
+
+function checkoutTable()
+{
+    var table = document.getElementById("checkoutTable");
+    for (var i = 0; i < rooms.length; i++) {
+        console.log("room[" + i + "]: " + rooms[i]);
+        var tr = table.insertRow(i + 1);
+        var td = tr.insertCell(0);
+        td.innerHTML = rooms[i];
+    }
+}
+
+function endTable()
+{
+    var table = document.getElementById("endTable");
+    for (var i = 0; i < rooms.length; i++) {
+        console.log("room[" + i + "]: " + rooms[i]);
+        var tr = table.insertRow(i + 1);
+        var td = tr.insertCell(0);
+        td.innerHTML = rooms[i];
+    }
+}
 // js for interactive map on findus.html
 function init() {
     map = new OpenLayers.Map("hotelMap");

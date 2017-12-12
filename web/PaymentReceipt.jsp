@@ -10,7 +10,7 @@
     <head>
 
         <!--Metadata-->
-        <title>Booking Confirmation</title>
+        <title>Payment Receipt</title>
 
         <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
@@ -40,6 +40,7 @@
         </div>
 
         <div class="BookingReceiptMain">
+            <a id="PortalReturn" href="ReceptionPortal.html"> <- Back to Portal</a><br>
             <h2>Receipt</h2>
             <table id="receipt">
                 <tr>

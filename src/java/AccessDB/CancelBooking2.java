@@ -84,7 +84,7 @@ public class CancelBooking2 extends HttpServlet {
                         + "    </head>");
                 out.println("<body>");
                 out.println("<div class=\"Main\">");
-                out.println("Booking canceled successfully!");
+                out.println("Booking canceled successfully! </br> </br>");
                 out.println("<input type=button name=\"Exit_CanceBooking\" value=\"Return to Homepage\" onclick=\"javascript:location.href = 'Home.html'\">");
                 out.println("</div>");
                 out.println("</body>");

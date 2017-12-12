@@ -40,6 +40,7 @@
         </div>
 
         <div class="PayCheckOutMain">
+            <a id="PortalReturn" href="ReceptionPortal.html"> <- Back to Portal</a><br>
             <h1>Pay and check out</h1>
             <table id="formDetails">
 

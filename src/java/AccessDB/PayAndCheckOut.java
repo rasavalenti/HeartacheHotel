@@ -83,6 +83,9 @@ public class PayAndCheckOut extends HttpServlet {
             
             String payOutstanding = "UPDATE booking SET b_outstanding = 0 "
                     + "WHERE b_ref=" + HotelReception.bookRef + ";";
+            
+            System.out.println("sql: " + payOutstanding);
+            
             statement.execute(payOutstanding);
             
             connection.close();

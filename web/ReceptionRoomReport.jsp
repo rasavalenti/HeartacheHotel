@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : HousekeepingShowRooms
     Created on : 10-Dec-2017, 16:23:04
     Author     : qhf13exu
@@ -10,7 +10,7 @@
     <head>
 
         <!--Metadata-->
-        <title>Rooms</title>
+        <title>Room Report</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <!--Style sheets-->
@@ -31,7 +31,7 @@
         <div class="Header">
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
-                <a class="Logo" href="HousekeepingView.html"><img id="MainLogo" src="images\Logo.png" alt="logo" /></a>
+                <a class="Logo" href="ReceptionPortal.html"><img id="MainLogo" src="images\Logo.png" alt="logo" /></a>
             </div>
             <div class="banner">
                 <img src="images\Header9.png" alt="Room with luggage" />
@@ -39,45 +39,92 @@
         </div>
 
         <div class="ShowRoomsMain">
-            <h2>Checked out rooms</h2>
-            <div class="RoomsForm">
-                <table id="showRooms">
-                    <tr>
-                    <form method="POST" name="refresh" action="ShowRooms">
-                        <td colspan="2"><input class="FormOutput" type="Submit" value="Refresh" name="refresh" id="refresh"</td>
-                    </form>
-                    </tr>
-                    <form method="POST" name="housekeepingUpdate" id="housekeepingUpdate" action="hkRoomStatus">   
-                        <tr colspan="2">
-                            <td><input class="FormOutput" type="text" name="roomNumber" id="roomNumber"></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="FormOutput" name="roomStatus" type="radio" id="radioAvailable" value="A" required><label for="radioAvailable">Available</label>
-                            </td>
-                        </tr>
-                        <tr colspan="2">
-                            <td>
-                                <input class="FormOutput" name="roomStatus" type="radio" id="radioUnavailable" value="X" required><label for="radioUnavailable">Unavailable</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><input class="FormOutput" type="submit" value="Change" name="submitHousekeeping" id="submitHousekeeping"</td>
-                        </tr>
-                    </form>
-                </table>
+            <a id="PortalReturn" href="ReceptionReports.html"> <- Back to Reports</a>
+            <br>
+            <h2>Room Report</h2>
+            <h2>From ${dateFrom} to ${dateTo}</h2>
+            <div class="RoomReport">
+            <table id="summary">
+                <tr>
+                    <td colspan="2"><strong>Summary Table:   </strong></td>
+                </tr>
+                <tr>
+                    <td>Occupied on ${dateFrom}:   </td>
+                    <td>${startRoomsNum}</td>
+                </tr>
+                <tr>
+                    <td>Check-ins:</td>
+                    <td>${checkinRoomsNum}</td>
+                </tr>
+                <tr>
+                    <td>Check-outs:   </td>
+                    <td>${checkoutRoomsNum}</td>
+                </tr>
+                <tr>
+                    <td>Occupied at end of ${dateTo}:   </td>
+                    <td>${endRoomsNum}</td>
+                </tr>
+            </table>
 
-                <table id="roomTable">
-                    <tr>
-                        <td>Room Number:</td>
-                    </tr>
-                    <script>
-                        var rooms = ${roomNums};
-                        showTables();
-                    </script>
-                </table>
-            </div>
+            <table id="startTable">
+                <tr>
+                    <td><strong>Occupied on ${dateFrom}</strong></td>
+                </tr>
+                <tr>
+                    <td>Count: <b>${startRoomsNum}</b></td>
+                </tr>
+                <script>
+                    var rooms = ${startRooms};
+                    startTable();
+                </script>
+            </table>
+
+            <table id="checkinTable">
+                <tr>
+                    <td><strong>Check-ins</strong></td>
+                </tr>
+                <tr>
+                    <td>Count: <b>${checkinRoomsNum}</b></td>
+                </tr>
+                <script>
+                    var rooms = ${checkinRooms};
+                    checkinTable();
+                </script>
+            </table>
+
+            <table id="checkoutTable">
+                <tr>
+                    <td><strong>Check-outs</strong></td>
+                </tr>
+                <tr>
+                    <td>Count: <b>${checkoutRoomsNum}</b></td>
+                </tr>
+                <script>
+                    var rooms = ${checkoutRooms};
+                    checkoutTable();
+
+                </script>
+            </table>
+
+            <table id="endTable">
+                <tr>
+                    <td><strong>End of ${dateTo}</strong></td>
+                </tr>
+                <tr>
+                    <td>Count: <b>${endRoomsNum}</b></td>
+                </tr>
+                <script>
+                    var rooms = ${endRooms};
+                    endTable();
+
+                </script>
+            </table>
+
+
+            <!--</div>-->
         </div>
+        </div>
+
 
         <div class="Footer">
             <img id="FooterLogo" src="images\Logo.png" alt="Heartache Logo" />
@@ -121,7 +168,7 @@
                 <a href="https://twitter.com/login?lang=en-gb" target="_blank"><img src="images\twitter.png" alt="Twitter" /></a>
                 <a href="https://www.tumblr.com/" target="_blank"><img src="images\tumblr.png" alt="Tumblr" /></a>
                 <a href="https://www.pinterest.com/" target="_blank"><img src="images\pinterest.png" alt="Pinterest" /></a>
-                <a href="https://plus.google.com/discover" target="_blank"><img src="images\google-plus.png" alt="Google Plus" /></a>  
+                <a href="https://plus.google.com/discover" target="_blank"><img src="images\google-plus.png" alt="Google Plus" /></a>
             </div>
 
         </div>

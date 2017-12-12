@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AccessDB;
 
-import static AccessDB.HotelReception.bookRef;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -14,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -27,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author qhf13exu
  */
+
 public class RoomStatus extends HttpServlet {
 
     /**
@@ -45,9 +39,9 @@ public class RoomStatus extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            //String insertSQL;
 
             // The following lines are here to check the connection between sql and netbeans
+         //String insertSQL;
             //insertSQL = "insert into customer values (6523690, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
             //System.out.println(insertSQL);
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
@@ -63,7 +57,6 @@ public class RoomStatus extends HttpServlet {
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
             //statement.execute(insertSQL);
-            // doesn't work with this...
             statement.execute("set schema 'HeartacheHotelDB';");
 
             String status = request.getParameter("roomStatus");
@@ -73,8 +66,9 @@ public class RoomStatus extends HttpServlet {
 
             System.out.println("in Roomstatus.java");
             
+            
             if (status.equals("C")) {
-
+                // if checking out get payment details fo booking reference
                 String getDetails = "SELECT A.c_no, c_name, c_email, c_address, "
                         + "c_cardtype, c_cardexp, c_cardno FROM customer AS A "
                         + "JOIN booking AS B ON A.c_no=B.c_no WHERE b_ref ='"
@@ -103,10 +97,25 @@ public class RoomStatus extends HttpServlet {
                     request.setAttribute("c_cardno", c_cardno);
                 }
                 
+                
+                String changeRoomStatus;
+                for (String room : HotelReception.r_nos) {
+                    changeRoomStatus = "UPDATE room SET r_status = '" + status + "' "
+                            + "WHERE r_no = '" + room + "';";
+                    System.out.println(changeRoomStatus);
+                    statement.execute(changeRoomStatus);
+                }
+                
+                request.setAttribute("bookRef", HotelReception.bookRef);
+                request.setAttribute("r_nos", HotelReception.r_nos);
+                
+                
+                
                 rd = request.getRequestDispatcher("PayCheckOut.jsp");
                 rd.forward(request, response);
             } else {
-
+                
+                // if checking in update status and send on to checkinsuccess jsp
                 System.out.println("in else");
                 String changeRoomStatus;
                 for (String room : HotelReception.r_nos) {
@@ -116,7 +125,12 @@ public class RoomStatus extends HttpServlet {
                     statement.execute(changeRoomStatus);
                 }
                 
-                out.println("Updates were successful.");
+                request.setAttribute("bookRef", HotelReception.bookRef);
+                request.setAttribute("r_nos", HotelReception.r_nos);
+                
+                rd = request.getRequestDispatcher("CheckInSuccess.jsp");
+                rd.forward(request, response);
+                
             }
 
 

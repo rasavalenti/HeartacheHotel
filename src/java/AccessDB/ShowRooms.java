@@ -50,8 +50,8 @@ public class ShowRooms extends HttpServlet {
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
             //statement.execute(insertSQL);
-            // doesn't work with this...
-            //statement.execute("set schema 'HeartacheHotelDB';");
+
+            statement.execute("set schema 'HeartacheHotelDB';");
 
             ResultSet resultSet;
 

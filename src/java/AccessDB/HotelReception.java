@@ -37,6 +37,8 @@ public class HotelReception extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.text.ParseException
      */
+    
+    // set static variables to be accessed by other servlets
     static int no_rooms;
     static String bookRef;
     static ArrayList<String> r_nos;
@@ -46,17 +48,14 @@ public class HotelReception extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-//            if (!resultSet.next()) {
-//                out.println("The booking reference " + bookRef + " is not valid.\n");
-//                out.println("Go back and try again.");
-//            }
-        try {
-//            String insertSQL;
 
-//            // The following lines are here to check the connection between sql and netbeans
+        try {
+            // The following lines are here to check the connection between sql and netbeans
+//            String insertSQL;
 //            insertSQL = "insert into customer values (987654, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
 //            System.out.println(insertSQL);
-            String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
+            
+String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  
             String myDBpwd = "groupdk"; // use your DB’s password, same as your username  
@@ -75,6 +74,7 @@ public class HotelReception extends HttpServlet {
 
             System.out.println("Booking ref is: " + bookRef);
 
+            // get customer details for booking reference
             String getCustomer = "SELECT A.b_ref, A.c_no, c_name, c_email, "
                     + "c_address, c_cardtype, c_cardexp, c_cardno, b_outstanding, "
                     + "checkin, checkout, C.r_no, r_status FROM booking AS A "
@@ -103,6 +103,7 @@ public class HotelReception extends HttpServlet {
                 request.setAttribute("checkout", checkout);
             }
 
+            // get number of rooms linked to the booking ref
             String numRooms = "SELECT COUNT(C.r_no) FROM booking AS A "
                     + "JOIN customer As B ON A.c_no = B.c_no "
                     + "JOIN roombooking AS C ON A.b_ref = C.b_ref "
@@ -117,6 +118,7 @@ public class HotelReception extends HttpServlet {
                 request.setAttribute("no_rooms", no_rooms);
             }
 
+            // get room numbers linked to booking
             String getRooms = "(SELECT C.r_no FROM booking AS A JOIN customer As B "
                     + "ON A.c_no = B.c_no JOIN roombooking AS C ON A.b_ref = C.b_ref "
                     + "JOIN room AS D ON C.r_no = D.r_no WHERE A.b_ref = '" + bookRef + "')";

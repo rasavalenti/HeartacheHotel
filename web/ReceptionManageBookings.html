@@ -4,7 +4,7 @@
     <head>
 
         <!--Metadata-->
-        <title>CheckInOut</title>
+        <title>Manage Bookings</title>
         <meta charset="UTF-8">
 
         <!--Style sheets-->
@@ -34,12 +34,13 @@
             </div>
         </div>
 
-        <div class="BookingReferenceMain">
-            <a href="ReceptionPortal.html"><- Back to Portal</a>
-            <br>
+        <div class="PayCheckOutMain">
+            <a id="PortalReturn" href="ReceptionPortal.html"> <- Back to Portal</a><br/>
+            <br/>
+            <h2>Manage Bookings</h2>
             <form method="POST" name="receptionForm" action="ReceptionManageBooking">
                 Customer reference number: 
-                <input type="text" name="Reception_c_no"> <br>
+                <input type="text" name="Reception_c_no"> <br/>
                 <input type="submit" value="Manage Booking">
             </form>
         </div>

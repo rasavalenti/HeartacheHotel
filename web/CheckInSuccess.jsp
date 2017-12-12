@@ -1,6 +1,6 @@
 <%-- 
-    Document   : HousekeepingShowRooms
-    Created on : 10-Dec-2017, 16:23:04
+    Document   : PaymentReceipt
+    Created on : 09-Dec-2017, 21:11:26
     Author     : qhf13exu
 --%>
 
@@ -10,15 +10,14 @@
     <head>
 
         <!--Metadata-->
-        <title>Rooms</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Check In Success</title>
 
         <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css">
         <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
         <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
 
-        <!--External style sheets-->
+        <!--External stylesheets-->
         <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
 
@@ -27,56 +26,26 @@
         <script src ="HHjavascript.js"></script>
 
     </head>
+
     <body>
+
         <div class="Header">
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
-                <a class="Logo" href="HousekeepingView.html"><img id="MainLogo" src="images\Logo.png" alt="logo" /></a>
+                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" /></a>
             </div>
             <div class="banner">
-                <img src="images\Header9.png" alt="Room with luggage" />
+                <img src="images\Header1.png" alt="Norfolk Coast" />
             </div>
         </div>
 
-        <div class="ShowRoomsMain">
-            <h2>Checked out rooms</h2>
-            <div class="RoomsForm">
-                <table id="showRooms">
-                    <tr>
-                    <form method="POST" name="refresh" action="ShowRooms">
-                        <td colspan="2"><input class="FormOutput" type="Submit" value="Refresh" name="refresh" id="refresh"</td>
-                    </form>
-                    </tr>
-                    <form method="POST" name="housekeepingUpdate" id="housekeepingUpdate" action="hkRoomStatus">   
-                        <tr colspan="2">
-                            <td><input class="FormOutput" type="text" name="roomNumber" id="roomNumber"></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="FormOutput" name="roomStatus" type="radio" id="radioAvailable" value="A" required><label for="radioAvailable">Available</label>
-                            </td>
-                        </tr>
-                        <tr colspan="2">
-                            <td>
-                                <input class="FormOutput" name="roomStatus" type="radio" id="radioUnavailable" value="X" required><label for="radioUnavailable">Unavailable</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><input class="FormOutput" type="submit" value="Change" name="submitHousekeeping" id="submitHousekeeping"</td>
-                        </tr>
-                    </form>
-                </table>
-
-                <table id="roomTable">
-                    <tr>
-                        <td>Room Number:</td>
-                    </tr>
-                    <script>
-                        var rooms = ${roomNums};
-                        showTables();
-                    </script>
-                </table>
-            </div>
+        <div class="BookingReceiptMain">
+            <a id="PortalReturn" href="ReceptionPortal.html"> <- Back to Portal</a><br>
+            <h2>Checked-In</h2>
+            You have successfully checked in rooms:
+            <b>${r_nos}</b>
+            linked to booking reference:
+            <b>${bookRef}</b>  
         </div>
 
         <div class="Footer">

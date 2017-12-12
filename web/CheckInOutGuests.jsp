@@ -41,7 +41,9 @@
             </div>
         </div>
 
-        <div class="CheckInMain">    
+        <div class="ReceptionPortalMain">
+            <a id="PortalReturn" href="ReceptionPortal.html"> <- Back to Portal</a><br>
+            <br>
             <h1>Guest Booking Information</h1>
             <table id="guestDetails">
                 <tr>
@@ -82,7 +84,6 @@
                         <select id="roomStatus" name="roomStatus">
                             <option value="X">Check-in</option>
                             <option value="C">Check-out</option>
-                            <option value="A">Make available</option>
                         </select>
                     </td>
                     <td>

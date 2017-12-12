@@ -514,6 +514,12 @@ div.ShowRoomsMain {
     padding-bottom: 3%;
 }
 
+div.ShowRoomsMain a {
+    text-decoration: underline;
+    color: grey;
+    font-size: x-large;
+}
+
 /*CSS for BookingManage header*/
 div.ShowRoomsMain h2 {
     font-size: 300%;
@@ -612,7 +618,7 @@ div.BookingReferenceMain input {
 div.AddRoomsMain {
     position: relative;
     width: 60%;
-    height: 40em;
+    height: 60em;
     margin-left: 15%;   
     margin-right: 15%;   
     padding-top: 3%;   
@@ -770,7 +776,7 @@ div.BookingMain p {
 
 .HomepageBooking {
     float: right;
-    width: 30%;
+    width: 22%;
     font-size: x-large;
     margin-right: 5%;
     display: inline-block;
@@ -1312,3 +1318,89 @@ div.HousekeepingMain fieldset {
     padding: 3%;
 }
 
+.RoomReport {
+    justify-content: center;
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: small;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+.RoomReport table {
+    display: inline;
+    font-size: large;
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+.RoomReport strong {
+    text-decoration: underline;
+}
+
+.ReceptionReportsMain {
+    height: 700px;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.ReceptionReportsMain h2 {
+    text-align: center;
+    float: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    font-size: 300%;
+}
+
+/*.ReceptionPortalMainText {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#PortalReturn {
+    float: left;
+    padding: 2%;
+}*/
+
+div.ReceptionReportsMain {
+    position: relative;
+    width: 70%;
+    height: 40em;
+    margin-left: 15%;   
+    margin-right: 15%;   
+    padding-top: 3%;   
+    padding-bottom: 3%;
+}
+
+div.ReceptionReportsMain h2 {
+    font-size: 300%;
+    text-align: center;   
+    padding-bottom: 1%;
+}
+
+div.ReceptionReportsMain table { 
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    text-align: left;
+    font-size: x-large;
+    padding: 3%;
+    border: 3px #ebd8bc solid;
+}
+
+div.ReceptionReportsMain a {
+    text-decoration: underline;
+    color: grey;
+    font-size: x-large;
+}
+
+
+div.ReceptionReportsMain input {
+    margin: 2%;
+}

@@ -104,6 +104,22 @@
         <servlet-name>hkRoomStatus</servlet-name>
         <url-pattern>/hkRoomStatus</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RoomReport</servlet-name>
+        <servlet-class>AccessDB.RoomReport</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RoomReport</servlet-name>
+        <url-pattern>/RoomReport</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ReceptionManageBooking</servlet-name>
+        <servlet-class>AccessDB.ReceptionManageBooking</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReceptionManageBooking</servlet-name>
+        <url-pattern>/ReceptionManageBooking</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

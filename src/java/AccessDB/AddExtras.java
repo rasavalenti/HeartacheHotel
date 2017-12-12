@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AddExtras extends HttpServlet {
 
  
-    
+    // define static variables o be used in other servlets
     static int b_outstanding;
     static int b_cost;
     static int total;
@@ -53,6 +52,7 @@ public class AddExtras extends HttpServlet {
             String bookRef = request.getParameter("bookRef");
             request.setAttribute("bookRef", bookRef);
             
+            // work out which extra items and how many have been selected
             String temp1, temp2;
             int choice1, choice2, choice3, choice4, 
                     amount1, amount2, amount3, amount4;
@@ -77,6 +77,7 @@ public class AddExtras extends HttpServlet {
             choice4 = Integer.parseInt(temp1);
             amount4 = Integer.parseInt(temp2);
             
+            // work out cost of extra items
             int cost = (choice1 * amount1) +
                     (choice2 * amount2) +
                     (choice3 * amount3) + 
@@ -84,6 +85,7 @@ public class AddExtras extends HttpServlet {
             
             request.setAttribute("cost", cost);
             
+            // get outstanding balance linked ot booking reference
             String getOutstanding = "SELECT b_outstanding FROM booking AS A "
                     + "JOIN customer As B ON A.c_no = B.c_no "
                     + "JOIN roombooking AS C ON A.b_ref = C.b_ref "
@@ -97,6 +99,7 @@ public class AddExtras extends HttpServlet {
                 request.setAttribute("b_outstanding", b_outstanding);
             }
             
+            // work out new outstanding (ading cost of extras) and update b_outstanding lined to booking reference
             total = b_outstanding + cost;
             request.setAttribute("total", total);
             request.setAttribute("cost", cost);
