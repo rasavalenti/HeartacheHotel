@@ -59,11 +59,11 @@
                         <tr><td><label> Total: </label> </td> <td>£ ${b_cost}</td></tr>
                         <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
                         <tr><td colspan="2"><strong>Personal details</strong></td></tr>
-                        <tr><td><label for="forename"> Forename: </label></td> <td><input type="text" name="forename" id="forename"></td></tr>
+                        <tr><td><label for="forename"> Forename: </label></td> <td><input type="text" name="forename" id="forename" required></td></tr>
 
-                        <tr><td><label for="surname"> Surname: </label></td> <td> <input type="text" name="surname" id="surname"></td></tr>
+                        <tr><td><label for="surname"> Surname: </label></td> <td> <input type="text" name="surname" id="surname" required></td></tr>
 
-                        <tr><td><label for="email"> Email: </label> </td> <td><input type="email" name="email" id="email"></td></tr>
+                        <tr><td><label for="email"> Email: </label> </td> <td><input type="email" name="email" id="email" required></td></tr>
 
                         <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
                         <tr><td colspan="2"><strong>Payment information</strong></td></tr>
@@ -78,7 +78,7 @@
 
                         <tr><td>
                                 <label for="cardnumber">Card number:</label> </td> <td>
-                                <input type="text" id="cardnumber" name="cardnumber" maxlength="16"> </td></tr>
+                                <input type="number" id="cardnumber" name="cardnumber" maxlength="16" required> </td></tr>
 
 
                         <tr>
@@ -86,7 +86,7 @@
                                 Expiration date:
                             </td>    
                             <td>
-                                <select name="month" id="month">
+                                <select name="month" id="month" required>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>
@@ -102,7 +102,7 @@
                                 </select>
 
 
-                                <select name="year" id="year">
+                                <select name="year" id="year" required>
                                     <option value="17">2017</option>
                                     <option value="18">2018</option>
                                     <option value="19">2019</option>
@@ -117,9 +117,9 @@
                         </tr>
                         <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
                         <tr><td colspan="2"><strong>Billing Address </strong></td></tr>
-                        <tr><td>Address:</td><td><input type="text" name="addressline" id="addressline"></td></tr>
-                        <tr><td>City:</td><td><input type="text" name="city" id="city"></td></tr>
-                        <tr><td>Post Code:</td><td><input type="text" name="postcode" id="postcode"></td></tr>
+                        <tr><td>Address:</td><td><input type="text" name="addressline" id="addressline" required></td></tr>
+                        <tr><td>City:</td><td><input type="text" name="city" id="city" required></td></tr>
+                        <tr><td>Post Code:</td><td><input type="text" name="postcode" id="postcode" required></td></tr>
 
                         <tr><td>Additional Notes: </td><td>
                                 <textarea id="WideArea" name="bookingNotes" cols="30" rows="10" placeholder="If you have any additional requirements please state them here..."></textarea> </td></tr>
@@ -127,7 +127,7 @@
 
                     </table>
                     <br/>
-                    <input class="FormInput" type="submit" value="Book" onclick="javascript:location.href = 'BookingConfirmation.jsp'">
+                    <input class="FormInput" type="submit" value="Make a booking">
                     <input class="FormInput" type="reset" value="Reset" id="reset_button">
                     <input class="FormInput" type="button" value="Cancel" onclick="javascript:location.href = 'Booking.html'">
                     

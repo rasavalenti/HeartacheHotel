@@ -23,6 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author fvq13ndu
+ * 
+ * This is a servlet which gets the information from the BookingForm.jsp and updates
+ * 'customer', 'booking' and 'roombooking' tables. Then, sends the information to 
+ * BookingConfirmation.jsp
  */
 public class AccessServlet extends HttpServlet {
 
@@ -41,11 +45,8 @@ public class AccessServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            String insertSQL;
 
-            //The following lines are here to check the connection between sql and netbeans
-            //            insertSQL = "insert into customer values (123470, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
-            //            System.out.println(insertSQL);
+            //Connecting to the database
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  
@@ -58,9 +59,12 @@ public class AccessServlet extends HttpServlet {
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
-//                statement.executeUpdate(insertSQL);
+            
+            //Setting the schema
             statement.execute("set schema 'HeartacheHotelDB';");
-
+            
+            
+            //Creating a c_no for the new customer (by adding 1 to the biggest c_no in the 'customer' table)
             String maxCno = "select MAX(c_no) as maxcno from customer;";
             ResultSet resultSet = statement.executeQuery(maxCno);
             int c_no = 0;
@@ -69,7 +73,9 @@ public class AccessServlet extends HttpServlet {
                 c_no = c_no + 1;
                 out.println("The c_no is: " + c_no);
             }
-
+            
+            //Getting parameters from BookingForm.jsp
+            
             String forename = request.getParameter("forename");
             String surname = request.getParameter("surname");
             String email = request.getParameter("email");
@@ -85,8 +91,13 @@ public class AccessServlet extends HttpServlet {
             String sqlstatement = "insert into customer values (" + c_no + ", '" + forename + " " + surname + "',"
                     + " '" + email + "', '" + addressline + ", " + city + " " + postcode + "',"
                     + " '" + card + "', '" + month + "/" + year + "', '" + cardnumber + "');";
+            
+            //Printing out onto console to see is the statement used is of correct form
             System.out.println(sqlstatement);
-
+            
+            //Getting parameters which were inputed in Booking.html and previously used in CheckDates servlet
+            //by retrieving them from the CheckDates.java
+            
             java.sql.Date checkin = CheckDates.checkin;
 
             java.sql.Date checkout = CheckDates.checkout;
@@ -95,16 +106,13 @@ public class AccessServlet extends HttpServlet {
 
             int numOfRooms = CheckDates.numOfRooms;
 
-//            int numberOfDays = Days.daysBetween(checkin, checkout).getDays();
-//            System.out.println(numberOfDays);
-            if (checkin == null & checkout == null & roomtype == null & numOfRooms == 0) {
-                out.println("We don't have enough rooms for the specified dates.");
-            }
-
+            //Printing onto console to keep track/test the servlet
             System.out.println("From AccessServlet: " + checkin + " " + checkout + " " + roomtype + " " + numOfRooms);
 
+            //Executing the sql statement that inserts a new customer into the 'customer' table
             statement.execute(sqlstatement);
-
+            
+            //Creating a b_ref for the new booking in the same way as the c_no was created before
             String maxBRef = "select MAX(b_ref) as maxbref from booking;";
             resultSet = statement.executeQuery(maxBRef);
             int b_ref = 0;
@@ -115,7 +123,8 @@ public class AccessServlet extends HttpServlet {
             }
 
             System.out.println("The booking reference is: " + b_ref);
-
+            
+            //Getting the price for the requested room type
             String pricePerNight = "select price from rates where r_class='" + roomtype + "';";
             resultSet = statement.executeQuery(pricePerNight);
             double price = 0;
@@ -124,16 +133,20 @@ public class AccessServlet extends HttpServlet {
                 out.println("The price per night is: " + price);
             }
             System.out.println("The price per night is: " + price);
-
+            
+            //Inserting values into 'booking' table
             String Booking = "insert into booking values (" + b_ref + ", " + c_no + ", 0, 0, '');";
 
             statement.execute(Booking);
 
             System.out.println(Booking);
-
+            
+            //Loop for inserting values into the roombooking table
+            
             int r_no = 0;
-
+            
             for (int i = numOfRooms; i > 0; i--) {
+                //Getting the r_no's from the available rooms for the specified dates
                 String availableRoom = "select MIN(r.r_no) from room r where r.r_no "
                         + "NOT IN (select rb.r_no from roombooking rb where checkin "
                         + "<= '" + checkout + "' and checkout >= '" + checkin + "' group by rb.r_no) "
@@ -145,18 +158,22 @@ public class AccessServlet extends HttpServlet {
                     out.println("The room you are booking is: " + r_no);
                 }
                 System.out.println("The r_no is: " + r_no);
-
+                
+                //inserting values into 'roombooking' table using the available r_no
                 String roomBooking = "insert into roombooking values (" + r_no + ", " + b_ref + ", '" + checkin + "', '" + checkout + "');";
 
                 statement.execute(roomBooking);
             }
-
+            
+            //updating the 'booking' table value which we added previously by adding the booking cost, booking noted and the booking reference
+            //It has to be done in this way because of the limitations in the SQL
             String updateBooking = "update booking set b_cost=" + CheckDates.b_cost + ", b_outstanding=" + CheckDates.b_cost + ", b_notes='" + b_notes + "' where b_ref=" + b_ref + ";";
 
             statement.execute(updateBooking);
             out.println("The total b_cost is: " + CheckDates.b_cost);
             System.out.println("b_cost is: " + CheckDates.b_cost);
-
+            
+            //Setting the attributes which will be then used in the BookingConfirmation.jsp
             request.setAttribute("b_cost", CheckDates.b_cost);
             request.setAttribute("c_no", c_no);
             request.setAttribute("forename", forename);
@@ -176,7 +193,11 @@ public class AccessServlet extends HttpServlet {
             request.setAttribute("checkout", checkout);
             request.setAttribute("roomtype", CheckDates.roomtypename);
             request.setAttribute("numofrooms", numOfRooms);
+            
+            //Sending the variables to the BookingConfirmation.jsp 
             request.getRequestDispatcher("BookingConfirmation.jsp").forward(request, response);
+            
+            connection.close();
 
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);

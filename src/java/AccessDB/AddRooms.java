@@ -24,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author fvq13ndu
+ *
+ * This servlet is used to add rooms when a customer/reception tries to add more
+ * rooms to an existing booking. It takes information from BookingManage.jsp.
  */
 public class AddRooms extends HttpServlet {
 
@@ -48,7 +51,7 @@ public class AddRooms extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-
+            //Connecting to database
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  
@@ -68,6 +71,7 @@ public class AddRooms extends HttpServlet {
             String b_outstanding = null;
             String b_notes = null;
 
+            //Getting information about the specified booking
             String SQLStatement = "select b_ref, b_cost, b_outstanding, b_notes from booking where b_ref=" + m_b_ref + ";";
 
             ResultSet resultSet = statement.executeQuery(SQLStatement);
@@ -79,6 +83,7 @@ public class AddRooms extends HttpServlet {
                 b_notes = resultSet.getString("b_notes");
             }
 
+            //Setting the attributes so that they could be retrieved in AddRooms.jsp
             request.setAttribute("b_ref", b_ref);
             request.setAttribute("b_cost", b_cost);
             request.setAttribute("b_outstanding", b_outstanding);
@@ -95,24 +100,28 @@ public class AddRooms extends HttpServlet {
 
             request.setAttribute("checkin", checkin);
             request.setAttribute("checkout", checkout);
-
+            //Getting the room numbers for a specified booking reference
             SQLStatement = "select rb.r_no from booking b, roombooking rb where b.b_ref=rb.b_ref and b.b_ref=" + b_ref + ";";
 
             resultSet = statement.executeQuery(SQLStatement);
-
+            //An arraylist which shows the room numbers for the specified booking reference
             ArrayList<String> r_nos_array = new ArrayList();
             while (resultSet.next()) {
                 r_nos_array.add(resultSet.getString("r_no"));
             }
             System.out.println(r_nos_array);
-
+            //Cutting the string that the arraylist comes in normally [ ..., ..., ... ]
+            //to not have the square brackets at the ends
             r_nos = r_nos_array.toString();
             r_nos = r_nos.substring(1, r_nos.length());
             r_nos = r_nos.substring(0, r_nos.length() - 1);
 
             request.setAttribute("r_nos", r_nos);
-
+            
+            //Forwarding the variables tp the AddRooms.jsp
             request.getRequestDispatcher("AddRooms.jsp").forward(request, response);
+
+            connection.close();
 
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);

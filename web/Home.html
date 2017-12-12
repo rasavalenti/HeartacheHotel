@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <!--Metadata-->
         <title>Heartache Hotel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,20 +9,20 @@
         <meta name="keywords" content="hotel, norwich, business, holiday, norfolk" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Heartache Hotel staff" />
-        
+
         <!--Style sheets-->
         <link rel="stylesheet" type="text/css" href="HHcss.css" />
         <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
         <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
-        
+
         <!--External stylesheets-->
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
-        
+
         <!--JavaScript Links-->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="HHjavascript.js"></script>
-        
+
     </head>
 
     <body>
@@ -52,7 +52,7 @@
         <div class="Main">
 
             <div>
-                
+
                 <div class="HomepageHeaders">
                     <img src="images\EateriesNor.png" alt="Table" />
                     <img src="images\Breakfast.png" alt="Breakfast" />
@@ -61,7 +61,7 @@
                     <img src="images\Twin1.png" alt="Twin room" />
                     <img id="LastHeaderItem" src="images\NorCathedral.png" alt="Cathedral" />
                 </div>
-                
+
                 <h2>Welcome to the Heartache Hotel</h2>
                 <p id="Welcome">
                     <i>"Located in the heart of Norfolk, the Heartache Hotel is perfect for any occasion.<br> 
@@ -81,27 +81,27 @@
                 </script>
 
             </div>
-            
+
             <div class="HomepageBooking">
-            <form id="book2" class="tabcontent" method="POST" action="CheckDates">
-                <fieldset>
-                    <legend>Make a Booking</legend>
+                <form id="book2" class="tabcontent" method="POST" action="CheckDates">
 
-                    <label> Check-in: </label><input type="text" name ="checkin" id="checkInHP" onchange="checkOutDate2();" oninput="this.onchange();"><br>
-                    <label> Check-out: </label><input type="text" name ="checkout" id="checkOutHP"><br>
-                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();"><br>
-                    <label> Room type: </label><select name="roomtype" id="roomtype">
-                        <option value="std_d">Standard Double</option>
-                        <option value="std_t">Standard Twin</option>
-                        <option value="sup_d">Premium Double</option>
-                        <option value="sup_t">Premium Twin</option>
-                    </select>
-                    <br/>
-                    <input class="HomepageFormInput" type="submit" value="Check Availability" onclick="javascript:location.href = 'BookingForm.html'">    
-                </fieldset>
-            </form>
+                        <table>
+
+                            <tr><td colspan="2"><strong>Make a Booking</strong></td></tr>
+                            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                            <tr><td><label> Check-in: </label></td><td><input type="text" name ="checkin" id="checkInHP" onchange="checkOutDate2();" oninput="this.onchange();" required></td></tr>
+                            <tr><td><label> Check-out: </label></td><td><input type="text" name ="checkout" id="checkOutHP" required></td></tr>
+                            <tr><td><label> Number of rooms: </label></td><td> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();" required></td></tr>
+                            <tr><td><label> Room type: </label></td><td><select name="roomtype" id="roomtype">
+                                        <option value="std_d">Standard Double</option>
+                                        <option value="std_t">Standard Twin</option>
+                                        <option value="sup_d">Premium Double</option>
+                                        <option value="sup_t">Premium Twin</option>
+                                    </select></td></tr>
+                            <tr><td><input class="HomepageFormInput" type="submit" value="Check Availability"></td><td>&nbsp;</td></tr>
+                        </table>
+                </form>
             </div>
-
         </div>
 
         <div class="Footer">
@@ -117,7 +117,7 @@
                 <li><a href="FindUs.html">Find us</a></li>
                 <li><a href="ContactUs.html">Contact us</a></li>
             </ul>
-                       
+
             <ul id="FooterEmail">
                 <li>CONTACT US</li>
                 <li><a href="mailto:heartachehotel@heartachehotel.com? Subject=Queries" target="_top">Click to Email</a></li>
@@ -128,17 +128,17 @@
                 <li>Norfolk</li>
                 <li>NR3 4LE</li>
             </ul>
-            
+
             <ul id="FooterCopyright">
                 <li>COPYRIGHT</li>
                 <li>@Copyright 2017</li>
                 <li>Heartache Hotel</li>
                 <li>All Rights Reserved</li>
             </ul>
-            
-            
+
+
             <img id="tripAdviser" src="images\trip.png" alt="Owl" />
-            
+
             <div id="SocialMedia">
                 <p>SOCIAL MEDIA LINKS</p>
                 <a href="https://en-gb.facebook.com/" target="_blank"><img src="images\facebook.png" alt="Facebook" /></a>

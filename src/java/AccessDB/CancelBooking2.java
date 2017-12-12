@@ -27,6 +27,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author fvq13ndu
+ * 
+ * This is the servlet that follows from BookingCancel.jsp and cancels the booking
+ * when the customer confirms they want to do that
  */
 public class CancelBooking2 extends HttpServlet {
 
@@ -45,7 +48,7 @@ public class CancelBooking2 extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-
+            //Getting acces to database
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  
@@ -60,10 +63,11 @@ public class CancelBooking2 extends HttpServlet {
             Statement statement = connection.createStatement();
 
             statement.execute("set schema 'HeartacheHotelDB';");
-            
+            //Delecting the values from roombooking
             String SQLStatement = "delete from roombooking where b_ref="+CancelBooking.b_ref+";";
-            
+            //Deleting the values from booking
             String SQLStatement2 = "delete from booking where b_ref="+CancelBooking.b_ref+";";
+            
             
             statement.execute(SQLStatement);
             statement.execute(SQLStatement2);
@@ -71,7 +75,22 @@ public class CancelBooking2 extends HttpServlet {
             System.out.println(SQLStatement);
             System.out.println(SQLStatement2);
             System.out.println("Deletion complete");
-//            statement.execute(sqlstatement);
+            
+            out.println("<html>\n"
+                        + "    <head>\n"
+                        + "        <title>Booking Canceled Successfully</title>\n"
+                        + "        <link rel=\"stylesheet\" type=\"text/css\" href=\"HHcss.css\">\n"
+                        + "\n"
+                        + "    </head>");
+                out.println("<body>");
+                out.println("<div class=\"Main\">");
+                out.println("Booking canceled successfully!");
+                out.println("<input type=button name=\"Exit_CanceBooking\" value=\"Return to Homepage\" onclick=\"javascript:location.href = 'Home.html'\">");
+                out.println("</div>");
+                out.println("</body>");
+            
+            connection.close();
+            
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }

@@ -50,7 +50,7 @@
             </table>
                 </br></br>
              <form>
-                <input type=button name="Exit_AddRooms" value="Exit" onclick="javascript:location.href = 'Booking.html'">
+                <input type=button name="Exit_AddRooms" value="Exit" onclick=${exit_link}>
             </form>
         </div>  
                 

@@ -27,6 +27,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author fvq13ndu
+ *
+ * This is a servlet that follows from the AddRooms.jsp and does a similar check
+ * of which rooms are available for the specified dates as the one done in
+ * CheckDates servlet. It leads to AddRoomsConfirmation.jsp
  */
 public class AddRooms2 extends HttpServlet {
 
@@ -40,12 +44,16 @@ public class AddRooms2 extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.text.ParseException
      */
+
+    static String user;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
 
+            //Connecting to database
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
             String myDBusername = "groupdk"; // use your username for the database username  
@@ -59,14 +67,14 @@ public class AddRooms2 extends HttpServlet {
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
             Statement statement = connection.createStatement();
 
+            //Getting the parameters from AddRooms.jsp
             String roomtype = request.getParameter("add_r_roomtype");
 
             int numOfRooms = Integer.parseInt(request.getParameter("add_r_num"));
 
             statement.execute("set schema 'HeartacheHotelDB';");
 
-            //Even though this might seem confusing hte checkout and checkin have to stay in this way:
-            //...checkin <= '"+checkout+"' and checkout >= '"+checkin+"'...
+            //Checking if the requested rooms can be booked for the specified dates
             String query = "select COUNT(*) from room r where r.r_no NOT IN (select rb.r_no "
                     + "from roombooking rb where checkin <= '" + AddRooms.checkout + "' and checkout >= '" + AddRooms.checkin + "' group by rb.r_no) "
                     + "and r_class='" + roomtype + "' group by r.r_class";
@@ -78,30 +86,37 @@ public class AddRooms2 extends HttpServlet {
                 availableNumOfRooms = resultSet.getInt("COUNT");
             }
 
+            //Information printed onto console which helps with testing/tracking 
             System.out.println("you wanted " + numOfRooms + " rooms");
             System.out.println("we have " + availableNumOfRooms + " rooms");
 
             RequestDispatcher rd;
 
+            //A loop which in case there are enough of the requested rooms it goes on and udates the required tables
+            //in case there are not enough rooms it displays a message with the rooms that we still have available for the specified dates
             if (availableNumOfRooms - numOfRooms >= 0) {
                 int r_no = 0;
+                for (int i = numOfRooms; i > 0; i--) {
+                    //Getting the room number that can later be used to book by retrieving the smallest room number available 
+                    //with the specifications made by the customer/reception
+                    String availableRoom = "select MIN(r.r_no) from room r where r.r_no "
+                            + "NOT IN (select rb.r_no from roombooking rb where checkin "
+                            + "<= '" + AddRooms.checkout + "' and checkout >= '" + AddRooms.checkin + "' group by rb.r_no) "
+                            + "and r_class='" + roomtype + "';";
+                    resultSet = statement.executeQuery(availableRoom);
 
-                String availableRoom = "select MIN(r.r_no) from room r where r.r_no "
-                        + "NOT IN (select rb.r_no from roombooking rb where checkin "
-                        + "<= '" + AddRooms.checkout + "' and checkout >= '" + AddRooms.checkin + "' group by rb.r_no) "
-                        + "and r_class='" + roomtype + "';";
-                resultSet = statement.executeQuery(availableRoom);
+                    while (resultSet.next()) {
+                        r_no = resultSet.getInt("min");
+                        out.println("The room you are booking is: " + r_no);
+                    }
+                    System.out.println("The r_no is: " + r_no);
 
-                while (resultSet.next()) {
-                    r_no = resultSet.getInt("min");
-                    out.println("The room you are booking is: " + r_no);
+                    //Updating the roombooking table
+                    String roomBooking = "insert into roombooking values (" + r_no + ", " + AddRooms.b_ref + ", '" + AddRooms.checkin + "', '" + AddRooms.checkout + "');";
+                    System.out.println(roomBooking);
+                    statement.execute(roomBooking);
                 }
-                System.out.println("The r_no is: " + r_no);
-
-                String roomBooking = "insert into roombooking values (" + r_no + ", " + AddRooms.b_ref + ", '" + AddRooms.checkin + "', '" + AddRooms.checkout + "');";
-                System.out.println(roomBooking);
-                statement.execute(roomBooking);
-
+                //Getting the total
                 String pricePerNight = "select price from rates where r_class='" + roomtype + "';";
                 resultSet = statement.executeQuery(pricePerNight);
                 double price = 0;
@@ -111,6 +126,7 @@ public class AddRooms2 extends HttpServlet {
                 }
                 System.out.println("The price per night is: " + price);
 
+                //Getting the number of days that the customer is staying
                 String numberOfDaysStayed = "SELECT(SELECT checkout from roombooking "
                         + "where b_ref='" + AddRooms.b_ref + "' and r_no='" + r_no + "') - (SELECT checkin from "
                         + "roombooking where b_ref='" + AddRooms.b_ref + "' and r_no='" + r_no + "') as stay_days;";
@@ -122,7 +138,10 @@ public class AddRooms2 extends HttpServlet {
                 }
                 System.out.println("The number of days you are staying is: " + daysStay);
 
+                //getting the total cost for the added room
                 double b_cost_to_add = price * daysStay * numOfRooms;
+
+                //adding the cost of the added room to the total booking cost
                 double total_b_cost = AddRooms.b_cost + b_cost_to_add;
 
                 String updateBooking = "update booking set b_cost=" + total_b_cost + ", b_outstanding=" + total_b_cost + " where b_ref=" + AddRooms.b_ref + ";";
@@ -131,11 +150,12 @@ public class AddRooms2 extends HttpServlet {
                 out.println("The total b_cost is: " + total_b_cost);
 
                 System.out.println("b_cost is: " + total_b_cost);
-                
+
                 String SQLStatement = "select rb.r_no from booking b, roombooking rb where b.b_ref=rb.b_ref and b.b_ref=" + AddRooms.b_ref + ";";
 
                 resultSet = statement.executeQuery(SQLStatement);
 
+                //The arraylist for the room numbes after the new room/rooms were added
                 ArrayList<String> new_r_nos_array = new ArrayList();
                 while (resultSet.next()) {
                     new_r_nos_array.add(resultSet.getString("r_no"));
@@ -146,16 +166,35 @@ public class AddRooms2 extends HttpServlet {
                 new_r_nos = new_r_nos.substring(1, new_r_nos.length());
                 new_r_nos = new_r_nos.substring(0, new_r_nos.length() - 1);
 
+                //Setting the attributes which will then be retrieved in AddRoomsConfirmation.jsp
                 request.setAttribute("previous_r_nos", AddRooms.r_nos);
                 request.setAttribute("new_r_nos", new_r_nos);
 
                 request.setAttribute("previous_b_cost", AddRooms.b_cost);
                 request.setAttribute("total_b_cost", total_b_cost);
 
+                //This is the exit link which either foes pack to the ReceptionPortal.html
+                //it the user is reception and toes to Home.html if the user is a customer
+                //These values were specified in ReceptionManageBooking or ManageBooking servlets
+                //depending on who is using the servlet
+                String exit_link;
+                if (user.equals("reception")) {
+                    exit_link = "\"javascript:location.href = 'ReceptionPortal.html'\"";
+                    request.setAttribute("exit_link", exit_link);
+                }
+
+                if (user.equals("customer")) {
+                    exit_link = "\"javascript:location.href = 'Home.html'\"";
+                    request.setAttribute("exit_link", exit_link);
+                }
+
                 rd = request.getRequestDispatcher("AddRoomsConfirmation.jsp");
                 rd.forward(request, response);
 
             } else {
+                //This is the error mesage that's printed out in case there aren't enough rooms, this is very similar to CheckDates servlet
+                //it displays the number of rooms available for each individual type for the spacified dates.
+
                 out.println("<html>\n"
                         + "    <head>\n"
                         + "        <title>Try Again</title>\n"
@@ -200,13 +239,23 @@ public class AddRooms2 extends HttpServlet {
                     availableNumOfRooms = resultSet.getInt("COUNT");
                     out.println(availableNumOfRooms + " Premium Twin rooms. <br />");
                 }
-                out.println("Please try booking again. If you need assistance, please contact us <a href=\"ContactUs.html\">here</a>.<br/><br/>");
+                //Again, the exit buttons depend on who is using the servlet
+                System.out.println("We don't have anough rooms for the specified date");
+                if (user.equals("reception")) {
+                    out.println("<input type=button name=\"Exit_CancelRooms\" value=\"Exit\" onclick=\"javascript:location.href = 'ReceptionPortal.html'\">");
+                }
 
                 System.out.println("We don't have anough rooms for the specified date");
-                out.println("<input type=button name=\"Exit_CancelRooms\" value=\"Exit\" onclick=\"javascript:location.href = 'Booking.html'\">");
+                if (user.equals("customer")) {
+                    out.println("Please try booking again. If you need assistance, please contact us <a href=\"ContactUs.html\">here</a>.<br/><br/>");
+                    out.println("<input type=button name=\"Exit_CancelRooms\" value=\"Exit\" onclick=\"javascript:location.href = 'Booking.html'\">");
+                }
+
                 out.println("</div>");
                 out.println("</body>");
             }
+
+            connection.close();
 
 //            statement.execute(sqlstatement);
         } catch (ClassNotFoundException | SQLException e) {

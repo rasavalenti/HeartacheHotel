@@ -76,6 +76,7 @@
             <br/><br/>
             <form>
                 <input type=button name=saveAsPdf value="Print Or Save as PDF" onClick="window.print()">
+                <input class="FormInput" type=button name="Exit_Confirmation" value="Exit" onclick="javascript:location.href = 'Booking.html'">
             </form>
 
         </div>

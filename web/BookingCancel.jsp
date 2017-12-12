@@ -56,7 +56,7 @@
                 <form method="POST" name="cancelBookingForm" action="CancelBooking2">
                     <br/>
                     <input class="FormInput" type="submit" value="Cancel Booking"> 
-                    <input class="FormInput" type=button name="Exit_CancelRooms" value="Exit" onclick="javascript:location.href = 'Booking.html'">
+                    <input class="FormInput" type=button name="Exit_CancelRooms" value="Exit" onclick=${exit_link}>
                 </form>
             
         </div>

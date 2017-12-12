@@ -24,11 +24,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author fvq13ndu
- * This servlet gets information from the Booking.jsp when it is set on 'Manage Booking'
- * It takes the customer reference and the email to display some information about the customer
- * and their bookings and some options for managing their booking 
+ * 
+ * This servlet gets information from ReceptionManageBooking.html and then reuses a lot of the 
+ * same servlets/pages as ManageBooking.java
  */
-public class ManageBooking extends HttpServlet {
+public class ReceptionManageBooking extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,19 +40,23 @@ public class ManageBooking extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.text.ParseException
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            //Setting the user in AddRooms2.java and CancelBooking.java to "reception"
+            //this is done because the same servlets are used by the reception portal and the 
+            //customer view, it ensures that for example the exit button takes the customer to the Home.html
+            //while for reception it takesthem to ReceptionPortal.html
+
+            AddRooms2.user = "reception";
+            CancelBooking.user = "reception";
             
-            //Sets the user variable in two places to "customer" this is because the same servlets are reused
-            //by customer and the reception, so this helps make certain changes to some of the buttons 
-            //(please see them in the specific servlets, that is AddRooms2 and CancelBooking)
-            AddRooms2.user = "customer";
-            CancelBooking.user = "customer";
-            
-            //Connecting to the database
+            //Even though this servlet is very similar to the ManageBooking servlet,
+            //it differs in that only the c_no is required to be inputed to retrieve 
+            //the required info, instead of c_no and email (which was done for security reasons in customer view).
             
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
             String myDbName = "groupdk"; //your DATABASE name, same as your username 
@@ -69,21 +73,18 @@ public class ManageBooking extends HttpServlet {
 
             statement.execute("set schema 'HeartacheHotelDB';");
 
-            String c_no = request.getParameter("manage_c_no");
-            String c_email = request.getParameter("email");
+            String c_no = request.getParameter("Reception_c_no");
 
-            System.out.println(c_email);
-            
-            //Even though email is not required to display the information, here it works as a safety measure 
-            //because only when the email matches the email in the Database the customer can proceed to managing their bookings
+            //Retrieving information about the customer and their booking
             String SQLStatement = "select c.c_no, c.c_name, c.c_email, c.c_address, "
-                    + "c.c_cardno from customer c where c.c_no=" + c_no + " and c_email='" + c_email + "';";
+                    + "c.c_cardno from customer c where c.c_no=" + c_no + ";";
             
             System.out.println(SQLStatement);
             statement.executeQuery(SQLStatement);
 
             ResultSet resultSet = statement.executeQuery(SQLStatement);
 
+            String c_email = null;
             String c_name = null;
             String c_address = null;
             String c_cardno = null;
@@ -94,8 +95,7 @@ public class ManageBooking extends HttpServlet {
                 c_address = resultSet.getString("c_address");
                 c_email = resultSet.getString("c_email");
             }
-            
-            //Making a way to display the card numbers last 4 digits instead of the full card number for security
+
             if (c_cardno.length() == 16) {
                 String secret_c_cardno = "**** **** **** " + c_cardno.substring(11, 15);
                 request.setAttribute("manage_c_cardno", secret_c_cardno);
@@ -108,22 +108,21 @@ public class ManageBooking extends HttpServlet {
 
             resultSet = statement.executeQuery(SQLStatement2);
             
-            //Arraylist of booking references for the specified customer
+            //The booking references for the specified customer:
             ArrayList<String> bookingReferences = new ArrayList();
             while (resultSet.next()) {
                 bookingReferences.add(resultSet.getString("b_ref"));
             }
             System.out.println(bookingReferences);
-            
-            //Cutting the string that the arraylist comes in normally [ ..., ..., ... ]
-            //to not have the square brackets at the ends
+
+            //Trimming the output to loose the square brackets
             String b_refs = bookingReferences.toString();
             b_refs = b_refs.substring(1, b_refs.length());
             b_refs = b_refs.substring(0, b_refs.length() - 1);
 
             int numOfBRefs = bookingReferences.size();
             
-            //Setting the variables so that they could be retrieved from BookingManage.jsp
+            //Setting attributes which can then be retrieved in BookingManage.jsp
             request.setAttribute("manage_c_no", c_no);
             request.setAttribute("manage_c_name", c_name);
             request.setAttribute("manage_c_address", c_address);
@@ -137,8 +136,7 @@ public class ManageBooking extends HttpServlet {
             connection.close();
 
         } catch (ClassNotFoundException | SQLException e) {
-            System.err.println("Your customer reference number doesn't match the email you entered.");
-//            System.err.println(e);
+            System.err.println("Error: " + e);
         }
     }
 

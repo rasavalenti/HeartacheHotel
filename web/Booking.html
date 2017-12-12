@@ -61,9 +61,9 @@
                 <fieldset>
                     <legend>Make a Booking</legend>
 
-                    <label> Check-in: </label><input type="text" name="checkin" id="checkIn" onchange="checkOutDate();" oninput="this.onchange();">
-                    <label> Check-out: </label><input type="text" name="checkout" id="checkOut">
-                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();">
+                    <label> Check-in: </label><input type="text" name="checkin" id="checkIn" onchange="checkOutDate();" oninput="this.onchange();" required>
+                    <label> Check-out: </label><input type="text" name="checkout" id="checkOut" required>
+                    <label> Number of rooms: </label> <input type="number" name="numOfRooms" id ="numOfRooms" min="1" max="10" onchange="numberOfRooms();" required>
                     <label> Room type: </label><select name="roomtype" id="roomtype">
                         <option value="std_d">Standard Double</option>
                         <option value="std_t">Standard Twin</option>
@@ -79,8 +79,8 @@
                 <fieldset>
                     <legend>Manage a Booking</legend>
 
-                    <label> Customer Reference: </label><input type="text" name ="manage_c_no">
-                    <label> Email: </label><input type="email" name ="email">
+                    <label> Customer Reference: </label><input type="text" name ="manage_c_no" required>
+                    <label> Email: </label><input type="email" name ="email" required>
                     <br/>
                     <input class="FormInput" type="submit" value="Manage Booking">                       
                 </fieldset>
