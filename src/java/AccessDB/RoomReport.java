@@ -53,6 +53,12 @@ public class RoomReport extends HttpServlet {
             // doesn't work with this...
             //statement.execute("set schema 'HeartacheHotelDB';");
 
+            String timePeriod = request.getParameter("roomTime");
+            String dateFrom = request.getParameter("roomReportDate");
+            
+            System.out.println(timePeriod);
+            System.out.println(dateFrom);
+            
             ResultSet resultSet;
 
             String numCheckedOutRooms = "SELECT COUNT(DISTINCT(rb.r_no)) as num "
