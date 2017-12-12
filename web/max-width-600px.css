@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px) {
+ @media screen and (max-width: 600px) {
     body {
         background-color: white;
     }
@@ -28,6 +28,8 @@
         width: 100%;
         top: 0;
     }
+    
+    
 
     #MainLogo {
         display: none;
@@ -79,8 +81,8 @@
     }
 
     .RoomsForm {
-        width: 10em;
-        height: 10em;
+        width: 8em;
+        height: 20em;
     }
 
     #formDetails {

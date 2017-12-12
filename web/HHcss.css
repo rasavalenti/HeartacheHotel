@@ -1093,6 +1093,14 @@ div.Footer a:visited {
     padding-bottom: 2%;
 }
 
+.Rooms a {
+    color: white;
+}
+
+.Rooms a:visited {
+    color: white;
+}
+
 .Rooms h3 {
     font-size: 200%;
 }

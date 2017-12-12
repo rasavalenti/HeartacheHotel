@@ -1,43 +1,57 @@
-<!DOCTYPE html>
+<%-- 
+    Document   : HousekeepingShowRooms
+    Created on : 10-Dec-2017, 16:23:04
+    Author     : qhf13exu
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
 
         <!--Metadata-->
-        <title>Reception Portal</title>
-        <meta charset="UTF-8">
+        <title>Rooms</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <!--Style sheets-->
-        <link rel = "stylesheet" type = "text/css" href = "HHcss.css" />
+        <link rel="stylesheet" type="text/css" href="HHcss.css">
         <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
         <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
 
-        <!--External stylesheets-->
+        <!--External style sheets-->
+        <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
 
         <!--JavaScript Links-->
+        <script type ="text/javascript"></script>
+        <script src ="HHjavascript.js"></script>
 
     </head>
-
     <body>
-
         <div class="Header">
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
                 <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
-                <img src="images\Header6.png" alt="Marshland" />
+                <img src="images\Header9.png" alt="Room with luggage" />
             </div>
         </div>
 
-        <div class="ReceptionPortalMain">
-            <h2>Reception Portal</h2>
-            <div class="ReceptionPortalMainText">
-                <a href="ReceptionCheckInOut.html">Check In / Out</a> <br><br>
-                Change <br><br>
-                <a href="ReceptionAddExtras.html">Add extras</a><br><br>
-                <a href="ReceptionReports.html">Report</a><br>
+        <div class="ShowRoomsMain">
+            <h2>Checked out rooms</h2>
+            <div class="RoomsForm">
+                <table id="showRooms">
+                    <tr>
+                    <form method="POST" name="refresh" action="ShowRooms">
+                        <td colspan="2"><input class="FormOutput" type="Submit" value="Refresh" name="refresh" id="refresh"</td>
+                    </form>
+                    </tr>
+                    <tr colspan="2">
+                        Room number did not match rooms listed. <br>
+                        Click refresh and try again.
+                    </tr>
+                </table>
             </div>
         </div>
 
@@ -88,5 +102,4 @@
 
         </div>
     </body>
-
 </html>

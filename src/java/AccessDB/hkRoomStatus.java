@@ -38,12 +38,12 @@ public class hkRoomStatus extends HttpServlet {
      */
     static String r_num;
     static String r_status;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
         try {
             //String insertSQL;
 
@@ -51,13 +51,13 @@ public class hkRoomStatus extends HttpServlet {
             //insertSQL = "insert into customer values (6523690, 'Ann Hinchcliffe14', 'Ann.Hinchcliffe@yahoo.com', '81 New Road, Acle NR13 7GH', 'V', '10/16', '8948106927123585');";
             //System.out.println(insertSQL);
             String cmpHost = "cmpstudb-02.cmp.uea.ac.uk:5432";
-            String myDbName = "groupdk"; //your DATABASE name, same as your username 
-            String myDBusername = "groupdk"; // use your username for the database username  
-            String myDBpwd = "groupdk"; // use your DB’s password, same as your username  
+            String myDbName = "groupdk"; //your DATABASE name, same as your username
+            String myDBusername = "groupdk"; // use your username for the database username
+            String myDBpwd = "groupdk"; // use your DB’s password, same as your username
 
-            // make a string for my DB’s connection url 
+            // make a string for my DB’s connection url
             String myDbURL = ("jdbc:postgresql://" + cmpHost + "/" + myDbName);
-            
+
             Class.forName("org.postgresql.Driver");
             // connect to my database on CMP’s web server.
             Connection connection = DriverManager.getConnection(myDbURL, myDBusername, myDBpwd);
@@ -66,37 +66,41 @@ public class hkRoomStatus extends HttpServlet {
             // doesn't work with this...
             //statement.execute("set schema 'HeartacheHotelDB';");
 
+            System.out.println("request:" + request.getParameter("roomStatus"));
+
             r_status = request.getParameter("roomStatus");
             r_num = request.getParameter("roomNumber");
             request.setAttribute("r_num", r_num);
-            
+
+            System.out.println("status: " + r_status);
+            System.out.println("room: " + r_num);
+            System.out.println("show rooms: " + ShowRooms.roomNums);
+
             if (r_status.equals("X")) {
+                System.out.println("in x");
                 request.setAttribute("r_status", "Unavailable");
             } else if (r_status.equals("A")) {
+                System.out.println("in A");
                 request.setAttribute("r_status", "Available");
             }
             
-            System.out.println("status: " + r_status);
-            System.out.println("room: " + r_num);
-            System.out.println(ShowRooms.roomNums);
-            
             if (ShowRooms.roomNums.contains(r_num)) {
-                
+
                 RequestDispatcher rd;
-                
+
                 String changeRoomStatus;
-                
+
                 changeRoomStatus = "UPDATE room SET r_status = '" + r_status + "' "
                         + "WHERE r_no = '" + r_num + "';";
                 System.out.println(changeRoomStatus);
                 statement.execute(changeRoomStatus);
                 connection.close();
-                
+
                 request.getRequestDispatcher("HousekeepingShowRoomsConfirm.jsp").forward(request, response);
             } else {
-                request.getRequestDispatcher("HousekeepingShowRoomsError.jsp").forward(request, response);
+                request.getRequestDispatcher("HousekeepingShowRoomsErrorNum.jsp").forward(request, response);
             }
-            
+
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error: " + e);
         }

@@ -1,84 +1,42 @@
-<%-- 
-    Document   : HousekeepingShowRooms
-    Created on : 10-Dec-2017, 16:23:04
-    Author     : qhf13exu
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
 
         <!--Metadata-->
-        <title>Rooms</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Reception Reports</title>
+        <meta charset="UTF-8">
 
         <!--Style sheets-->
-        <link rel="stylesheet" type="text/css" href="HHcss.css">
+        <link rel = "stylesheet" type = "text/css" href = "HHcss.css" />
         <link rel="stylesheet" media="screen and (max-width: 600px)" href="max-width-600px.css">
         <link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 1700px)" href="min-width-600px.css">
 
-        <!--External style sheets-->
-        <script src ="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <!--External stylesheets-->
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
 
         <!--JavaScript Links-->
-        <script type ="text/javascript"></script>
-        <script src ="HHjavascript.js"></script>
 
     </head>
+
     <body>
+
         <div class="Header">
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
                 <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
             </div>
             <div class="banner">
-                <img src="images\Header9.png" alt="Room with luggage" />
+                <img src="images\Header6.png" alt="Marshland" />
             </div>
         </div>
 
-        <div class="ShowRoomsMain">
-            <h2>Checked out rooms</h2>
-            <div class="RoomsForm">
-
-
-                <table id="showRooms">
-                    <tr>
-                    <form method="POST" name="refresh" action="ShowRooms">
-                        <td colspan="2"><input class="FormOutput" type="Submit" value="Refresh" name="refresh" id="refresh"</td>
-                    </form>
-                    </tr>
-                    <form method="POST" name="housekeepingUpdate" id="housekeepingUpdate" action="hkRoomStatus">   
-                        <tr colspan="2">
-                            Room number did not match rooms below, try again.
-                            <td><input class="FormOutput" type="text" name="roomNumber" id="roomNumber"></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="FormOutput" name="roomStatus" type="radio" id="radioAvailable" value="A"><label for="radioAvailable">Available</label>
-                            </td>
-                        </tr>
-                        <tr colspan="2">
-                            <td>
-                                <input class="FormOutput" name="roomStatus" type="radio" id="radioUnavailable" value="X"><label for="radioUnavailable">Unavailable</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><input class="FormOutput" type="submit" value="Change" name="submitHousekeeping" id="submitHousekeeping"</td>
-                        </tr>
-                    </form>
-                </table>
-                
-                <table id="roomTable">
-                    <tr>
-                        <td>Room Number:</td>
-                    </tr>
-                    <script>
-                    var rooms = ${roomNums};
-                    showTables();
-                    </script>
-                </table>
+        <div class="ReceptionReportsMain">
+            <h2>Reception Reports</h2>
+            <div class="ReceptionPortalMainText">
+                <a href="ReceptionCheckInOut.html">Room Occupancy</a>
+                <br><br>
+                <a href="ReceptionReports.html">Income Report</a><br>
             </div>
         </div>
 
@@ -129,4 +87,5 @@
 
         </div>
     </body>
+
 </html>
