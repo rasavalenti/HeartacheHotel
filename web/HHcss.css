@@ -15,7 +15,7 @@ body {
     margin: 0;
     padding: 0;
 }
-
+/*Size of main logo set*/
 #MainLogo {
     width: 200px; 
     height: 200px; 
@@ -45,7 +45,7 @@ ul {
 }
 
 /*Header CSS*/
-div.Header {
+.Header {
     top: 0;
     text-align: center;
     max-width: 100%;
@@ -65,7 +65,7 @@ div.Header {
 }
 
 /*Booking tab CSS*/
-div.tab {
+.tab {
     overflow: hidden;
     background-color: #f1f1f1; 
     color: black;
@@ -75,24 +75,13 @@ div.tab {
     color: black;
 }
 
-/*How our text options box will show onscreen*/
-#TextOptions {
-    position: absolute;
-    float: right;
-    top: 0;
-    padding-top: 1%;
-    padding-left: 1%;
-    color: white;
-    font-size: medium;
-}
-
 /*DIV for navigation bar, including UL and OL*/
-div.Navigation {
+.Navigation {
     text-align: center;
 }
 
 /*CSS for all UL in navigation DIV*/
-div.Navigation ul {
+.Navigation ul {
     background-color: #a86763;   
     list-style-type: none;    
     overflow: hidden;   
@@ -106,7 +95,7 @@ div.Navigation ul {
 }
 
 /*CSS for all LI in navigation DIV*/
-div.Navigation li { 
+.Navigation li { 
     color: #ebd8bc;   
     border-left: solid 2px #ebd8bc;
     font-size: xx-large;
@@ -121,19 +110,13 @@ div.Navigation li {
 }
 
 /*CSS for all links in navigation DIV*/
-.Navigation a {
-    color: #ebd8bc;
-    text-decoration: none;
-}
-
-/*CSS for all visited links in navigation DIV*/
-.Navigation a:visited {
+.Navigation a, a:visited, a:hover {
     color: #ebd8bc;
     text-decoration: none;
 }
 
 /*Removes border from left of 'home' item in navigation DIV*/
-#FarLeft {
+#FarLeft ul {
     border-left: none;
 }
 

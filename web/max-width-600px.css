@@ -41,7 +41,7 @@
 
 
     .Header h1 {
-        font-size: 150%;
+        font-size: 100%;
     }
 
     .imageSlides img {
@@ -115,6 +115,7 @@ h2 {
     margin-top: 2%;
 }
 
+
 div.AddRoomsConfirmMain table { 
     width: 12em;
     height: 10em;
@@ -133,7 +134,7 @@ div.AddRoomsConfirmMain table {
     .ReviewMain {
         display: block;
         height: 100%;
-        margin-bottom: 20%;
+        margin-bottom: 40%;
     }
 
     #ReviewForm {
@@ -165,11 +166,14 @@ div.AddRoomsConfirmMain table {
         background-color: #a86763; 
     }
 
-    .Rooms, .Facilities, .LocalAttractions img {
-        width: 100%;
+    .AlternativeMain, .LocalAttractions img {
+        width: 80%;
+        display: block;
     }
 
-    .Rooms, .Facilities, .LocalAttractions p {
+    .Facilities, .Rooms, .LocalAttractions p {
+        display: block;
+        font-size: small;
         width: 100%;
     }
 
@@ -181,7 +185,7 @@ div.AddRoomsConfirmMain table {
         display: inline-block;
         margin-top: 10%;
         float: bottom;
-        margin-bottom: 40%;
+        margin-bottom: 70%;
     }
 
     .BookingMain form {
@@ -251,12 +255,12 @@ div.AddRoomsConfirmMain table {
 
     .FindUsMain {
         height: 60em;
-        margin-bottom: 125%;
+        margin-bottom: 200%;
     }
 
     #hotelMap {
-        width: 20em;
-        height: 30em;
+        width: 18em;
+        height: 18em;
     }
 
     #Lost {
@@ -271,7 +275,7 @@ div.AddRoomsConfirmMain table {
 
     .ContactUsMain {
         height: 150em;
-        margin-bottom: 100%;
+        margin-bottom: 150%;
         width: 80%;
     }
 
