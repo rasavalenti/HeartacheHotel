@@ -16,6 +16,11 @@ body {
     padding: 0;
 }
 
+#MainLogo {
+    width: 200px; 
+    height: 200px; 
+}
+
 /*All links throughout body CSS*/
 body a {
     text-decoration: none;

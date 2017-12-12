@@ -31,7 +31,7 @@
         <div class="Header">
             <div class="LogoTitle">
                 <h2>The Heartache Hotel</h2>
-                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
+                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" /></a>
             </div>
             <div class="banner">
                 <img src="images\Header4.png" alt="Room with luggage" />

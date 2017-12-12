@@ -32,7 +32,7 @@
         <div class="Header">
             <div class="LogoTitle">
                 <h1>The Heartache Hotel</h1>
-                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" style="width: 200px; height: 200px;" /></a>
+                <a class="Logo" href="Home.html"><img id="MainLogo" src="images\Logo.png" alt="logo" /></a>
             </div>
             <div class="banner">
                 <img src="images\Header1.png" alt="Norfolk Coast" />
