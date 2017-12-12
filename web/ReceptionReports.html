@@ -16,7 +16,9 @@
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
 
         <!--JavaScript Links-->
-
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="HHjavascript.js"></script>
     </head>
 
     <body>
@@ -32,11 +34,31 @@
         </div>
 
         <div class="ReceptionReportsMain">
+            <a href="ReceptionPortal.html"><- Back to Portal</a>
+            <br>
             <h2>Reception Reports</h2>
             <div class="ReceptionPortalMainText">
-                <a href="ReceptionCheckInOut.html">Room Occupancy</a>
+                <form method="POST" name="reportForm1" action="">
+                    Room occupancy report: 
+                    <br>
+                    <select>
+                        <option>Weekly</option>
+                    </select>
+                    <input type="text" name="roomReportDate" id="roomReportDate" value="Starting from...">
+                    <br>
+                    <input type="submit" name="reportSubmit1" id="reportSubmit1" value="Create report">
+                </form>
                 <br><br>
-                <a href="ReceptionReports.html">Income Report</a><br>
+                <form method="POST" name="reportForm2" action="">
+                    Income report:
+                    <br>
+                    <select>
+                        <option>Weekly</option>
+                    </select>
+                    <input type="text" name="incomeReportDate" id="incomeReportDate" value="Up to and including...">
+                    <br>
+                    <input type="submit" name="reportSubmit2" id="reportSubmit2" value="Create report">
+                </form>
             </div>
         </div>
 

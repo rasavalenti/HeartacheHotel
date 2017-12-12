@@ -110,6 +110,10 @@ function saveBookingPage()
 $(function () {
     $("#checkIn").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
     $("#checkOut").datepicker({dateFormat: 'dd-mm-yy', minDate: 0});
+    
+    $("#roomReportDate").datepicker({dateFormat: 'dd-mm-yy'});
+    $("#incomeReportDate").datepicker({dateFormat: 'dd-mm-yy', maxdate: 0});
+
 
     $("#checkInHP").datepicker({dateFormat: 'dd-mm-yy', minDate: 0, maxDate: "+1Y"});
     $("#checkOutHP").datepicker({dateFormat: 'dd-mm-yy', minDate: 0});
